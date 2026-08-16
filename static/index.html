@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lander: Track your learning progress with elegant, hierarchical dashboards. Monitor understanding across subjects, sections, chapters, and lessons with beautiful visualizations.">
+  <meta name="theme-color" content="#92400E">
+  <title>Lander – Learning Progress Tracker</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="brand-panel">
+      <button id="sidebar-toggle" class="btn" aria-label="Open subjects">☰</button>
+      <div class="brand-mark" role="img" aria-label="Lander logo">L</div>
+      <div class="brand-copy">
+        <p class="eyebrow">Lander</p>
+        <h1 class="hero-title">Your learning progress, elegantly grounded.</h1>
+      </div>
+      <!-- Compact mobile top-nav (hidden on desktop) -->
+      <div id="mobile-top-nav" class="mobile-top-nav">
+        <div id="mobile-subject-name" class="mobile-subject-name">Subject</div>
+        <div class="mobile-actions">
+          <button id="mobile-weak-btn" class="btn" title="Weak topics">⚠</button>
+          <button id="mobile-add-lesson" class="btn" title="Add lesson">＋</button>
+          <button id="mobile-import-btn" class="btn" title="Import">⇪</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside id="sidebar" class="sidebar" aria-label="Subjects">
+        <div class="sidebar-header">
+          <h3>Subjects</h3>
+          <input id="subject-search" placeholder="Search subjects" aria-label="Search subjects" />
+        </div>
+        <ul id="subject-list" class="subject-list"></ul>
+        <div class="sidebar-actions">
+          <button id="new-subject" class="btn btn-primary">New Subject</button>
+        </div>
+      </aside>
+
+      <main id="app">
+        <div id="toolbar" class="toolbar">
+          <div class="toolbar-left">
+            <button id="weak-filter" class="btn">Show Weak Topics</button>
+            <label for="weak-threshold" class="small-label">Threshold</label>
+            <input id="weak-threshold" type="range" min="0" max="100" value="50" />
+          </div>
+          <div class="toolbar-right">
+            <label class="small-label" for="import-json">Import JSON</label>
+            <input id="import-json" type="file" accept="application/json" />
+          </div>
+        </div>
+
+        <div id="loading" class="loading-state" role="status" aria-live="polite">
+          <div class="spinner"></div>
+          <p>Loading your learning dashboard...</p>
+        </div>
+        
+        <!-- Weak topics panel -->
+        <aside id="weak-panel" class="weak-panel hidden" aria-label="Weak topics">
+          <div class="weak-panel-header">
+            <h4>Weak Topics</h4>
+            <button id="weak-panel-close" class="btn">Close</button>
+          </div>
+          <div id="weak-list" class="weak-list"></div>
+        </aside>
+      </main>
+    </div>
+  </div>
+
+  <!-- History Chart Modal -->
+  <div id="history-modal" class="modal hidden" role="dialog" aria-labelledby="history-modal-title" aria-modal="true">
+    <div class="modal-backdrop" aria-hidden="true"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="history-modal-title" class="modal-title">History</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <canvas id="history-chart"></canvas>
+        <p id="history-empty" class="hidden history-empty-state">No history data yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import from Markdown Modal -->
+  <div id="import-modal" class="modal hidden" role="dialog" aria-labelledby="import-modal-title" aria-modal="true">
+    <div class="modal-backdrop" aria-hidden="true"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="import-modal-title" class="modal-title">Import from Markdown</h2>
+        <button class="modal-close" id="import-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="help-text">
+          Paste your Markdown table content below. The parser expects <code>##</code> for sections, 
+          <code>###</code> for chapters, and pipe-delimited tables with lesson names and percentages.
+        </p>
+        <textarea 
+          id="import-text" 
+          rows="16" 
+          placeholder="Paste markdown here..." 
+          aria-label="Markdown content to import"
+        ></textarea>
+        <div class="import-actions">
+          <label for="import-subject-name" class="import-label">
+            <span>Subject name:</span>
+            <input 
+              type="text" 
+              id="import-subject-name" 
+              value="Imported Subject"
+              placeholder="Enter subject name"
+            >
+          </label>
+          <button id="import-execute" class="btn btn-primary">Import</button>
+        </div>
+        <div id="import-status" class="hidden import-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
