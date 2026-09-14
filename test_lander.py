@@ -20,10 +20,12 @@ BASE_URL = "http://localhost:8000"
 
 @pytest.fixture(scope="function")
 def seed_test_data():
+    """Seed an isolated uniquely-named subject; clean up only what we created."""
+    import uuid
     init_db()
+    name = f"Playwright Test {uuid.uuid4().hex[:8]}"
     with get_db() as conn:
-        conn.execute("DELETE FROM subjects")
-        cur = conn.execute("INSERT INTO subjects (name) VALUES (?)", ("Test Subject",))
+        cur = conn.execute("INSERT INTO subjects (name) VALUES (?)", (name,))
         subject_id = cur.lastrowid
         cur = conn.execute(
             "INSERT INTO sections (subject_id, name, sort_order) VALUES (?, ?, ?)",
@@ -36,6 +38,9 @@ def seed_test_data():
         conn.execute(
             "INSERT INTO lessons (chapter_id, name, understanding, sort_order) VALUES (?, ?, ?, ?)",
             (chapter_id, "Test Lesson", 75, 0))
+    yield {"subject_id": subject_id, "name": name}
+    with get_db() as conn:
+        conn.execute("DELETE FROM subjects WHERE id = ?", (subject_id,))
 
 
 @pytest.fixture
