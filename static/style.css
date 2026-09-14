@@ -738,3 +738,68 @@ input[type="file"] {
   border-radius: 8px;
   font-size: 1rem;
 }
+
+/* Today to Land (review queue) */
+.today-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.today-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface-tag);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.today-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.today-list {
+  padding: 0.5rem;
+}
+
+.today-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.today-item:last-child {
+  border-bottom: none;
+}
+
+.today-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.session-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem;
+}
+
+.session-form input,
+.session-form select {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}

@@ -147,6 +147,41 @@
     </div>
   </div>
 
+  <!-- Log study session modal -->
+  <div id="session-modal" class="modal hidden" role="dialog" aria-labelledby="session-modal-title" aria-modal="true">
+    <div class="modal-backdrop" aria-hidden="true"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="session-modal-title" class="modal-title">Log study session</h2>
+        <button class="modal-close" id="session-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="session-lesson-name" class="help-text"></p>
+        <div class="session-form">
+          <label class="import-label">Minutes
+            <input type="number" id="session-minutes" value="15" min="1" max="480" />
+          </label>
+          <label class="import-label">Mode
+            <select id="session-mode">
+              <option value="review">review</option>
+              <option value="learn">learn</option>
+              <option value="recall">recall</option>
+              <option value="apply">apply</option>
+            </select>
+          </label>
+          <label class="import-label">Recall score 0-5 (optional)
+            <input type="number" id="session-score" min="0" max="5" step="0.5" placeholder="—" />
+          </label>
+        </div>
+        <div class="import-actions">
+          <button id="session-cancel" class="btn">Cancel</button>
+          <button id="session-save" class="btn btn-primary">Save session</button>
+        </div>
+        <div id="session-status" class="hidden import-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
   <script src="/static/app.js"></script>

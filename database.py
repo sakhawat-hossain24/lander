@@ -72,5 +72,16 @@ def init_db():
                 new_value REAL NOT NULL,
                 timestamp TEXT DEFAULT (datetime('now'))
             );
+
+            CREATE TABLE IF NOT EXISTS sessions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                lesson_id INTEGER NOT NULL REFERENCES lessons(id) ON DELETE CASCADE,
+                duration_min INTEGER NOT NULL DEFAULT 15 CHECK(duration_min > 0 AND duration_min <= 480),
+                mode TEXT NOT NULL DEFAULT 'review' CHECK(mode IN ('learn', 'recall', 'apply', 'review')),
+                score REAL NULL CHECK(score IS NULL OR (score >= 0 AND score <= 5)),
+                created_at TEXT DEFAULT (datetime('now'))
+            );
+            CREATE INDEX IF NOT EXISTS idx_sessions_lesson ON sessions(lesson_id);
+            CREATE INDEX IF NOT EXISTS idx_sessions_created ON sessions(created_at);
         """)
     logger.info("Database schema initialized successfully")

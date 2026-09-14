@@ -254,6 +254,19 @@ function render() {
     app.appendChild(sectionEl);
   });
 
+  // Today to Land panel (review queue driven by sessions evidence)
+  const todayEl = ce('div', 'today-panel');
+  todayEl.innerHTML = `
+    <div class="today-header">
+      <h3>Today to Land</h3>
+      <span class="muted small">weak + stale first, from study evidence</span>
+    </div>
+    <div class="today-list"><p class="muted small">Loading queue…</p></div>
+  `;
+  // insert after header, before sections
+  app.insertBefore(todayEl, app.children[1] || null);
+  loadReviewQueue(d.id, todayEl);
+
   renderSidebar();
 
   const mobileName = document.getElementById('mobile-subject-name');
@@ -345,6 +358,7 @@ function renderLesson(l, chapterId) {
     <span class="understanding-display" style="color:${uColor(l.understanding)}"
           data-lesson-id="${l.id}">${fmtPctShort(l.understanding)}</span>
     <button class="history-btn" data-lesson-history="${l.id}">Chart</button>
+    <button class="history-btn" data-log-session="${l.id}" title="Log study session">+ Log</button>
   `;
   const display = li.querySelector('.understanding-display');
   display.onclick = (e) => {
@@ -356,7 +370,57 @@ function renderLesson(l, chapterId) {
     logInfo('render', 'Lesson history chart clicked', { lessonId: l.id, name: l.name });
     showLessonHistory(l.id, l.name);
   };
+  li.querySelector('[data-log-session]').onclick = (e) => {
+    e.stopPropagation();
+    openSessionModal(l.id, l.name);
+  };
   return li;
+}
+
+/* ----- Review queue + sessions ----- */
+let _sessionLessonId = null;
+
+async function loadReviewQueue(subjectId, container) {
+  const list = container.querySelector('.today-list');
+  try {
+    const q = await api('GET', `/api/review-queue?subject_id=${subjectId}&limit=8`);
+    if (!q.length) {
+      list.innerHTML = '<p class="muted small">All landed. No lessons yet.</p>';
+      return;
+    }
+    list.innerHTML = '';
+    q.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'today-item';
+      row.innerHTML = `
+        <div class="today-left">
+          <strong>${esc(item.name)}</strong>
+          <div class="muted small">${esc(item.section_name)} › ${esc(item.chapter_name)} · ${esc(item.reason)} · ${item.total_minutes}m logged</div>
+        </div>
+        <div class="today-right">
+          <span class="weak-badge" style="color:${uColor(item.understanding)}">${fmtPctShort(item.understanding)}</span>
+          <button class="btn" data-today-go="${item.id}">Go</button>
+          <button class="btn" data-today-log="${item.id}" data-name="${esc(item.name)}">Log</button>
+        </div>`;
+      row.querySelector('[data-today-go]').onclick = () => openLessonById(item.id);
+      row.querySelector('[data-today-log]').onclick = () => openSessionModal(item.id, item.name);
+      list.appendChild(row);
+    });
+  } catch (err) {
+    list.innerHTML = `<p class="muted small">Queue unavailable: ${esc(err.message)}</p>`;
+  }
+}
+
+function openSessionModal(lessonId, lessonName) {
+  _sessionLessonId = lessonId;
+  document.getElementById('session-lesson-name').textContent = `Lesson: ${lessonName} (#${lessonId})`;
+  document.getElementById('session-status').classList.add('hidden');
+  document.getElementById('session-modal').classList.remove('hidden');
+}
+
+function closeSessionModal() {
+  document.getElementById('session-modal').classList.add('hidden');
+  _sessionLessonId = null;
 }
 
 /* ----- Inline Editing ----- */
@@ -690,10 +754,35 @@ document.getElementById('import-modal').querySelector('.modal-backdrop').onclick
   document.getElementById('import-modal-close').click();
 };
 
+document.getElementById('session-modal-close').onclick = () => closeSessionModal();
+document.getElementById('session-cancel').onclick = () => closeSessionModal();
+document.getElementById('session-modal').querySelector('.modal-backdrop').onclick = () => closeSessionModal();
+document.getElementById('session-save').onclick = async () => {
+  const status = document.getElementById('session-status');
+  const minutes = Math.min(Math.max(parseInt(document.getElementById('session-minutes').value || '15', 10) || 15, 1), 480);
+  const mode = document.getElementById('session-mode').value || 'review';
+  const scoreRaw = document.getElementById('session-score').value;
+  const score = scoreRaw === '' ? null : Math.min(Math.max(parseFloat(scoreRaw), 0), 5);
+  try {
+    await api('POST', '/api/sessions', { lesson_id: _sessionLessonId, duration_min: minutes, mode, score });
+    status.textContent = `Logged ${minutes}m ${mode}.`;
+    status.className = 'success';
+    status.classList.remove('hidden');
+    showToast('Session logged', 'success');
+    closeSessionModal();
+    if (appState) await loadApp(appState.id);
+  } catch (err) {
+    status.textContent = `Failed: ${err.message}`;
+    status.className = 'error';
+    status.classList.remove('hidden');
+  }
+};
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     document.getElementById('modal-close').click();
     document.getElementById('import-modal-close').click();
+    closeSessionModal();
   }
 });
 

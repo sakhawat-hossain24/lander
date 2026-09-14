@@ -89,3 +89,35 @@ def test_import_and_history(client):
     assert len(hist) >= 2
     assert hist[0]["value"] == pytest.approx(10.0)
     assert hist[-1]["value"] == pytest.approx(90.0)
+
+
+def test_log_session_and_totals(client):
+    _, _, _, l1, _ = _seed_hierarchy(client)
+    r = client.post("/api/sessions", json={"lesson_id": l1["id"], "duration_min": 25, "mode": "recall", "score": 4})
+    assert r.status_code == 201
+    assert r.json()["duration_min"] == 25
+
+    lst = client.get(f"/api/lessons/{l1['id']}/sessions").json()
+    assert lst["count"] == 1
+    assert lst["total_minutes"] == 25
+
+    bad = client.post("/api/sessions", json={"lesson_id": 999999, "duration_min": 10})
+    assert bad.status_code == 404
+    bad_mode = client.post("/api/sessions", json={"lesson_id": l1["id"], "duration_min": 10, "mode": "nap"})
+    assert bad_mode.status_code == 422
+
+
+def test_review_queue_orders_weak_first(client):
+    sub, _, _, l1, l2 = _seed_hierarchy(client)
+    # l1=20% weak, l2=80% strong
+    q = client.get(f"/api/review-queue?subject_id={sub['id']}&limit=10").json()
+    assert len(q) == 2
+    assert q[0]["id"] == l1["id"]
+    assert q[0]["reason"] == "weak"
+    assert "total_minutes" in q[0]
+
+    # logging a session keeps weak lesson first but adds evidence
+    client.post("/api/sessions", json={"lesson_id": l1["id"], "duration_min": 15, "mode": "learn"})
+    q2 = client.get(f"/api/review-queue?subject_id={sub['id']}").json()
+    assert q2[0]["id"] == l1["id"]
+    assert q2[0]["session_count"] == 1
