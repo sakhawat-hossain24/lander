@@ -8,6 +8,12 @@
   <title>Lander – Learning Progress Tracker</title>
   <link rel="stylesheet" href="/static/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    // Fallback CDN if jsdelivr fails (offline hardening)
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
+    }
+  </script>
 </head>
 <body>
   <div class="page-shell">
@@ -121,6 +127,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Generic prompt modal (replaces window.prompt) -->
+  <div id="prompt-modal" class="modal hidden" role="dialog" aria-labelledby="prompt-modal-title" aria-modal="true">
+    <div class="modal-backdrop" aria-hidden="true"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="prompt-modal-title" class="modal-title">Input</h2>
+        <button class="modal-close" id="prompt-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label id="prompt-modal-label" class="import-label" for="prompt-modal-input">Value</label>
+        <input type="text" id="prompt-modal-input" />
+        <div class="import-actions">
+          <button id="prompt-modal-cancel" class="btn">Cancel</button>
+          <button id="prompt-modal-ok" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
   <script src="/static/app.js"></script>
 </body>
