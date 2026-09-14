@@ -1,19 +1,29 @@
-import sqlite3
 import os
+import sqlite3
+from contextlib import contextmanager
+
 from logger import get_logger
 
 logger = get_logger("database")
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "study.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Canonical DB filename is lander.db (matches README + project name).
+# Overridable via LANDER_DB_PATH for tests / Docker volumes.
+DB_PATH = os.getenv("LANDER_DB_PATH", os.path.join(BASE_DIR, "lander.db"))
 
 
+@contextmanager
 def get_db():
     conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    conn.execute("PRAGMA journal_mode = WAL")
-    logger.info("DB connection opened", extra={"db_path": DB_PATH})
-    return conn
+    try:
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("PRAGMA journal_mode = WAL")
+        logger.info("DB connection opened", extra={"db_path": DB_PATH})
+        yield conn
+        conn.commit()
+    finally:
+        conn.close()
 
 
 def init_db():

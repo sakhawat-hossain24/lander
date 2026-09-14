@@ -1,6 +1,7 @@
 import os
 import time
 import uuid
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
@@ -12,7 +13,14 @@ logger = get_logger("app")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app = FastAPI(title="Study Tracker")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+
+
+app = FastAPI(title="Lander - Learning Progress Tracker", lifespan=lifespan)
 
 
 @app.middleware("http")
@@ -53,12 +61,12 @@ async def log_requests(request: Request, call_next):
         return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 
-@app.on_event("startup")
-def startup():
-    init_db()
-
-
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 @app.get("/")
@@ -68,25 +76,25 @@ async def root(request: Request):
 
 
 class SubjectCreate(BaseModel):
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
 
 
 class SectionCreate(BaseModel):
     subject_id: int
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sort_order: int = 0
 
 
 class ChapterCreate(BaseModel):
     section_id: int
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sort_order: int = 0
 
 
 class LessonCreate(BaseModel):
     chapter_id: int
-    name: str
-    understanding: float = 0
+    name: str = Field(..., min_length=1, max_length=200)
+    understanding: float = Field(default=0, ge=0, le=100)
     sort_order: int = 0
 
 
@@ -113,7 +121,7 @@ class SectionImport(BaseModel):
 
 
 class SubjectImport(BaseModel):
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sections: list[SectionImport] = []
 
 
