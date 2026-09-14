@@ -1,19 +1,29 @@
-import sqlite3
 import os
+import sqlite3
+from contextlib import contextmanager
+
 from logger import get_logger
 
 logger = get_logger("database")
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "study.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Canonical DB filename is lander.db (matches README + project name).
+# Overridable via LANDER_DB_PATH for tests / Docker volumes.
+DB_PATH = os.getenv("LANDER_DB_PATH", os.path.join(BASE_DIR, "lander.db"))
 
 
+@contextmanager
 def get_db():
     conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    conn.execute("PRAGMA journal_mode = WAL")
-    logger.info("DB connection opened", extra={"db_path": DB_PATH})
-    return conn
+    try:
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("PRAGMA journal_mode = WAL")
+        logger.info("DB connection opened", extra={"db_path": DB_PATH})
+        yield conn
+        conn.commit()
+    finally:
+        conn.close()
 
 
 def init_db():
@@ -62,5 +72,16 @@ def init_db():
                 new_value REAL NOT NULL,
                 timestamp TEXT DEFAULT (datetime('now'))
             );
+
+            CREATE TABLE IF NOT EXISTS sessions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                lesson_id INTEGER NOT NULL REFERENCES lessons(id) ON DELETE CASCADE,
+                duration_min INTEGER NOT NULL DEFAULT 15 CHECK(duration_min > 0 AND duration_min <= 480),
+                mode TEXT NOT NULL DEFAULT 'review' CHECK(mode IN ('learn', 'recall', 'apply', 'review')),
+                score REAL NULL CHECK(score IS NULL OR (score >= 0 AND score <= 5)),
+                created_at TEXT DEFAULT (datetime('now'))
+            );
+            CREATE INDEX IF NOT EXISTS idx_sessions_lesson ON sessions(lesson_id);
+            CREATE INDEX IF NOT EXISTS idx_sessions_created ON sessions(created_at);
         """)
     logger.info("Database schema initialized successfully")

@@ -1,10 +1,13 @@
 import os
 import time
 import uuid
-from fastapi import FastAPI, HTTPException, Request
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
+from typing import Optional
+from datetime import datetime, timezone
 from database import get_db, init_db
 from logger import get_logger
 
@@ -12,7 +15,14 @@ logger = get_logger("app")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app = FastAPI(title="Study Tracker")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+
+
+app = FastAPI(title="Lander - Learning Progress Tracker", lifespan=lifespan)
 
 
 @app.middleware("http")
@@ -53,12 +63,12 @@ async def log_requests(request: Request, call_next):
         return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 
-@app.on_event("startup")
-def startup():
-    init_db()
-
-
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 @app.get("/")
@@ -68,25 +78,25 @@ async def root(request: Request):
 
 
 class SubjectCreate(BaseModel):
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
 
 
 class SectionCreate(BaseModel):
     subject_id: int
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sort_order: int = 0
 
 
 class ChapterCreate(BaseModel):
     section_id: int
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sort_order: int = 0
 
 
 class LessonCreate(BaseModel):
     chapter_id: int
-    name: str
-    understanding: float = 0
+    name: str = Field(..., min_length=1, max_length=200)
+    understanding: float = Field(default=0, ge=0, le=100)
     sort_order: int = 0
 
 
@@ -113,7 +123,7 @@ class SectionImport(BaseModel):
 
 
 class SubjectImport(BaseModel):
-    name: str
+    name: str = Field(..., min_length=1, max_length=200)
     sections: list[SectionImport] = []
 
 
@@ -682,3 +692,120 @@ def get_subject_history(subject_id: int, request: Request):
             extra={"request_id": rid},
         )
         return points
+
+
+class SessionCreate(BaseModel):
+    lesson_id: int
+    duration_min: int = Field(default=15, ge=1, le=480)
+    mode: str = Field(default="review", pattern="^(learn|recall|apply|review)$")
+    score: Optional[float] = Field(default=None, ge=0, le=5)
+
+
+def _reason_for_lesson(understanding: float, session_count: int, last_activity: Optional[str]) -> str:
+    if understanding < 50:
+        return "weak"
+    if session_count == 0:
+        return "unstarted"
+    if last_activity:
+        try:
+            ts = last_activity.replace("Z", "")
+            # SQLite datetime('now') -> "YYYY-MM-DD HH:MM:SS"
+            for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S.%f"):
+                try:
+                    dt = datetime.strptime(ts[:19], fmt[:19] if len(fmt) > 19 else fmt)
+                    break
+                except ValueError:
+                    continue
+            else:
+                return "review due"
+            age_days = (datetime.now(timezone.utc).replace(tzinfo=None) - dt).days
+            if age_days > 14:
+                return "stalled"
+        except Exception:
+            pass
+    return "review due"
+
+
+@app.post("/api/sessions", status_code=201)
+def create_session(data: SessionCreate, request: Request):
+    rid = getattr(request.state, "request_id", None)
+    logger.info(
+        "Logging session lesson_id=%d %dmin %s",
+        data.lesson_id, data.duration_min, data.mode,
+        extra={"request_id": rid},
+    )
+    with get_db() as conn:
+        lesson = conn.execute("SELECT id FROM lessons WHERE id = ?",
+                              (data.lesson_id,)).fetchone()
+        if not lesson:
+            raise HTTPException(404, "Lesson not found")
+        cur = conn.execute(
+            "INSERT INTO sessions (lesson_id, duration_min, mode, score) VALUES (?, ?, ?, ?)",
+            (data.lesson_id, data.duration_min, data.mode, data.score))
+        session_id = cur.lastrowid
+        conn.execute(
+            "UPDATE lessons SET updated_at = datetime('now') WHERE id = ?",
+            (data.lesson_id,))
+        row = conn.execute("SELECT * FROM sessions WHERE id = ?",
+                           (session_id,)).fetchone()
+        return dict(row)
+
+
+@app.get("/api/lessons/{lesson_id}/sessions")
+def list_lesson_sessions(lesson_id: int, request: Request):
+    with get_db() as conn:
+        lesson = conn.execute("SELECT id FROM lessons WHERE id = ?",
+                              (lesson_id,)).fetchone()
+        if not lesson:
+            raise HTTPException(404, "Lesson not found")
+        rows = conn.execute(
+            "SELECT * FROM sessions WHERE lesson_id = ? ORDER BY created_at DESC",
+            (lesson_id,)).fetchall()
+        total = conn.execute(
+            "SELECT COALESCE(SUM(duration_min), 0) AS total FROM sessions WHERE lesson_id = ?",
+            (lesson_id,)).fetchone()["total"]
+        return {"sessions": [dict(r) for r in rows], "total_minutes": total,
+                "count": len(rows)}
+
+
+@app.get("/api/review-queue")
+def get_review_queue(
+    request: Request,
+    subject_id: Optional[int] = Query(default=None),
+    limit: int = Query(default=10, ge=1, le=100),
+):
+    rid = getattr(request.state, "request_id", None)
+    with get_db() as conn:
+        rows = conn.execute(
+            """
+            SELECT l.id, l.name, l.understanding, l.updated_at,
+                   c.name AS chapter_name, s.name AS section_name,
+                   sub.id AS subject_id, sub.name AS subject_name,
+                   COALESCE(SUM(sess.duration_min), 0) AS total_minutes,
+                   COUNT(sess.id) AS session_count,
+                   MAX(sess.created_at) AS last_session_at
+            FROM lessons l
+            JOIN chapters c ON l.chapter_id = c.id
+            JOIN sections s ON c.section_id = s.id
+            JOIN subjects sub ON s.subject_id = sub.id
+            LEFT JOIN sessions sess ON sess.lesson_id = l.id
+            WHERE (? IS NULL OR sub.id = ?)
+            GROUP BY l.id
+            ORDER BY l.understanding ASC, last_session_at ASC, l.updated_at ASC
+            LIMIT ?
+            """,
+            (subject_id, subject_id, limit)).fetchall()
+        result = []
+        for r in rows:
+            d = dict(r)
+            last_activity = d["last_session_at"] or d["updated_at"]
+            d["last_activity"] = last_activity
+            d["reason"] = _reason_for_lesson(
+                float(d["understanding"]), int(d["session_count"]), last_activity)
+            result.append(d)
+        logger.info(
+            "Returning review queue: %d item(s) subject_id=%s",
+            len(result), subject_id,
+            extra={"request_id": rid},
+        )
+        return result

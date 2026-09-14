@@ -131,7 +131,7 @@ Subject
                 └── understanding: float (0-100)
 ```
 
-### Tables (SQLite — `study.db`)
+### Tables (SQLite — `lander.db`)
 
 | Table | Purpose |
 |---|---|
@@ -141,7 +141,7 @@ Subject
 | `lessons` | Individual lesson/topic with understanding % |
 | `lesson_history` | Timestamped record of every understanding change |
 
-The database file `study.db` is created automatically in the project root and can be inspected or edited directly with any SQLite browser.
+The database file `lander.db` is created automatically in the project root (override with `LANDER_DB_PATH`) and can be inspected or edited directly with any SQLite browser.
 
 ## Features
 

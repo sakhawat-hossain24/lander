@@ -16,6 +16,43 @@ function logInfo(component, message, data) { log('INFO', component, message, dat
 function logWarn(component, message, data) { log('WARN', component, message, data); }
 function logError(component, message, data) { log('ERROR', component, message, data); }
 
+function showToast(message, type = 'info', timeout = 4000) {
+  const container = document.getElementById('toast-container');
+  if (!container) { alert(message); return; }
+  const el = document.createElement('div');
+  el.className = `toast toast-${type}`;
+  el.textContent = message;
+  container.appendChild(el);
+  setTimeout(() => el.remove(), timeout);
+}
+
+let _promptResolve = null;
+function showPrompt(title, label, defaultValue = '') {
+  return new Promise((resolve) => {
+    const modal = document.getElementById('prompt-modal');
+    const titleEl = document.getElementById('prompt-modal-title');
+    const labelEl = document.getElementById('prompt-modal-label');
+    const input = document.getElementById('prompt-modal-input');
+    if (!modal || !input) { resolve(prompt(label, defaultValue)); return; }
+    _promptResolve = resolve;
+    titleEl.textContent = title;
+    labelEl.textContent = label;
+    input.value = defaultValue;
+    modal.classList.remove('hidden');
+    setTimeout(() => input.focus(), 50);
+  });
+}
+
+function _closePrompt(value) {
+  const modal = document.getElementById('prompt-modal');
+  if (modal) modal.classList.add('hidden');
+  if (_promptResolve) { _promptResolve(value); _promptResolve = null; }
+}
+
+function ensureChartAvailable() {
+  return typeof Chart !== 'undefined';
+}
+
 function uColor(v) {
   const t = Math.min(v / 100, 1);
   const r = Math.round(0x78 + (0x16 - 0x78) * t);
@@ -105,13 +142,18 @@ document.getElementById('subject-search').addEventListener('input', (e) => {
 });
 
 document.getElementById('new-subject').addEventListener('click', async () => {
-  const name = prompt('New subject name');
+  const name = (await showPrompt('New Subject', 'Subject name')).trim();
   if (!name) return;
   logInfo('sidebar', 'Creating new subject', { name });
-  const res = await api('POST', '/api/subjects', { name });
-  subjectsCache.push({ id: res.id, name: res.name });
-  renderSidebar();
-  loadApp(res.id);
+  try {
+    const res = await api('POST', '/api/subjects', { name });
+    subjectsCache.push({ id: res.id, name: res.name });
+    renderSidebar();
+    loadApp(res.id);
+  } catch (err) {
+    logError('sidebar', 'Failed to create subject', err.message);
+    showToast('Failed to create subject: ' + err.message, 'error');
+  }
 });
 
 /* Weak topics filter: show weak panel and highlight matches */
@@ -156,10 +198,10 @@ document.getElementById('import-json').addEventListener('change', async (e) => {
     await loadApp(sub.id);
     e.target.value = '';
     logInfo('import', 'JSON import successful', { subject: data.subject, lessons: sub.lessons });
-    alert('Import successful');
+    showToast('Import successful', 'success');
   } catch (err) {
     logError('import', 'JSON import failed', err.message);
-    alert('Import failed: ' + err.message);
+    showToast('Import failed: ' + err.message, 'error');
   }
 });
 
@@ -211,6 +253,19 @@ function render() {
     const sectionEl = renderSection(s);
     app.appendChild(sectionEl);
   });
+
+  // Today to Land panel (review queue driven by sessions evidence)
+  const todayEl = ce('div', 'today-panel');
+  todayEl.innerHTML = `
+    <div class="today-header">
+      <h3>Today to Land</h3>
+      <span class="muted small">weak + stale first, from study evidence</span>
+    </div>
+    <div class="today-list"><p class="muted small">Loading queue…</p></div>
+  `;
+  // insert after header, before sections
+  app.insertBefore(todayEl, app.children[1] || null);
+  loadReviewQueue(d.id, todayEl);
 
   renderSidebar();
 
@@ -303,6 +358,7 @@ function renderLesson(l, chapterId) {
     <span class="understanding-display" style="color:${uColor(l.understanding)}"
           data-lesson-id="${l.id}">${fmtPctShort(l.understanding)}</span>
     <button class="history-btn" data-lesson-history="${l.id}">Chart</button>
+    <button class="history-btn" data-log-session="${l.id}" title="Log study session">+ Log</button>
   `;
   const display = li.querySelector('.understanding-display');
   display.onclick = (e) => {
@@ -314,7 +370,57 @@ function renderLesson(l, chapterId) {
     logInfo('render', 'Lesson history chart clicked', { lessonId: l.id, name: l.name });
     showLessonHistory(l.id, l.name);
   };
+  li.querySelector('[data-log-session]').onclick = (e) => {
+    e.stopPropagation();
+    openSessionModal(l.id, l.name);
+  };
   return li;
+}
+
+/* ----- Review queue + sessions ----- */
+let _sessionLessonId = null;
+
+async function loadReviewQueue(subjectId, container) {
+  const list = container.querySelector('.today-list');
+  try {
+    const q = await api('GET', `/api/review-queue?subject_id=${subjectId}&limit=8`);
+    if (!q.length) {
+      list.innerHTML = '<p class="muted small">All landed. No lessons yet.</p>';
+      return;
+    }
+    list.innerHTML = '';
+    q.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'today-item';
+      row.innerHTML = `
+        <div class="today-left">
+          <strong>${esc(item.name)}</strong>
+          <div class="muted small">${esc(item.section_name)} › ${esc(item.chapter_name)} · ${esc(item.reason)} · ${item.total_minutes}m logged</div>
+        </div>
+        <div class="today-right">
+          <span class="weak-badge" style="color:${uColor(item.understanding)}">${fmtPctShort(item.understanding)}</span>
+          <button class="btn" data-today-go="${item.id}">Go</button>
+          <button class="btn" data-today-log="${item.id}" data-name="${esc(item.name)}">Log</button>
+        </div>`;
+      row.querySelector('[data-today-go]').onclick = () => openLessonById(item.id);
+      row.querySelector('[data-today-log]').onclick = () => openSessionModal(item.id, item.name);
+      list.appendChild(row);
+    });
+  } catch (err) {
+    list.innerHTML = `<p class="muted small">Queue unavailable: ${esc(err.message)}</p>`;
+  }
+}
+
+function openSessionModal(lessonId, lessonName) {
+  _sessionLessonId = lessonId;
+  document.getElementById('session-lesson-name').textContent = `Lesson: ${lessonName} (#${lessonId})`;
+  document.getElementById('session-status').classList.add('hidden');
+  document.getElementById('session-modal').classList.remove('hidden');
+}
+
+function closeSessionModal() {
+  document.getElementById('session-modal').classList.add('hidden');
+  _sessionLessonId = null;
 }
 
 /* ----- Inline Editing ----- */
@@ -459,6 +565,7 @@ function showLessonHistory(lessonId, lessonName) {
     showChart(`${esc(lessonName)}`, points);
   }).catch(err => {
     logError('chart', 'Failed to fetch lesson history', { lessonId, error: err.message });
+    showToast('Failed to load history: ' + err.message, 'error');
   });
 }
 
@@ -469,12 +576,13 @@ function showAggHistory(type, id, label) {
     showChart(`${esc(label)} average over time`, points);
   }).catch(err => {
     logError('chart', 'Failed to fetch aggregate history', { type, id, error: err.message });
+    showToast('Failed to load history: ' + err.message, 'error');
   });
 }
 
 function showChart(title, points) {
   const modal = document.getElementById('history-modal');
-  const titleEl = document.getElementById('modal-title');
+  const titleEl = document.getElementById('history-modal-title');
 
   if (!points || points.length < 2) {
     logInfo('chart', 'Not enough data points for chart, showing empty state', { title, pointCount: points?.length || 0 });
@@ -489,6 +597,18 @@ function showChart(title, points) {
   titleEl.textContent = title;
   document.getElementById('history-empty').classList.add('hidden');
   const canvas = document.getElementById('history-chart');
+
+  if (!ensureChartAvailable()) {
+    logWarn('chart', 'Chart.js unavailable, showing fallback list');
+    document.getElementById('history-chart').classList.add('hidden');
+    const empty = document.getElementById('history-empty');
+    empty.classList.remove('hidden');
+    empty.textContent = points.map(p => `${p.timestamp}: ${p.value}%`).join(' | ');
+    modal.classList.remove('hidden');
+    showToast('Chart library failed to load — showing values as text', 'info');
+    return;
+  }
+
   canvas.classList.remove('hidden');
 
   if (chartInstance) chartInstance.destroy();
@@ -634,10 +754,35 @@ document.getElementById('import-modal').querySelector('.modal-backdrop').onclick
   document.getElementById('import-modal-close').click();
 };
 
+document.getElementById('session-modal-close').onclick = () => closeSessionModal();
+document.getElementById('session-cancel').onclick = () => closeSessionModal();
+document.getElementById('session-modal').querySelector('.modal-backdrop').onclick = () => closeSessionModal();
+document.getElementById('session-save').onclick = async () => {
+  const status = document.getElementById('session-status');
+  const minutes = Math.min(Math.max(parseInt(document.getElementById('session-minutes').value || '15', 10) || 15, 1), 480);
+  const mode = document.getElementById('session-mode').value || 'review';
+  const scoreRaw = document.getElementById('session-score').value;
+  const score = scoreRaw === '' ? null : Math.min(Math.max(parseFloat(scoreRaw), 0), 5);
+  try {
+    await api('POST', '/api/sessions', { lesson_id: _sessionLessonId, duration_min: minutes, mode, score });
+    status.textContent = `Logged ${minutes}m ${mode}.`;
+    status.className = 'success';
+    status.classList.remove('hidden');
+    showToast('Session logged', 'success');
+    closeSessionModal();
+    if (appState) await loadApp(appState.id);
+  } catch (err) {
+    status.textContent = `Failed: ${err.message}`;
+    status.className = 'error';
+    status.classList.remove('hidden');
+  }
+};
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     document.getElementById('modal-close').click();
     document.getElementById('import-modal-close').click();
+    closeSessionModal();
   }
 });
 
@@ -806,9 +951,9 @@ if (mobileImportBtn) mobileImportBtn.addEventListener('click', () => {
 
 const mobileAddBtn = document.getElementById('mobile-add-lesson');
 if (mobileAddBtn) mobileAddBtn.addEventListener('click', async () => {
-  const name = prompt('Lesson name');
+  const name = (await showPrompt('Add Lesson', 'Lesson name')).trim();
   if (!name) return;
-  const understandingRaw = prompt('Understanding % (0-100)', '0');
+  const understandingRaw = await showPrompt('Add Lesson', 'Understanding % (0-100)', '0');
   const understanding = Math.min(Math.max(parseFloat(understandingRaw || 0) || 0, 0), 100);
   logInfo('mobile', 'Mobile quick add lesson', { name, understanding });
   try {
@@ -833,10 +978,28 @@ if (mobileAddBtn) mobileAddBtn.addEventListener('click', async () => {
       await api('POST', '/api/lessons', { chapter_id: chapterId, name, understanding, sort_order: 0 });
       await loadApp(appState.id);
       logInfo('mobile', 'Quick lesson added successfully', { name, understanding });
-      alert('Lesson added');
+      showToast('Lesson added', 'success');
     }
   } catch (err) {
     logError('mobile', 'Failed to add quick lesson', { name, error: err.message });
-    alert('Failed to add lesson: ' + err.message);
+    showToast('Failed to add lesson: ' + err.message, 'error');
   }
 });
+
+/* ----- Prompt modal wiring ----- */
+(function wirePromptModal() {
+  const ok = document.getElementById('prompt-modal-ok');
+  const cancel = document.getElementById('prompt-modal-cancel');
+  const close = document.getElementById('prompt-modal-close');
+  const input = document.getElementById('prompt-modal-input');
+  if (!ok || !input) return;
+  ok.onclick = () => _closePrompt(input.value ?? '');
+  if (cancel) cancel.onclick = () => _closePrompt('');
+  if (close) close.onclick = () => _closePrompt('');
+  input.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); _closePrompt(input.value ?? ''); }
+    if (e.key === 'Escape') { e.preventDefault(); _closePrompt(''); }
+  };
+  const backdrop = document.querySelector('#prompt-modal .modal-backdrop');
+  if (backdrop) backdrop.onclick = () => _closePrompt('');
+})();
