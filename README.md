@@ -10,6 +10,8 @@ A beautifully designed, self-hosted web application for tracking learning progre
 - **Visual progress metrics**: Color-coded understanding percentages that update in real-time
 - **Automatic averaging**: Instantly see aggregated progress across all levels
 - **Change history**: Beautiful charts tracking your learning journey over time
+- **Study sessions**: Log learn/recall/apply/review sessions per lesson with time and scores
+- **Review queue**: Surface weakest and stalest topics first via `GET /api/review-queue`
 - **Markdown import**: Bulk import existing study data from Markdown files
 - **Responsive design**: Perfectly scales from desktop to mobile devices
 - **Elegant UI**: Modern, polished interface with smooth animations and intuitive interactions
@@ -28,18 +30,18 @@ Open http://localhost:8000 in your browser.
 
 ### Docker
 
-```dockerfile
-FROM python:3.12-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-```
+Builds from the `Dockerfile` in this repo:
 
 ```bash
 docker build -t lander .
-docker run -p 8000:8000 -v $(pwd)/lander.db:/app/lander.db lander
+mkdir -p data
+docker run -p 8000:8000 -v $(pwd)/data:/app/data -e LANDER_DB_PATH=/app/data/lander.db lander
+```
+
+Or with compose (persists the DB in a named volume):
+
+```bash
+docker compose up --build
 ```
 
 ## Data Management
@@ -48,7 +50,7 @@ docker run -p 8000:8000 -v $(pwd)/lander.db:/app/lander.db lander
 
 #### CLI import (one-time)
 ```bash
-python import_markdown.py path/to/study.md --subject "Chemistry"
+python import_markdown.py examples/physics.md --subject "Physics"
 ```
 
 #### In-app import
@@ -81,13 +83,21 @@ Each level automatically calculates averages from its children. Understanding pe
 lander/
 ├── app.py                 # FastAPI backend
 ├── database.py            # SQLite database setup & queries
+├── logger.py              # Structured request logging
 ├── import_markdown.py     # Markdown import utility
 ├── static/
 │   ├── index.html        # Application shell
 │   ├── style.css         # Modern, responsive styling
 │   └── app.js            # Interactive frontend logic
-├── lander.db             # SQLite database (auto-created)
-└── requirements.txt      # Python dependencies
+├── examples/
+│   ├── physics.md        # Sample Markdown import
+│   └── physics.json      # Sample JSON import (POST /api/import)
+├── test_api.py            # Backend API tests
+├── test_lander.py         # Playwright UI tests (needs live server)
+├── Dockerfile             # Production image
+├── docker-compose.yml     # One-command self-host
+├── requirements.txt       # Runtime dependencies
+└── requirements-dev.txt   # Test dependencies
 ```
 
 ### Technology Stack
@@ -103,8 +113,10 @@ lander/
 # Run with auto-reload during development
 python -m uvicorn app:app --reload
 
-# Run tests
-playwright test
+# Run backend tests
+python -m pytest test_api.py -v
+
+# UI tests need a live server + browser; see test_lander.py
 ```
 
 ## Roadmap
@@ -116,20 +128,26 @@ playwright test
 - [ ] Custom color themes
 - [ ] Export to PDF
 
-## Contributing
+## Configuration
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+Copy `.env.example` to `.env` to override defaults:
 
-## License
+| Variable | Default | Purpose |
+|---|---|---|
+| `LANDER_DB_PATH` | `./lander.db` | SQLite database file location |
+| `HOST` / `PORT` | `0.0.0.0` / `8000` | Dev server bind address (compose maps `${PORT:-8000}`) |
 
-MIT
-Subject
- └── Section (e.g. "Part 1")
-      └── Chapter (e.g. "Chapter 1: Safe use of the laboratory")
-           └── Lesson
-                ├── name: string
-                └── understanding: float (0-100)
-```
+## API
+
+Interactive docs are served automatically at `/docs` (Swagger UI) when the server
+is running. Key endpoints: `GET /api/subjects`, `POST /api/import`,
+`PUT /api/lessons/{id}/understanding`, `POST /api/sessions`,
+`GET /api/review-queue`.
+
+> **Security note:** Lander is a single-user self-hosted app with no
+> authentication. Do not expose it directly to the internet — put it behind a
+> reverse proxy with auth (e.g. Tailscale, Authelia, basic-auth) if remote
+> access is needed.
 
 ### Tables (SQLite — `lander.db`)
 
@@ -140,18 +158,21 @@ Subject
 | `chapters` | Topic groups within a section |
 | `lessons` | Individual lesson/topic with understanding % |
 | `lesson_history` | Timestamped record of every understanding change |
+| `sessions` | Study sessions (duration, mode, optional score) per lesson |
 
-The database file `lander.db` is created automatically in the project root (override with `LANDER_DB_PATH`) and can be inspected or edited directly with any SQLite browser.
-
-## Features
-
-- **Hierarchical display** — expand/collapse sections and chapters
-- **Color-coded percentages** — continuous gradient from red (0%) through orange and yellow to green (100%)
-- **Live averages** — chapter, section, and subject averages update instantly when any lesson is changed
-- **Inline editing** — click a percentage to edit it inline (Enter to save, Escape to cancel, arrow keys to nudge by 5)
-- **History tracking** — every change is recorded with a timestamp; click the Chart button to view a line chart
-- **Aggregate history** — view how chapter, section, or subject averages have changed over time
+The database file is created automatically in the project root (override with
+`LANDER_DB_PATH`) and can be inspected with any SQLite browser. Back it up by
+copying the file while the server is stopped.
 
 ## Extending
 
 The data model supports multiple subjects already. To add tags, filtering, export, or richer analytics, add tables/columns alongside the existing schema without breaking existing data.
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) and
+feel free to submit issues or pull requests.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).

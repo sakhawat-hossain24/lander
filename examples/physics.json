@@ -1,0 +1,744 @@
+{
+  "name": "Physics",
+  "sections": [
+    {
+      "name": "Physics First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Physical Quantities and Measurement",
+          "lessons": [
+            {
+              "name": "Nature of physical quantities",
+              "understanding": 0
+            },
+            {
+              "name": "Scope and excitement of physics",
+              "understanding": 0
+            },
+            {
+              "name": "Scientific terms: concept, law, principle, postulate, hypothesis and theory",
+              "understanding": 0
+            },
+            {
+              "name": "Interdisciplinary relationship of physics (chemistry, math, biology, astronomy, technology, medicine, agriculture, culture, society, philosophy, sports)",
+              "understanding": 0
+            },
+            {
+              "name": "Space, time and mass — classical vs modern concepts",
+              "understanding": 0
+            },
+            {
+              "name": "Fundamental and derived units",
+              "understanding": 0
+            },
+            {
+              "name": "Principles of measurement",
+              "understanding": 0
+            },
+            {
+              "name": "Evolution and importance of observation and experimentation (Archimedes to Max Planck)",
+              "understanding": 0
+            },
+            {
+              "name": "Instrumental and observational errors",
+              "understanding": 0
+            },
+            {
+              "name": "Random and systematic errors",
+              "understanding": 0
+            },
+            {
+              "name": "Determining the true value of a measurement",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Measure radius of curvature with a spherometer",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine mass by oscillation method with a spring",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Vector",
+          "lessons": [
+            {
+              "name": "Vector properties and representation",
+              "understanding": 0
+            },
+            {
+              "name": "Vectors in physics: force, torque, angular momentum",
+              "understanding": 0
+            },
+            {
+              "name": "Special vectors: unit vector and null vector",
+              "understanding": 0
+            },
+            {
+              "name": "Special vectors: position vector and displacement vector",
+              "understanding": 0
+            },
+            {
+              "name": "Geometrical (triangle/parallelogram) law of vector addition",
+              "understanding": 0
+            },
+            {
+              "name": "Addition and resolution of vectors by components",
+              "understanding": 0
+            },
+            {
+              "name": "Resolution of a vector into 3D rectangular components",
+              "understanding": 0
+            },
+            {
+              "name": "Scalar (dot) product and vector (cross) product",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of scalar and vector products",
+              "understanding": 0
+            },
+            {
+              "name": "Vector calculus: differentiation and integration",
+              "understanding": 0
+            },
+            {
+              "name": "Vector operators: gradient, divergence, curl",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Kinematics",
+          "lessons": [
+            {
+              "name": "Frame of reference and relative motion",
+              "understanding": 0
+            },
+            {
+              "name": "Calculus in kinematics (differentiation and integration)",
+              "understanding": 0
+            },
+            {
+              "name": "Position-time and velocity-time graphs",
+              "understanding": 0
+            },
+            {
+              "name": "Projectile motion",
+              "understanding": 0
+            },
+            {
+              "name": "Equations of falling bodies",
+              "understanding": 0
+            },
+            {
+              "name": "Uniform circular motion",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Newtonian Mechanics",
+          "lessons": [
+            {
+              "name": "Inertia, force and momentum",
+              "understanding": 0
+            },
+            {
+              "name": "Newton's first law of motion",
+              "understanding": 0
+            },
+            {
+              "name": "Newton's second law (F = ma)",
+              "understanding": 0
+            },
+            {
+              "name": "Newton's third law (action-reaction) and applications",
+              "understanding": 0
+            },
+            {
+              "name": "Conservation of linear momentum",
+              "understanding": 0
+            },
+            {
+              "name": "Collisions: elastic and inelastic",
+              "understanding": 0
+            },
+            {
+              "name": "Friction: static, kinetic and rolling",
+              "understanding": 0
+            },
+            {
+              "name": "Circular motion: angular velocity, acceleration and centripetal force",
+              "understanding": 0
+            },
+            {
+              "name": "Banking of roads",
+              "understanding": 0
+            },
+            {
+              "name": "Torque and moment of inertia",
+              "understanding": 0
+            },
+            {
+              "name": "Angular momentum and rotational equations",
+              "understanding": 0
+            },
+            {
+              "name": "Centre of mass and centre of gravity",
+              "understanding": 0
+            },
+            {
+              "name": "Equilibrium of bodies and its conditions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Verify conservation of momentum",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Study motion on an inclined plane",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Work, Power and Energy",
+          "lessons": [
+            {
+              "name": "Work by constant force and by variable force",
+              "understanding": 0
+            },
+            {
+              "name": "Power and its measurement",
+              "understanding": 0
+            },
+            {
+              "name": "Kinetic energy",
+              "understanding": 0
+            },
+            {
+              "name": "Potential energy",
+              "understanding": 0
+            },
+            {
+              "name": "Work-energy theorem",
+              "understanding": 0
+            },
+            {
+              "name": "Conservation of mechanical energy",
+              "understanding": 0
+            },
+            {
+              "name": "Conservative vs non-conservative forces",
+              "understanding": 0
+            },
+            {
+              "name": "Efficiency, energy losses and commercial units",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Gravitation and Gravity",
+          "lessons": [
+            {
+              "name": "Newton's law of gravitation",
+              "understanding": 0
+            },
+            {
+              "name": "Variation of g with height, depth and Earth's rotation",
+              "understanding": 0
+            },
+            {
+              "name": "Gravitational field, potential and potential energy",
+              "understanding": 0
+            },
+            {
+              "name": "Orbital velocity and escape velocity",
+              "understanding": 0
+            },
+            {
+              "name": "Geostationary and polar satellites",
+              "understanding": 0
+            },
+            {
+              "name": "Kepler's laws of planetary motion",
+              "understanding": 0
+            },
+            {
+              "name": "Weightlessness and apparent weight",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Structural Properties of Matter",
+          "lessons": [
+            {
+              "name": "Stress, strain and Hooke's law",
+              "understanding": 0
+            },
+            {
+              "name": "Young's modulus",
+              "understanding": 0
+            },
+            {
+              "name": "Bulk modulus and shear modulus",
+              "understanding": 0
+            },
+            {
+              "name": "Stress-strain curve and elastic limit",
+              "understanding": 0
+            },
+            {
+              "name": "Pressure in fluids and Pascal's law",
+              "understanding": 0
+            },
+            {
+              "name": "Archimedes' principle and buoyancy",
+              "understanding": 0
+            },
+            {
+              "name": "Bernoulli's theorem and its applications",
+              "understanding": 0
+            },
+            {
+              "name": "Viscosity, Stokes' law and terminal velocity",
+              "understanding": 0
+            },
+            {
+              "name": "Surface tension, surface energy and capillarity",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Periodic Motion",
+          "lessons": [
+            {
+              "name": "Simple harmonic motion: characteristics and equations",
+              "understanding": 0
+            },
+            {
+              "name": "Oscillation of a spring",
+              "understanding": 0
+            },
+            {
+              "name": "Oscillation of a simple pendulum",
+              "understanding": 0
+            },
+            {
+              "name": "Energy in SHM (kinetic, potential, total)",
+              "understanding": 0
+            },
+            {
+              "name": "Damped and forced oscillations; resonance",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine g with a simple pendulum",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine spring constant by oscillation",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Waves",
+          "lessons": [
+            {
+              "name": "Types of waves: transverse and longitudinal",
+              "understanding": 0
+            },
+            {
+              "name": "Wave parameters: wavelength, frequency, speed (v = fλ)",
+              "understanding": 0
+            },
+            {
+              "name": "Progressive and stationary waves",
+              "understanding": 0
+            },
+            {
+              "name": "Superposition: interference and beats",
+              "understanding": 0
+            },
+            {
+              "name": "Sound waves: speed, intensity, loudness and pitch",
+              "understanding": 0
+            },
+            {
+              "name": "Doppler effect and its applications",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine tuning-fork frequency with sonometer",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Ideal Gas and Kinetic Theory of Gases",
+          "lessons": [
+            {
+              "name": "Boyle's law, Charles's law, Gay-Lussac's law and the combined law",
+              "understanding": 0
+            },
+            {
+              "name": "Ideal gas equation and universal gas constant",
+              "understanding": 0
+            },
+            {
+              "name": "Basic assumptions of kinetic theory",
+              "understanding": 0
+            },
+            {
+              "name": "Pressure, temperature and kinetic energy of molecules",
+              "understanding": 0
+            },
+            {
+              "name": "Degrees of freedom and equipartition of energy",
+              "understanding": 0
+            },
+            {
+              "name": "Mean free path and molecular speeds",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Physics Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Thermodynamics",
+          "lessons": [
+            {
+              "name": "Thermal equilibrium, temperature and zeroth law",
+              "understanding": 0
+            },
+            {
+              "name": "Internal energy and first law of thermodynamics",
+              "understanding": 0
+            },
+            {
+              "name": "Thermodynamic processes: isothermal, adiabatic, isochoric, isobaric",
+              "understanding": 0
+            },
+            {
+              "name": "Heat engines, refrigerators and their efficiency",
+              "understanding": 0
+            },
+            {
+              "name": "Carnot cycle and Carnot efficiency",
+              "understanding": 0
+            },
+            {
+              "name": "Second law of thermodynamics and entropy",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Static Electricity",
+          "lessons": [
+            {
+              "name": "Electric charge and Coulomb's law",
+              "understanding": 0
+            },
+            {
+              "name": "Electric field intensity and electric potential",
+              "understanding": 0
+            },
+            {
+              "name": "Gauss's law and its applications",
+              "understanding": 0
+            },
+            {
+              "name": "Capacitors and capacitance",
+              "understanding": 0
+            },
+            {
+              "name": "Series and parallel combinations of capacitors",
+              "understanding": 0
+            },
+            {
+              "name": "Energy stored in a capacitor and dielectric effect",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Study charging/discharging of a capacitor",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Verify Coulomb's law (setup)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Current Electricity",
+          "lessons": [
+            {
+              "name": "Electric current, drift velocity and current density",
+              "understanding": 0
+            },
+            {
+              "name": "Ohm's law; resistance, resistivity and temperature dependence",
+              "understanding": 0
+            },
+            {
+              "name": "Series and parallel combinations of resistors",
+              "understanding": 0
+            },
+            {
+              "name": "EMF, internal resistance and terminal voltage",
+              "understanding": 0
+            },
+            {
+              "name": "Kirchhoff's laws and Wheatstone bridge",
+              "understanding": 0
+            },
+            {
+              "name": "Meter bridge and potentiometer",
+              "understanding": 0
+            },
+            {
+              "name": "Electrical power, energy and household circuits",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Magnetic Effects of Current and Magnetism",
+          "lessons": [
+            {
+              "name": "Magnetic field, Oersted's experiment and Biot-Savart law",
+              "understanding": 0
+            },
+            {
+              "name": "Magnetic field due to straight wire, circular loop and solenoid",
+              "understanding": 0
+            },
+            {
+              "name": "Force on a current-carrying conductor",
+              "understanding": 0
+            },
+            {
+              "name": "Force between parallel currents and definition of ampere",
+              "understanding": 0
+            },
+            {
+              "name": "Torque on a current loop and moving-coil galvanometer",
+              "understanding": 0
+            },
+            {
+              "name": "Earth's magnetism and magnetic elements",
+              "understanding": 0
+            },
+            {
+              "name": "Magnetic materials: dia-, para- and ferromagnetic",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Electromagnetic Induction and Alternating Current",
+          "lessons": [
+            {
+              "name": "Electromagnetic induction: Faraday's and Lenz's laws",
+              "understanding": 0
+            },
+            {
+              "name": "Self-inductance and mutual inductance",
+              "understanding": 0
+            },
+            {
+              "name": "AC fundamentals: rms value, phase, reactance",
+              "understanding": 0
+            },
+            {
+              "name": "AC circuits: resistive, capacitive, inductive and LCR",
+              "understanding": 0
+            },
+            {
+              "name": "Resonance, power in AC circuits and transformers",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Geometrical Optics",
+          "lessons": [
+            {
+              "name": "Reflection at spherical mirrors/surfaces",
+              "understanding": 0
+            },
+            {
+              "name": "Refraction at spherical surfaces and lenses",
+              "understanding": 0
+            },
+            {
+              "name": "Lensmaker's equation and lens combinations",
+              "understanding": 0
+            },
+            {
+              "name": "Total internal reflection and optical fibres",
+              "understanding": 0
+            },
+            {
+              "name": "Prism: dispersion and deviation",
+              "understanding": 0
+            },
+            {
+              "name": "Microscope and telescope; magnifying power",
+              "understanding": 0
+            },
+            {
+              "name": "Defects of vision and their correction",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Focal length of convex lens",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Refractive index with a prism",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Physical Optics",
+          "lessons": [
+            {
+              "name": "Wavefront and Huygens' principle",
+              "understanding": 0
+            },
+            {
+              "name": "Interference and Young's double-slit experiment",
+              "understanding": 0
+            },
+            {
+              "name": "Fringe width",
+              "understanding": 0
+            },
+            {
+              "name": "Diffraction and diffraction grating",
+              "understanding": 0
+            },
+            {
+              "name": "Polarization and its applications",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Introduction to Modern Physics",
+          "lessons": [
+            {
+              "name": "Plasma and photons; quantum nature of light",
+              "understanding": 0
+            },
+            {
+              "name": "Photoelectric effect and Einstein's equation",
+              "understanding": 0
+            },
+            {
+              "name": "X-rays: production, properties and uses",
+              "understanding": 0
+            },
+            {
+              "name": "de Broglie waves and matter-wave duality",
+              "understanding": 0
+            },
+            {
+              "name": "Heisenberg uncertainty principle (qualitative)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Atomic Model and Nuclear Physics",
+          "lessons": [
+            {
+              "name": "Alpha-particle scattering and Rutherford's model",
+              "understanding": 0
+            },
+            {
+              "name": "Bohr's atomic model and hydrogen spectrum",
+              "understanding": 0
+            },
+            {
+              "name": "Radioactivity: alpha, beta, gamma decay",
+              "understanding": 0
+            },
+            {
+              "name": "Half-life and decay law",
+              "understanding": 0
+            },
+            {
+              "name": "Mass defect, binding energy, fission and fusion",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of nuclear energy and radiation safety",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Semiconductor and Electronics",
+          "lessons": [
+            {
+              "name": "Intrinsic and extrinsic semiconductors; p-type and n-type",
+              "understanding": 0
+            },
+            {
+              "name": "p-n junction diode and rectifiers (half/full-wave)",
+              "understanding": 0
+            },
+            {
+              "name": "Transistor: action, characteristics and amplifier",
+              "understanding": 0
+            },
+            {
+              "name": "Logic gates: OR, AND, NOT",
+              "understanding": 0
+            },
+            {
+              "name": "NAND/NOR and gate combinations",
+              "understanding": 0
+            },
+            {
+              "name": "Integrated circuits and microprocessors",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 11: Astronomy",
+          "lessons": [
+            {
+              "name": "The universe, galaxies, stars and solar system",
+              "understanding": 0
+            },
+            {
+              "name": "Telescopes and cosmic observation",
+              "understanding": 0
+            },
+            {
+              "name": "Big Bang, expansion and black holes (qualitative)",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

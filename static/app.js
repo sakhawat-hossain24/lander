@@ -54,11 +54,27 @@ function ensureChartAvailable() {
 }
 
 function uColor(v) {
-  const t = Math.min(v / 100, 1);
-  const r = Math.round(0x78 + (0x16 - 0x78) * t);
-  const g = Math.round(0x35 + (0xA3 - 0x35) * t);
-  const b = Math.round(0x0F + (0x4A - 0x0F) * t);
-  return `rgb(${r}, ${g}, ${b})`;
+  const x = Math.max(0, Math.min(100, Number(v) || 0));
+  // Red (0°) -> amber (~42°) -> green (~142°), darker for text contrast
+  const h = x * 1.42;
+  return `hsl(${h.toFixed(1)} 62% 34%)`;
+}
+
+function uBar(v) {
+  const x = Math.max(0, Math.min(100, Number(v) || 0));
+  const h = x * 1.42;
+  return `hsl(${h.toFixed(1)} 70% 45%)`;
+}
+
+function toneOf(v) {
+  const x = Number(v) || 0;
+  if (x < 40) return 'low';
+  if (x < 70) return 'mid';
+  return 'high';
+}
+
+function barHTML(v) {
+  return `<span class="mini-bar" role="img" aria-label="${Math.round(v)} percent"><span style="width:${Math.max(0, Math.min(100, v))}%;background:${uBar(v)}"></span></span>`;
 }
 
 function fmtPct(v) {
@@ -119,11 +135,14 @@ function renderSidebar() {
   ul.innerHTML = '';
   subjectsCache.forEach(s => {
     const li = document.createElement('li');
-    li.className = 'subject-item';
+    li.className = 'subject-item' + (appState && appState.id === s.id ? ' active' : '');
     li.dataset.id = s.id;
     li.textContent = `${s.name}`;
+    li.setAttribute('role', 'option');
+    li.setAttribute('aria-selected', appState && appState.id === s.id ? 'true' : 'false');
     li.onclick = () => {
       logInfo('sidebar', 'Subject selected', { id: s.id, name: s.name });
+      document.body.classList.remove('sidebar-open');
       loadApp(s.id);
     };
     ul.appendChild(li);
@@ -166,6 +185,8 @@ document.getElementById('weak-filter').addEventListener('click', () => {
 
 document.getElementById('weak-threshold').addEventListener('input', (e) => {
   const thr = parseInt(e.target.value, 10);
+  const label = document.getElementById('weak-threshold-val');
+  if (label) label.textContent = thr + '%';
   document.querySelectorAll('.lesson-item').forEach(li => {
     const val = parseInt(li.dataset.understanding || '0', 10);
     li.classList.toggle('weak-highlight', val < thr);
@@ -209,8 +230,17 @@ document.getElementById('import-json').addEventListener('change', async (e) => {
 function render() {
   const d = appState;
   logInfo('render', 'Rendering app', { name: d.name, sections: d.sections?.length, totalLessons: d.total_lessons });
-  const app = document.getElementById('app');
-  app.innerHTML = '';
+  // Render into dedicated container so toolbar / weak panel / loading persist
+  let app = document.getElementById('subject-content');
+  if (!app) {
+    // fallback for stale HTML builds
+    app = document.getElementById('app');
+    app.innerHTML = '';
+  } else {
+    app.innerHTML = '';
+  }
+  const loading = document.getElementById('loading');
+  if (loading) loading.classList.add('hidden');
 
   const header = ce('div', 'subject-header');
   header.innerHTML = `
@@ -219,12 +249,16 @@ function render() {
       <span class="subject-average" style="color:${uColor(d.overall_average)}">
         ${fmtPct(d.overall_average)}
       </span>
-      <span class="lesson-count">${d.total_lessons} lessons</span>
+      ${barHTML(d.overall_average)}
+      <span class="lesson-count">${d.total_lessons} lesson${d.total_lessons === 1 ? '' : 's'}</span>
       <button class="history-btn" data-subject-history>Chart</button>
     </div>
-    <div class="toolbar">
-      <button class="btn" data-import-btn>Import</button>
-      <button class="btn btn-danger" data-delete-subject>Delete Subject</button>
+    <div class="progress-track" role="progressbar" aria-valuenow="${Math.round(d.overall_average)}" aria-valuemin="0" aria-valuemax="100" aria-label="Overall progress">
+      <div class="progress-fill" data-tone="${toneOf(d.overall_average)}" style="width:${Math.max(0, Math.min(100, d.overall_average))}%"></div>
+    </div>
+    <div class="subject-actions">
+      <button class="btn btn-sm" data-import-btn>＋ Import</button>
+      <button class="btn btn-sm btn-danger" data-delete-subject>Delete subject</button>
     </div>
   `;
   app.appendChild(header);
@@ -246,13 +280,8 @@ function render() {
     subjectsCache = subjectsCache.filter(s => s.id !== d.id);
     renderSidebar();
     if (subjectsCache.length > 0) await loadApp(subjectsCache[0].id);
-    else { appState = null; document.getElementById('app').innerHTML = ''; }
+    else { appState = null; document.getElementById('subject-content').innerHTML = '<p class="empty-state">No subjects yet. Create one from the sidebar.</p>'; }
   };
-
-  d.sections.forEach(s => {
-    const sectionEl = renderSection(s);
-    app.appendChild(sectionEl);
-  });
 
   // Today to Land panel (review queue driven by sessions evidence)
   const todayEl = ce('div', 'today-panel');
@@ -264,8 +293,18 @@ function render() {
     <div class="today-list"><p class="muted small">Loading queue…</p></div>
   `;
   // insert after header, before sections
-  app.insertBefore(todayEl, app.children[1] || null);
+  app.appendChild(todayEl);
   loadReviewQueue(d.id, todayEl);
+
+  if (!d.sections || d.sections.length === 0) {
+    const empty = ce('p', 'empty-state');
+    empty.textContent = 'No sections yet — import markdown or add lessons to get started.';
+    app.appendChild(empty);
+  } else {
+    d.sections.forEach(s => {
+      app.appendChild(renderSection(s));
+    });
+  }
 
   renderSidebar();
 
@@ -278,11 +317,12 @@ function renderSection(s) {
   const avg = s.average || 0;
   const header = ce('div', 'section-header');
   header.innerHTML = `
-    <span class="toggle-icon">&#9660;</span>
+    <span class="toggle-icon" aria-hidden="true">&#9660;</span>
     <span class="section-name">${esc(s.name)}</span>
-    <span class="lesson-count">${s.lesson_count} lessons</span>
+    ${barHTML(avg)}
+    <span class="lesson-count">${s.lesson_count}</span>
     <span class="average" style="color:${uColor(avg)}">${fmtPct(avg)}</span>
-    <button class="history-btn" data-section-history="${s.id}">Chart</button>
+    <button class="history-btn" data-section-history="${s.id}" aria-label="Show chart for ${esc(s.name)}">Chart</button>
   `;
   div.appendChild(header);
 
@@ -315,11 +355,12 @@ function renderChapter(ch, sectionId) {
   const avg = ch.average || 0;
   const header = ce('div', 'chapter-header');
   header.innerHTML = `
-    <span class="toggle-icon">&#9660;</span>
+    <span class="toggle-icon" aria-hidden="true">&#9660;</span>
     <span class="chapter-name">${esc(ch.name)}</span>
-    <span class="lesson-count">${ch.lesson_count} lessons</span>
+    ${barHTML(avg)}
+    <span class="lesson-count">${ch.lesson_count}</span>
     <span class="average" style="color:${uColor(avg)}">${fmtPct(avg)}</span>
-    <button class="history-btn" data-chapter-history="${ch.id}">Chart</button>
+    <button class="history-btn" data-chapter-history="${ch.id}" aria-label="Show chart for ${esc(ch.name)}">Chart</button>
   `;
   div.appendChild(header);
 
@@ -354,17 +395,22 @@ function renderLesson(l, chapterId) {
   li.dataset.lessonId = l.id;
   li.dataset.understanding = l.understanding;
   li.innerHTML = `
-    <span class="lesson-name">${esc(l.name)}</span>
+    <span class="lesson-name" title="${esc(l.name)}">${esc(l.name)}</span>
+    ${barHTML(l.understanding)}
     <span class="understanding-display" style="color:${uColor(l.understanding)}"
-          data-lesson-id="${l.id}">${fmtPctShort(l.understanding)}</span>
-    <button class="history-btn" data-lesson-history="${l.id}">Chart</button>
+          data-lesson-id="${l.id}" title="Click to edit" role="button" tabindex="0">${fmtPctShort(l.understanding)}</span>
+    <button class="history-btn" data-lesson-history="${l.id}" aria-label="History for ${esc(l.name)}">Chart</button>
     <button class="history-btn" data-log-session="${l.id}" title="Log study session">+ Log</button>
   `;
   const display = li.querySelector('.understanding-display');
-  display.onclick = (e) => {
+  const openEdit = (e) => {
     e.stopPropagation();
     logInfo('render', 'Lesson understanding edit clicked', { lessonId: l.id, name: l.name, currentValue: l.understanding });
     startEdit(display);
+  };
+  display.onclick = openEdit;
+  display.onkeydown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEdit(e); }
   };
   li.querySelector('[data-lesson-history]').onclick = () => {
     logInfo('render', 'Lesson history chart clicked', { lessonId: l.id, name: l.name });
@@ -399,8 +445,8 @@ async function loadReviewQueue(subjectId, container) {
         </div>
         <div class="today-right">
           <span class="weak-badge" style="color:${uColor(item.understanding)}">${fmtPctShort(item.understanding)}</span>
-          <button class="btn" data-today-go="${item.id}">Go</button>
-          <button class="btn" data-today-log="${item.id}" data-name="${esc(item.name)}">Log</button>
+          <button class="btn btn-sm" data-today-go="${item.id}">Go</button>
+          <button class="btn btn-sm" data-today-log="${item.id}" data-name="${esc(item.name)}">Log</button>
         </div>`;
       row.querySelector('[data-today-go]').onclick = () => openLessonById(item.id);
       row.querySelector('[data-today-log]').onclick = () => openSessionModal(item.id, item.name);
@@ -413,13 +459,21 @@ async function loadReviewQueue(subjectId, container) {
 
 function openSessionModal(lessonId, lessonName) {
   _sessionLessonId = lessonId;
-  document.getElementById('session-lesson-name').textContent = `Lesson: ${lessonName} (#${lessonId})`;
+  const nameEl = document.getElementById('session-lesson-name');
+  const modal = document.getElementById('session-modal');
+  if (!modal || !nameEl) {
+    logError('session', 'Session modal not found in this build - hard-refresh / rebuild server', { lessonId });
+    showToast('Log UI not loaded in this build - hard-refresh the page', 'error');
+    return;
+  }
+  nameEl.textContent = `Lesson: ${lessonName} (#${lessonId})`;
   document.getElementById('session-status').classList.add('hidden');
-  document.getElementById('session-modal').classList.remove('hidden');
+  modal.classList.remove('hidden');
 }
 
 function closeSessionModal() {
-  document.getElementById('session-modal').classList.add('hidden');
+  const modal = document.getElementById('session-modal');
+  if (modal) modal.classList.add('hidden');
   _sessionLessonId = null;
 }
 
@@ -560,9 +614,12 @@ function clamp(v, min, max) {
 /* ----- History Charts ----- */
 function showLessonHistory(lessonId, lessonName) {
   logInfo('chart', 'Fetching lesson history', { lessonId, lessonName });
-  api('GET', `/api/lessons/${lessonId}/history`).then(points => {
+  Promise.all([
+    api('GET', `/api/lessons/${lessonId}/history`),
+    api('GET', `/api/lessons/${lessonId}/sessions`).catch(() => ({ sessions: [], total_minutes: 0, count: 0 })),
+  ]).then(([points, sess]) => {
     logInfo('chart', `Received ${points.length} history point(s) for lesson`, { lessonId, points });
-    showChart(`${esc(lessonName)}`, points);
+    showChart(`${esc(lessonName)}`, points, sess);
   }).catch(err => {
     logError('chart', 'Failed to fetch lesson history', { lessonId, error: err.message });
     showToast('Failed to load history: ' + err.message, 'error');
@@ -573,22 +630,50 @@ function showAggHistory(type, id, label) {
   logInfo('chart', 'Fetching aggregate history', { type, id, label });
   api('GET', `/api/${type}s/${id}/history`).then(points => {
     logInfo('chart', `Received ${points.length} aggregate history point(s)`, { type, id, points });
-    showChart(`${esc(label)} average over time`, points);
+    showChart(`${esc(label)} average over time`, points, null,
+      'Tip: the line moves only when you edit a % — logging sessions alone does not move it yet. Use Log → New understanding % to move it.');
   }).catch(err => {
     logError('chart', 'Failed to fetch aggregate history', { type, id, error: err.message });
     showToast('Failed to load history: ' + err.message, 'error');
   });
 }
 
-function showChart(title, points) {
+function renderSessionList(sess) {
+  const box = document.getElementById('history-sessions');
+  if (!box) return;
+  const sessions = (sess && sess.sessions) || [];
+  if (!sessions.length) {
+    box.classList.add('hidden');
+    box.innerHTML = '';
+    return;
+  }
+  const total = sess.total_minutes || sessions.reduce((a, s) => a + (s.duration_min || 0), 0);
+  box.classList.remove('hidden');
+  box.innerHTML = `
+    <h4 class="session-list-title">Study sessions (${sessions.length}, ${total}m total)</h4>
+    <ul class="session-list">` + sessions.slice(0, 20).map(s => {
+      const when = (s.created_at || '').slice(0, 16).replace('T', ' ');
+      const score = (s.score === null || s.score === undefined) ? '—' : `${s.score}/5`;
+      return `<li>${esc(when)} · ${s.duration_min}m ${esc(s.mode)} · score ${esc(String(score))}</li>`;
+    }).join('') + `</ul>`;
+}
+
+function showChart(title, points, sess, emptyHint) {
   const modal = document.getElementById('history-modal');
   const titleEl = document.getElementById('history-modal-title');
+
+  renderSessionList(sess);
 
   if (!points || points.length < 2) {
     logInfo('chart', 'Not enough data points for chart, showing empty state', { title, pointCount: points?.length || 0 });
     titleEl.textContent = title;
     document.getElementById('history-chart').classList.add('hidden');
-    document.getElementById('history-empty').classList.remove('hidden');
+    const empty = document.getElementById('history-empty');
+    empty.classList.remove('hidden');
+    const n = (sess && sess.sessions && sess.sessions.length) || 0;
+    empty.textContent = n > 0
+      ? `No % changes yet — ${n} session(s) logged below. Edit the % (or Log → New understanding %) to start the line.`
+      : (emptyHint || 'No history data yet. Edit the % to start tracking.');
     modal.classList.remove('hidden');
     return;
   }
@@ -630,14 +715,16 @@ function showChart(title, points) {
       datasets: [{
         label: 'Understanding %',
         data: values,
-        borderColor: '#16A34A',
-        backgroundColor: '#DCFCE7',
+        borderColor: '#4f46e5',
+        backgroundColor: 'rgba(79, 70, 229, 0.12)',
         fill: true,
-        tension: 0.2,
+        tension: 0.3,
         pointBackgroundColor: colors,
+        pointBorderColor: '#fff',
+        pointBorderWidth: 1.5,
         pointRadius: 5,
         pointHoverRadius: 7,
-        borderWidth: 2,
+        borderWidth: 2.5,
       }]
     },
     options: {
@@ -705,8 +792,8 @@ function renderWeakPanel(threshold) {
     row.className = 'weak-item';
     row.innerHTML = `<div class="weak-item-left"><strong>${esc(it.lessonName)}</strong>
       <div class="muted small">${esc(it.sectionName)} › ${esc(it.chapterName)}</div></div>
-      <div class="weak-item-right"><span class="weak-badge">${fmtPctShort(it.understanding)}</span>
-      <button class="btn" data-jump="${it.lessonId}">Go</button></div>`;
+      <div class="weak-item-right"><span class="weak-badge" style="color:${uColor(it.understanding)}">${fmtPctShort(it.understanding)}</span>
+      <button class="btn btn-sm" data-jump="${it.lessonId}">Go</button></div>`;
     row.querySelector('[data-jump]').onclick = (e) => {
       const id = e.currentTarget.dataset.jump;
       logInfo('weak', 'Navigating to weak lesson', { lessonId: id });
@@ -737,51 +824,74 @@ document.getElementById('weak-panel-close').addEventListener('click', () => {
 });
 
 /* ----- Modal management ----- */
-document.getElementById('modal-close').onclick = () => {
+function wireModal(id, fn) {
+  const el = document.getElementById(id);
+  if (el) el.onclick = fn;
+  else logWarn('init', `Modal element #${id} missing - serving stale HTML? Hard-refresh / rebuild.`);
+}
+wireModal('modal-close', () => {
   document.getElementById('history-modal').classList.add('hidden');
   if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
-};
+});
 
 document.getElementById('history-modal').querySelector('.modal-backdrop').onclick = () => {
   document.getElementById('modal-close').click();
 };
 
-document.getElementById('import-modal-close').onclick = () => {
+wireModal('import-modal-close', () => {
   document.getElementById('import-modal').classList.add('hidden');
-};
+});
 
 document.getElementById('import-modal').querySelector('.modal-backdrop').onclick = () => {
-  document.getElementById('import-modal-close').click();
+  const btn = document.getElementById('import-modal-close');
+  if (btn) btn.click();
 };
 
-document.getElementById('session-modal-close').onclick = () => closeSessionModal();
-document.getElementById('session-cancel').onclick = () => closeSessionModal();
-document.getElementById('session-modal').querySelector('.modal-backdrop').onclick = () => closeSessionModal();
-document.getElementById('session-save').onclick = async () => {
+wireModal('session-modal-close', () => closeSessionModal());
+wireModal('session-cancel', () => closeSessionModal());
+(function wireSessionBackdrop() {
+  const m = document.getElementById('session-modal');
+  const b = m && m.querySelector('.modal-backdrop');
+  if (b) b.onclick = () => closeSessionModal();
+})();
+(function wireSessionSave() {
+  const btn = document.getElementById('session-save');
+  if (!btn) { logWarn('init', 'Session save #session-save missing - serving stale HTML?'); return; }
+  btn.onclick = async () => {
   const status = document.getElementById('session-status');
   const minutes = Math.min(Math.max(parseInt(document.getElementById('session-minutes').value || '15', 10) || 15, 1), 480);
   const mode = document.getElementById('session-mode').value || 'review';
   const scoreRaw = document.getElementById('session-score').value;
   const score = scoreRaw === '' ? null : Math.min(Math.max(parseFloat(scoreRaw), 0), 5);
+  const pctRaw = document.getElementById('session-understanding').value;
+  const pct = pctRaw === '' ? null : Math.min(Math.max(parseFloat(pctRaw), 0), 100);
   try {
     await api('POST', '/api/sessions', { lesson_id: _sessionLessonId, duration_min: minutes, mode, score });
-    status.textContent = `Logged ${minutes}m ${mode}.`;
-    status.className = 'success';
+    if (pct !== null && !isNaN(pct)) {
+      await api('PUT', `/api/lessons/${_sessionLessonId}/understanding`, { understanding: pct });
+      status.textContent = `Logged ${minutes}m ${mode} + set to ${pct}%. Chart will move.`;
+    } else {
+      status.textContent = `Logged ${minutes}m ${mode}.`;
+    }
+    status.className = 'import-status success';
     status.classList.remove('hidden');
     showToast('Session logged', 'success');
     closeSessionModal();
     if (appState) await loadApp(appState.id);
   } catch (err) {
     status.textContent = `Failed: ${err.message}`;
-    status.className = 'error';
+    status.className = 'import-status error';
     status.classList.remove('hidden');
   }
-};
+  };
+})();
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    document.getElementById('modal-close').click();
-    document.getElementById('import-modal-close').click();
+    const mc = document.getElementById('modal-close');
+    const ic = document.getElementById('import-modal-close');
+    if (mc) mc.click();
+    if (ic) ic.click();
     closeSessionModal();
   }
 });
@@ -791,11 +901,11 @@ document.getElementById('import-execute').onclick = async () => {
   const text = document.getElementById('import-text').value.trim();
   const subjectName = document.getElementById('import-subject-name').value.trim() || 'Imported Subject';
   const status = document.getElementById('import-status');
-  status.className = 'hidden';
+  status.className = 'import-status hidden';
 
   if (!text) {
     status.textContent = 'Please paste some markdown content.';
-    status.className = 'error';
+    status.className = 'import-status error';
     status.classList.remove('hidden');
     return;
   }
@@ -805,14 +915,14 @@ document.getElementById('import-execute').onclick = async () => {
     const result = await parseAndImport(text, subjectName);
     logInfo('import', 'Markdown import successful', result);
     status.textContent = `Imported successfully: ${result.lessons} lessons across ${result.chapters} chapters in ${result.sections} sections.`;
-    status.className = 'success';
+    status.className = 'import-status success';
     status.classList.remove('hidden');
     document.getElementById('import-text').value = '';
     await loadApp(result.subject_id);
   } catch (err) {
     logError('import', 'Markdown import failed', err.message);
     status.textContent = `Import failed: ${err.message}`;
-    status.className = 'error';
+    status.className = 'import-status error';
     status.classList.remove('hidden');
   }
 };

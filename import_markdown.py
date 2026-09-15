@@ -106,7 +106,7 @@ def import_to_db(subject_name, sections):
         cur = conn.execute("INSERT INTO subjects (name) VALUES (?)",
                            (subject_name,))
         subject_id = cur.lastrowid
-        logger.info("Created subject", extra={"subject_id": subject_id, "name": subject_name})
+        logger.info("Created subject", extra={"subject_id": subject_id, "subject_name": subject_name})
 
         total_lessons = 0
         for si, section in enumerate(sections):
