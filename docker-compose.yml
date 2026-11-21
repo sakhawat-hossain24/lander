@@ -2,14 +2,14 @@ services:
   lander:
     build: .
     ports:
-      - "${PORT:-8000}:8000"
+      - "127.0.0.1:${PORT:-8040}:8040"
     environment:
       - LANDER_DB_PATH=/app/data/lander.db
     volumes:
       - lander-data:/app/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8040/health')"]
       interval: 30s
       timeout: 5s
       retries: 3

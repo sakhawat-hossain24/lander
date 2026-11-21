@@ -1,0 +1,512 @@
+{
+  "name": "ICT",
+  "sections": [
+    {
+      "name": "ICT",
+      "chapters": [
+        {
+          "name": "Chapter 1: Information and Communication Technology - World and Bangladesh Perspective",
+          "lessons": [
+            {
+              "name": "Concept of Global Village",
+              "understanding": 90
+            },
+            {
+              "name": "Global Village components: communication, employment, education, healthcare, research and office",
+              "understanding": 90
+            },
+            {
+              "name": "Global Village components: business-commerce, news, entertainment and social communication, cultural exchange",
+              "understanding": 90
+            },
+            {
+              "name": "Virtual Reality (concept)",
+              "understanding": 90
+            },
+            {
+              "name": "Impact of Virtual Reality on daily life",
+              "understanding": 90
+            },
+            {
+              "name": "Contemporary trends of ICT: Artificial Intelligence and Robotics",
+              "understanding": 90
+            },
+            {
+              "name": "Contemporary trends of ICT: Cryosurgery, Space Exploration and ICT-dependent production",
+              "understanding": 90
+            },
+            {
+              "name": "Contemporary trends of ICT: Defense, Biometrics and Bioinformatics",
+              "understanding": 90
+            },
+            {
+              "name": "Contemporary trends of ICT: Genetic Engineering and Nanotechnology",
+              "understanding": 90
+            },
+            {
+              "name": "Ethics in the use of ICT",
+              "understanding": 90
+            },
+            {
+              "name": "Impact of ICT on social life",
+              "understanding": 90
+            },
+            {
+              "name": "ICT and economic development",
+              "understanding": 90
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Communication Systems and Networking",
+          "lessons": [
+            {
+              "name": "Concept of communication system",
+              "understanding": 90
+            },
+            {
+              "name": "Concept and process of data communication",
+              "understanding": 90
+            },
+            {
+              "name": "Bandwidth",
+              "understanding": 50
+            },
+            {
+              "name": "Data transmission methods",
+              "understanding": 40
+            },
+            {
+              "name": "Data transmission modes (simplex, half-duplex, full-duplex)",
+              "understanding": 90
+            },
+            {
+              "name": "Wired media: co-axial cable and twisted pair",
+              "understanding": 90
+            },
+            {
+              "name": "Optical fiber and its importance in data communication",
+              "understanding": 90
+            },
+            {
+              "name": "Wireless media: radio wave and microwave",
+              "understanding": 50
+            },
+            {
+              "name": "Wireless communication system and need for wireless communication",
+              "understanding": 90
+            },
+            {
+              "name": "Bluetooth, Wi-Fi and Wi-Max",
+              "understanding": 90
+            },
+            {
+              "name": "Mobile communication",
+              "understanding": 90
+            },
+            {
+              "name": "Generations of mobile (comparison of different generations)",
+              "understanding": 90
+            },
+            {
+              "name": "Concept and objectives of computer network",
+              "understanding": 90
+            },
+            {
+              "name": "Types of network (PAN, LAN, MAN, WAN)",
+              "understanding": 50
+            },
+            {
+              "name": "Network devices: modem, hub, router, gateway, switch, NIC",
+              "understanding": 90
+            },
+            {
+              "name": "Functions of a network",
+              "understanding": 90
+            },
+            {
+              "name": "Network topology",
+              "understanding": 40
+            },
+            {
+              "name": "Concept of Cloud Computing",
+              "understanding": 90
+            },
+            {
+              "name": "Advantages of Cloud Computing",
+              "understanding": 90
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Number Systems and Digital Devices",
+          "lessons": [
+            {
+              "name": "History of inventing numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Concept of number system",
+              "understanding": 90
+            },
+            {
+              "name": "Classification of number systems",
+              "understanding": 90
+            },
+            {
+              "name": "Conversion of numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Interrelation among different number systems",
+              "understanding": 0
+            },
+            {
+              "name": "Binary addition",
+              "understanding": 50
+            },
+            {
+              "name": "Binary subtraction",
+              "understanding": 0
+            },
+            {
+              "name": "Signed numbers",
+              "understanding": 0
+            },
+            {
+              "name": "2's complement",
+              "understanding": 0
+            },
+            {
+              "name": "Concept of code",
+              "understanding": 90
+            },
+            {
+              "name": "Common codes: BCD, EBCDIC, alphanumeric code, ASCII and Unicode (comparison)",
+              "understanding": 0
+            },
+            {
+              "name": "Concept of Boolean algebra",
+              "understanding": 90
+            },
+            {
+              "name": "Boolean theorems and proofs",
+              "understanding": 50
+            },
+            {
+              "name": "De Morgan's theorem",
+              "understanding": 0
+            },
+            {
+              "name": "Truth tables",
+              "understanding": 50
+            },
+            {
+              "name": "Basic gates: AND, OR, NOT",
+              "understanding": 90
+            },
+            {
+              "name": "Universal gates (NAND, NOR)",
+              "understanding": 50
+            },
+            {
+              "name": "Special gates (XOR, XNOR)",
+              "understanding": 0
+            },
+            {
+              "name": "Encoder",
+              "understanding": 0
+            },
+            {
+              "name": "Decoder",
+              "understanding": 0
+            },
+            {
+              "name": "Adder (half adder and full adder)",
+              "understanding": 0
+            },
+            {
+              "name": "Register",
+              "understanding": 50
+            },
+            {
+              "name": "Counter",
+              "understanding": 0
+            },
+            {
+              "name": "Practical application of Boolean algebra using logic operators",
+              "understanding": 90
+            },
+            {
+              "name": "Functionality analysis of Boolean-algebra-based digital devices",
+              "understanding": 50
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Introduction to Web Design and HTML",
+          "lessons": [
+            {
+              "name": "Concept of web page design",
+              "understanding": 90
+            },
+            {
+              "name": "Website structure",
+              "understanding": 90
+            },
+            {
+              "name": "Concept of HTML",
+              "understanding": 90
+            },
+            {
+              "name": "Advantages of HTML",
+              "understanding": 90
+            },
+            {
+              "name": "HTML tags, syntax and attributes",
+              "understanding": 50
+            },
+            {
+              "name": "HTML layout",
+              "understanding": 90
+            },
+            {
+              "name": "Formatting",
+              "understanding": 90
+            },
+            {
+              "name": "Hyperlinks",
+              "understanding": 90
+            },
+            {
+              "name": "Adding images (including banners)",
+              "understanding": 90
+            },
+            {
+              "name": "Tables",
+              "understanding": 90
+            },
+            {
+              "name": "Designing a web page",
+              "understanding": 90
+            },
+            {
+              "name": "Publishing a website",
+              "understanding": 90
+            },
+            {
+              "name": "Practical: Design a web page using HTML",
+              "understanding": 90
+            },
+            {
+              "name": "Practical: Publish a website",
+              "understanding": 90
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Programming Language",
+          "lessons": [
+            {
+              "name": "Concept of program",
+              "understanding": 90
+            },
+            {
+              "name": "Concept of programming language",
+              "understanding": 90
+            },
+            {
+              "name": "Machine language",
+              "understanding": 90
+            },
+            {
+              "name": "Assembly language",
+              "understanding": 90
+            },
+            {
+              "name": "Mid-level language",
+              "understanding": 90
+            },
+            {
+              "name": "High-level languages: C, C++ and Java",
+              "understanding": 90
+            },
+            {
+              "name": "High-level languages: Visual Basic, Oracle, Algol, Fortran and Python",
+              "understanding": 50
+            },
+            {
+              "name": "Fourth Generation Language (4GL)",
+              "understanding": 0
+            },
+            {
+              "name": "Translator programs: compiler, assembler and interpreter",
+              "understanding": 90
+            },
+            {
+              "name": "Compiler vs interpreter",
+              "understanding": 90
+            },
+            {
+              "name": "Organization of a program (model)",
+              "understanding": 90
+            },
+            {
+              "name": "Steps of developing a program",
+              "understanding": 90
+            },
+            {
+              "name": "Algorithm",
+              "understanding": 90
+            },
+            {
+              "name": "Flow chart",
+              "understanding": 90
+            },
+            {
+              "name": "Program design model",
+              "understanding": 90
+            },
+            {
+              "name": "Programming language C: concept",
+              "understanding": 90
+            },
+            {
+              "name": "Characteristics of C",
+              "understanding": 90
+            },
+            {
+              "name": "Compiling of programs",
+              "understanding": 90
+            },
+            {
+              "name": "Structure of C programs",
+              "understanding": 90
+            },
+            {
+              "name": "Data types",
+              "understanding": 50
+            },
+            {
+              "name": "Constants and variables",
+              "understanding": 90
+            },
+            {
+              "name": "Expressions",
+              "understanding": 90
+            },
+            {
+              "name": "Keywords",
+              "understanding": 50
+            },
+            {
+              "name": "Input-output statements",
+              "understanding": 90
+            },
+            {
+              "name": "Conditional statements",
+              "understanding": 90
+            },
+            {
+              "name": "Loop statements",
+              "understanding": 90
+            },
+            {
+              "name": "Array",
+              "understanding": 90
+            },
+            {
+              "name": "Function",
+              "understanding": 90
+            },
+            {
+              "name": "Practical: Demonstrate the organization of a program",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Prepare algorithms and flow charts",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Write programs using C",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Database Management System",
+          "lessons": [
+            {
+              "name": "Concept of database management",
+              "understanding": 90
+            },
+            {
+              "name": "Functions of DBMS",
+              "understanding": 90
+            },
+            {
+              "name": "Concept of Relational Database Management System (RDBMS)",
+              "understanding": 90
+            },
+            {
+              "name": "Characteristics of RDBMS",
+              "understanding": 90
+            },
+            {
+              "name": "Uses of RDBMS",
+              "understanding": 90
+            },
+            {
+              "name": "Creating a database (overview)",
+              "understanding": 90
+            },
+            {
+              "name": "Query",
+              "understanding": 90
+            },
+            {
+              "name": "Sorting",
+              "understanding": 90
+            },
+            {
+              "name": "Indexing",
+              "understanding": 90
+            },
+            {
+              "name": "Database relation",
+              "understanding": 90
+            },
+            {
+              "name": "Corporate database",
+              "understanding": 90
+            },
+            {
+              "name": "Database in government organizations",
+              "understanding": 90
+            },
+            {
+              "name": "Concept of data security",
+              "understanding": 90
+            },
+            {
+              "name": "Importance of data security",
+              "understanding": 90
+            },
+            {
+              "name": "Need for data encryption",
+              "understanding": 90
+            },
+            {
+              "name": "Methods of data encryption",
+              "understanding": 90
+            },
+            {
+              "name": "Practical: Create a database",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

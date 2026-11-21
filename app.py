@@ -104,6 +104,10 @@ class UnderstandingUpdate(BaseModel):
     understanding: float = Field(..., ge=0, le=100)
 
 
+class RenameBody(BaseModel):
+    name: str = Field(..., min_length=1, max_length=200)
+
+
 class LessonImport(BaseModel):
     name: str
     understanding: float = 0
@@ -322,6 +326,75 @@ def delete_subject(subject_id: int, request: Request):
             "Deleted subject id=%d", subject_id,
             extra={"request_id": rid},
         )
+
+
+@app.put("/api/subjects/{subject_id}")
+def rename_subject(subject_id: int, data: RenameBody, request: Request):
+    rid = getattr(request.state, "request_id", None)
+    with get_db() as conn:
+        existing = conn.execute("SELECT id FROM subjects WHERE id = ?",
+                                (subject_id,)).fetchone()
+        if not existing:
+            raise HTTPException(404, "Subject not found")
+        dup = conn.execute(
+            "SELECT id FROM subjects WHERE name = ? AND id != ?",
+            (data.name, subject_id)).fetchone()
+        if dup:
+            raise HTTPException(409, f"Subject '{data.name}' already exists")
+        conn.execute(
+            "UPDATE subjects SET name = ?, updated_at = datetime('now') WHERE id = ?",
+            (data.name, subject_id))
+        logger.info("Renamed subject id=%d to '%s'", subject_id, data.name,
+                    extra={"request_id": rid})
+        return {"id": subject_id, "name": data.name}
+
+
+@app.put("/api/sections/{section_id}")
+def rename_section(section_id: int, data: RenameBody, request: Request):
+    rid = getattr(request.state, "request_id", None)
+    with get_db() as conn:
+        existing = conn.execute("SELECT id FROM sections WHERE id = ?",
+                                (section_id,)).fetchone()
+        if not existing:
+            raise HTTPException(404, "Section not found")
+        conn.execute(
+            "UPDATE sections SET name = ?, updated_at = datetime('now') WHERE id = ?",
+            (data.name, section_id))
+        logger.info("Renamed section id=%d to '%s'", section_id, data.name,
+                    extra={"request_id": rid})
+        return {"id": section_id, "name": data.name}
+
+
+@app.put("/api/chapters/{chapter_id}")
+def rename_chapter(chapter_id: int, data: RenameBody, request: Request):
+    rid = getattr(request.state, "request_id", None)
+    with get_db() as conn:
+        existing = conn.execute("SELECT id FROM chapters WHERE id = ?",
+                                (chapter_id,)).fetchone()
+        if not existing:
+            raise HTTPException(404, "Chapter not found")
+        conn.execute(
+            "UPDATE chapters SET name = ?, updated_at = datetime('now') WHERE id = ?",
+            (data.name, chapter_id))
+        logger.info("Renamed chapter id=%d to '%s'", chapter_id, data.name,
+                    extra={"request_id": rid})
+        return {"id": chapter_id, "name": data.name}
+
+
+@app.put("/api/lessons/{lesson_id}")
+def rename_lesson(lesson_id: int, data: RenameBody, request: Request):
+    rid = getattr(request.state, "request_id", None)
+    with get_db() as conn:
+        existing = conn.execute("SELECT id FROM lessons WHERE id = ?",
+                                (lesson_id,)).fetchone()
+        if not existing:
+            raise HTTPException(404, "Lesson not found")
+        conn.execute(
+            "UPDATE lessons SET name = ?, updated_at = datetime('now') WHERE id = ?",
+            (data.name, lesson_id))
+        logger.info("Renamed lesson id=%d to '%s'", lesson_id, data.name,
+                    extra={"request_id": rid})
+        return {"id": lesson_id, "name": data.name}
 
 
 @app.delete("/api/sections/{section_id}", status_code=204)

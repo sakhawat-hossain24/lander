@@ -1,0 +1,1151 @@
+{
+  "name": "Biology",
+  "sections": [
+    {
+      "name": "Biology First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Cell and Its Structure",
+          "lessons": [
+            {
+              "name": "Cell wall and plasma membrane — location, chemical structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Cytoplasm — chemical nature and metabolic role",
+              "understanding": 0
+            },
+            {
+              "name": "Ribosome, Golgi body, lysosome and centriole — structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Endoplasmic reticulum — smooth vs rough (structural and functional differences)",
+              "understanding": 0
+            },
+            {
+              "name": "Mitochondrion — ultrastructure correlated with function",
+              "understanding": 0
+            },
+            {
+              "name": "Chloroplast — ultrastructure correlated with function",
+              "understanding": 0
+            },
+            {
+              "name": "Nucleus and nucleolus — structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Nucleoplasm vs cytoplasm — comparison of chemical composition",
+              "understanding": 0
+            },
+            {
+              "name": "Chromosome — structure and chemical composition",
+              "understanding": 0
+            },
+            {
+              "name": "Role of chromosome in cell division",
+              "understanding": 0
+            },
+            {
+              "name": "Drawing and labeling diagrams of different cell organelles",
+              "understanding": 0
+            },
+            {
+              "name": "Contribution of cell in various biological activities",
+              "understanding": 0
+            },
+            {
+              "name": "DNA and RNA — structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Types of RNA",
+              "understanding": 0
+            },
+            {
+              "name": "DNA replication (replication)",
+              "understanding": 0
+            },
+            {
+              "name": "Transcription — mechanism",
+              "understanding": 0
+            },
+            {
+              "name": "Translation — mechanism",
+              "understanding": 0
+            },
+            {
+              "name": "Gene and genetic code",
+              "understanding": 0
+            },
+            {
+              "name": "DNA as hereditary material — significance",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of chromosome structure",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification of cell organelles from photomicrographs or models",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Cell Division",
+          "lessons": [
+            {
+              "name": "Cell division — types and overview",
+              "understanding": 0
+            },
+            {
+              "name": "Mitosis — definition and significance",
+              "understanding": 0
+            },
+            {
+              "name": "Stages of mitosis — detailed description",
+              "understanding": 0
+            },
+            {
+              "name": "Drawing and labeling stages of mitosis",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of mitosis in the body",
+              "understanding": 0
+            },
+            {
+              "name": "Meiosis — stages and description",
+              "understanding": 0
+            },
+            {
+              "name": "Drawing and labeling stages of meiosis",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of meiosis and role in continuity of life",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of stages of mitosis from permanent slide or model",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Cell Chemistry",
+          "lessons": [
+            {
+              "name": "Chemical constituents of living organisms — overview",
+              "understanding": 0
+            },
+            {
+              "name": "Carbohydrates, proteins and lipids — classification",
+              "understanding": 0
+            },
+            {
+              "name": "Role of carbohydrates, proteins and lipids in the living body",
+              "understanding": 0
+            },
+            {
+              "name": "Enzyme — nature of catalytic action",
+              "understanding": 0
+            },
+            {
+              "name": "Classification of enzymes (based on structure and reaction type)",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of enzymes in different biological processes",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Tests for carbohydrates, proteins and lipids",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Microbiology",
+          "lessons": [
+            {
+              "name": "Virus — characteristics, structure and importance",
+              "understanding": 0
+            },
+            {
+              "name": "Bacteriophage — complete life cycle",
+              "understanding": 0
+            },
+            {
+              "name": "Viral diseases — papaya ring spot, hepatitis and dengue (symptoms, prevention and control)",
+              "understanding": 0
+            },
+            {
+              "name": "Bacteria — classification based on cell shape",
+              "understanding": 0
+            },
+            {
+              "name": "Bacteria — structure with diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Bacteria — reproduction",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of bacteria",
+              "understanding": 0
+            },
+            {
+              "name": "Bacterial diseases — rice bacterial blight and cholera (symptoms and prevention)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation, staining and drawing of bacteria (from curd)",
+              "understanding": 0
+            },
+            {
+              "name": "Plasmodium (malarial parasite) — life cycle with diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Plasmodium — infection, transmission and prevention in human body",
+              "understanding": 0
+            },
+            {
+              "name": "Economic importance of viruses and bacteria",
+              "understanding": 0
+            },
+            {
+              "name": "Control measures for viral and bacterial diseases",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Algae and Fungi",
+          "lessons": [
+            {
+              "name": "Algae — characteristics, structure and reproduction",
+              "understanding": 0
+            },
+            {
+              "name": "Ulothrix — habitat, structure and reproduction",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of Ulothrix permanent slide, drawing and identification",
+              "understanding": 0
+            },
+            {
+              "name": "Fungi — characteristics, structure, reproduction and importance",
+              "understanding": 0
+            },
+            {
+              "name": "Agaricus — structure with diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of external structure of Agaricus fruiting body",
+              "understanding": 0
+            },
+            {
+              "name": "Fungal diseases — late blight of potato and ringworm (cause, symptoms and control)",
+              "understanding": 0
+            },
+            {
+              "name": "Symbiotic association of algae and fungi — lichen",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Bryophyta and Pteridophyta",
+          "lessons": [
+            {
+              "name": "Bryophyta — characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Riccia — habitat, structure and identifying features",
+              "understanding": 0
+            },
+            {
+              "name": "Pteridophyta — characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Pteris — habitat, structure and life cycle (alternation of generations)",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of Bryophyta and Pteridophyta",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification of Pteris sporophyte",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Gymnosperms and Angiosperms",
+          "lessons": [
+            {
+              "name": "Gymnosperms — characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Cycas — structure and identifying features",
+              "understanding": 0
+            },
+            {
+              "name": "Poaceae — identifying characteristics of the family",
+              "understanding": 0
+            },
+            {
+              "name": "Malvaceae — identifying characteristics of the family",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of Poaceae and Malvaceae families",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification of Malvaceae family",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Tissue and Tissue System",
+          "lessons": [
+            {
+              "name": "Meristematic tissue — types and description",
+              "understanding": 0
+            },
+            {
+              "name": "Epidermal tissue system — location, structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Ground tissue system — structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Vascular tissue system — structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Drawing and labeling of tissue systems",
+              "understanding": 0
+            },
+            {
+              "name": "Monocot root and stem — transverse section diagrams and identification",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Preparation, observation and identification of monocot root and stem sections",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Plant Physiology",
+          "lessons": [
+            {
+              "name": "Mineral nutrient absorption — process",
+              "understanding": 0
+            },
+            {
+              "name": "Active absorption — modern theories",
+              "understanding": 0
+            },
+            {
+              "name": "Passive absorption",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of active and passive absorption",
+              "understanding": 0
+            },
+            {
+              "name": "Stomatal structure with diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Mechanism of stomatal opening and closing (in light of modern theories)",
+              "understanding": 0
+            },
+            {
+              "name": "Transpiration — process",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of stomatal structure",
+              "understanding": 0
+            },
+            {
+              "name": "Photosynthesis — Calvin cycle",
+              "understanding": 0
+            },
+            {
+              "name": "Photosynthesis — Hatch and Slack cycle",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of Calvin and Hatch-Slack cycles",
+              "understanding": 0
+            },
+            {
+              "name": "Limiting factors of photosynthesis",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Experiment showing necessity of CO2 for photosynthesis",
+              "understanding": 0
+            },
+            {
+              "name": "Aerobic respiration — glycolysis",
+              "understanding": 0
+            },
+            {
+              "name": "Aerobic respiration — Krebs cycle",
+              "understanding": 0
+            },
+            {
+              "name": "Aerobic respiration — electron transport system (ETS)",
+              "understanding": 0
+            },
+            {
+              "name": "Anaerobic respiration — process",
+              "understanding": 0
+            },
+            {
+              "name": "Anaerobic respiration — incomplete oxidation of pyruvate and industrial use",
+              "understanding": 0
+            },
+            {
+              "name": "Factors affecting respiration",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Experiment of anaerobic respiration",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Plant Reproduction",
+          "lessons": [
+            {
+              "name": "Types of reproduction — sexual, asexual and parthenogenesis",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of different reproduction processes",
+              "understanding": 0
+            },
+            {
+              "name": "Artificial reproduction — concept",
+              "understanding": 0
+            },
+            {
+              "name": "Plant propagation as a method of artificial reproduction",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of artificial reproduction",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 11: Biotechnology",
+          "lessons": [
+            {
+              "name": "Tissue culture technique — steps and uses",
+              "understanding": 0
+            },
+            {
+              "name": "Genetic engineering — steps",
+              "understanding": 0
+            },
+            {
+              "name": "Gene cloning — explanation",
+              "understanding": 0
+            },
+            {
+              "name": "Recombinant DNA technology — use in agriculture",
+              "understanding": 0
+            },
+            {
+              "name": "Recombinant DNA technology — use in medicine (insulin, interferon) and pharmaceutics",
+              "understanding": 0
+            },
+            {
+              "name": "Recombinant DNA technology — use in environmental management",
+              "understanding": 0
+            },
+            {
+              "name": "Genome sequencing — applications",
+              "understanding": 0
+            },
+            {
+              "name": "Importance and potential of biotechnology",
+              "understanding": 0
+            },
+            {
+              "name": "Biosafety regulations for biotechnology — health hazard issues",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 12: Environment, Distribution and Conservation of Organisms",
+          "lessons": [
+            {
+              "name": "Species, population and community — explanation",
+              "understanding": 0
+            },
+            {
+              "name": "Ecological pyramids and their types with diagrams",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of different ecological pyramids",
+              "understanding": 0
+            },
+            {
+              "name": "Adaptation of organisms in aquatic, desert and saline environments — comparison",
+              "understanding": 0
+            },
+            {
+              "name": "Biomes — types",
+              "understanding": 0
+            },
+            {
+              "name": "Zoogeographical regions — concept and Oriental region",
+              "understanding": 0
+            },
+            {
+              "name": "Distribution of plants and animals in the Oriental region",
+              "understanding": 0
+            },
+            {
+              "name": "Bangladesh forest types — characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Notable plants and animals of different forests of Bangladesh",
+              "understanding": 0
+            },
+            {
+              "name": "Mangrove and hill forest beneficial plants — characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Necessity of afforestation in coastal regions",
+              "understanding": 0
+            },
+            {
+              "name": "Endangered species — list (plants)",
+              "understanding": 0
+            },
+            {
+              "name": "Endangered species — list (animals)",
+              "understanding": 0
+            },
+            {
+              "name": "Causes of extinction of organisms",
+              "understanding": 0
+            },
+            {
+              "name": "Necessity of conservation of endangered species",
+              "understanding": 0
+            },
+            {
+              "name": "Biodiversity conservation methods — overview",
+              "understanding": 0
+            },
+            {
+              "name": "In situ conservation — botanical garden, sanctuary and fish sanctuary",
+              "understanding": 0
+            },
+            {
+              "name": "Ex situ conservation — low temperature and liquid nitrogen",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of biodiversity conservation and creating awareness",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Biology Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Animal Diversity and Classification",
+          "lessons": [
+            {
+              "name": "Animal diversity — explanation",
+              "understanding": 0
+            },
+            {
+              "name": "Basis and principles of classifying animals into different phyla",
+              "understanding": 0
+            },
+            {
+              "name": "Necessity of classifying different animals into phyla",
+              "understanding": 0
+            },
+            {
+              "name": "Non-chordates — classification up to phylum (major phyla)",
+              "understanding": 0
+            },
+            {
+              "name": "Chordates — classification up to class",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification and drawing of non-chordate specimens from different phyla (any five)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification and drawing of vertebrate specimens from different classes (any five)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Animal Identity - Hydra, Grasshopper and Rui Fish",
+          "lessons": [
+            {
+              "name": "Hydra — structure (including body wall cells)",
+              "understanding": 0
+            },
+            {
+              "name": "Hydra — food capture and digestion",
+              "understanding": 0
+            },
+            {
+              "name": "Hydra — locomotion and reproduction",
+              "understanding": 0
+            },
+            {
+              "name": "Hydra — symbiosis (with Chlorella) and significance",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of Hydra permanent slide or model",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper (Poecilocerus) — external morphology",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — digestive system and digestion process",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification and drawing of grasshopper mouthparts",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of grasshopper alimentary canal and digestive glands",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — circulatory system",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — respiratory system",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — excretory system",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — reproductive process and metamorphosis",
+              "understanding": 0
+            },
+            {
+              "name": "Grasshopper — compound eye structure and mechanism of vision",
+              "understanding": 0
+            },
+            {
+              "name": "Rui fish (Labeo rohita) — external and internal morphology",
+              "understanding": 0
+            },
+            {
+              "name": "Rui fish — blood circulatory system",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of blood circulatory system in Rui or Taki fish",
+              "understanding": 0
+            },
+            {
+              "name": "Rui fish — respiratory system and air (swim) bladder",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification of Rui fish gill and air bladder",
+              "understanding": 0
+            },
+            {
+              "name": "Rui fish — life cycle in nature",
+              "understanding": 0
+            },
+            {
+              "name": "Conservation of Rui and other carp fishes — importance",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Comparison of grasshopper and cockroach digestive or respiratory systems",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Human Physiology: Digestion and Absorption",
+          "lessons": [
+            {
+              "name": "Food digestion in oral cavity — mechanical and chemical processes",
+              "understanding": 0
+            },
+            {
+              "name": "Coordination of mechanical and chemical digestion in different parts of stomach and intestine",
+              "understanding": 0
+            },
+            {
+              "name": "Liver — secretory and metabolic roles",
+              "understanding": 0
+            },
+            {
+              "name": "Pancreas as accessory gland — role in digestion",
+              "understanding": 0
+            },
+            {
+              "name": "Nervous and hormonal control in gastric juice secretion",
+              "understanding": 0
+            },
+            {
+              "name": "Major actions of digestion in small intestine",
+              "understanding": 0
+            },
+            {
+              "name": "Absorption of digested food from intestinal lumen to blood and lymph",
+              "understanding": 0
+            },
+            {
+              "name": "Functions of large intestine",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Histology of liver, pancreas, stomach and small intestine (permanent slides)",
+              "understanding": 0
+            },
+            {
+              "name": "Obesity — concept, causes and prevention",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Human Physiology: Blood and Circulation",
+          "lessons": [
+            {
+              "name": "Blood and lymph — description",
+              "understanding": 0
+            },
+            {
+              "name": "Blood clotting disorders — causes",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of blood corpuscles from permanent slide",
+              "understanding": 0
+            },
+            {
+              "name": "Heart — structure",
+              "understanding": 0
+            },
+            {
+              "name": "Heartbeat — analysis of different stages",
+              "understanding": 0
+            },
+            {
+              "name": "Role of SA node, AV node and Purkinje fibers in controlling heartbeat",
+              "understanding": 0
+            },
+            {
+              "name": "Role of baroreceptors and volume receptors in regulating blood pressure",
+              "understanding": 0
+            },
+            {
+              "name": "Human blood circulation — comparison of circulation methods (systemic vs pulmonary)",
+              "understanding": 0
+            },
+            {
+              "name": "Systemic circulation",
+              "understanding": 0
+            },
+            {
+              "name": "Pulmonary and portal circulation",
+              "understanding": 0
+            },
+            {
+              "name": "Heart diseases — different conditions and first aid or management",
+              "understanding": 0
+            },
+            {
+              "name": "Pacemaker — function in restoring normal heart rhythm",
+              "understanding": 0
+            },
+            {
+              "name": "Open heart surgery, coronary bypass and angioplasty — concepts",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Human Physiology: Respiration and Breathing",
+          "lessons": [
+            {
+              "name": "Human respiratory system — structure-function correlation of different parts",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of lung section permanent slide",
+              "understanding": 0
+            },
+            {
+              "name": "Breathing (ventilation) mechanism and its control",
+              "understanding": 0
+            },
+            {
+              "name": "Gaseous transport — oxygen transport",
+              "understanding": 0
+            },
+            {
+              "name": "Gaseous transport — carbon dioxide transport",
+              "understanding": 0
+            },
+            {
+              "name": "Role of respiratory pigments in respiration",
+              "understanding": 0
+            },
+            {
+              "name": "Respiratory diseases — sinusitis and otitis media (causes, symptoms and prevention)",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of X-ray of lungs between smoker and non-smoker",
+              "understanding": 0
+            },
+            {
+              "name": "Artificial respiration — mouth-to-mouth method and its purpose",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Human Physiology: Excretion",
+          "lessons": [
+            {
+              "name": "Kidney — correlation of structure and function",
+              "understanding": 0
+            },
+            {
+              "name": "Physiology of excretion — formation of urine",
+              "understanding": 0
+            },
+            {
+              "name": "Role of kidney in excretion and osmoregulation",
+              "understanding": 0
+            },
+            {
+              "name": "Acute kidney failure — symptoms and emergency management",
+              "understanding": 0
+            },
+            {
+              "name": "Hormonal regulation — control of urine concentration, blood sodium and pH",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation and drawing of kidney section permanent slide",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Human Physiology: Movement and Locomotion",
+          "lessons": [
+            {
+              "name": "Human skeletal system — identification of main parts",
+              "understanding": 0
+            },
+            {
+              "name": "Bone vs cartilage — comparison of structure",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identification and drawing of different human bones (model)",
+              "understanding": 0
+            },
+            {
+              "name": "Types of muscle — comparison of structure and function (striated, smooth, cardiac)",
+              "understanding": 0
+            },
+            {
+              "name": "Muscle cramp — cause and prevention",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Comparison of striated and cardiac muscle with prepared slides",
+              "understanding": 0
+            },
+            {
+              "name": "Skeleton as lever system — function of rods and levers",
+              "understanding": 0
+            },
+            {
+              "name": "Role of bones and muscles in walking",
+              "understanding": 0
+            },
+            {
+              "name": "Fractures — types (simple, compound, complex) and first aid",
+              "understanding": 0
+            },
+            {
+              "name": "Joint injuries — dislocation and sprain and first aid",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Human Physiology: Coordination and Control",
+          "lessons": [
+            {
+              "name": "Nervous coordination — concept",
+              "understanding": 0
+            },
+            {
+              "name": "Brain — main parts, structure, divisions and functions",
+              "understanding": 0
+            },
+            {
+              "name": "Role of cerebrum in various activities",
+              "understanding": 0
+            },
+            {
+              "name": "Sense organs — eye structure and function correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Sense organs — ear structure and function correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Chemical coordination — concept",
+              "understanding": 0
+            },
+            {
+              "name": "Endocrine glands — pituitary, thyroid and parathyroid (location, secretion and function)",
+              "understanding": 0
+            },
+            {
+              "name": "Endocrine glands — adrenal, gonad and islets of Langerhans (pancreas)",
+              "understanding": 0
+            },
+            {
+              "name": "Effect of hormones on growth and behavior and consequences of uncontrolled hormone use",
+              "understanding": 0
+            },
+            {
+              "name": "Integration of nervous and endocrine coordination",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observation of brain or eye model and drawing",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Continuity of Life",
+          "lessons": [
+            {
+              "name": "Male reproductive system and hormonal function",
+              "understanding": 0
+            },
+            {
+              "name": "Female reproductive system and hormonal function",
+              "understanding": 0
+            },
+            {
+              "name": "Reproduction stages — menstrual cycle and adolescent changes",
+              "understanding": 0
+            },
+            {
+              "name": "Gamete formation, fertilization, implantation and embryonic development (fate of three germ layers)",
+              "understanding": 0
+            },
+            {
+              "name": "Pregnancy and care — identifiable aspects",
+              "understanding": 0
+            },
+            {
+              "name": "Birth control methods and necessity of family planning — evaluation",
+              "understanding": 0
+            },
+            {
+              "name": "In vitro fertilization (IVF) — usefulness (test-tube baby)",
+              "understanding": 0
+            },
+            {
+              "name": "Reproductive system problems — male and female infertility",
+              "understanding": 0
+            },
+            {
+              "name": "Reproductive system problems — hormonal imbalance and growth period issues",
+              "understanding": 0
+            },
+            {
+              "name": "Sexually transmitted diseases — syphilis, gonorrhea and AIDS (symptoms and prevention)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Human Immunity",
+          "lessons": [
+            {
+              "name": "Immune system in human body — concept",
+              "understanding": 0
+            },
+            {
+              "name": "First line of defense — role of skin",
+              "understanding": 0
+            },
+            {
+              "name": "Role of acid and enzymes in alimentary canal in destroying bacteria from food",
+              "understanding": 0
+            },
+            {
+              "name": "Role of macrophages (Macrophages) and neutrophils (Neutrophils) in destroying bacteria",
+              "understanding": 0
+            },
+            {
+              "name": "Innate and acquired defense systems — explanation",
+              "understanding": 0
+            },
+            {
+              "name": "Role of antibody in defense",
+              "understanding": 0
+            },
+            {
+              "name": "Role of vaccine in developing defense",
+              "understanding": 0
+            },
+            {
+              "name": "Role of memory cells in long-term defense",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 11: Genetics and Evolution",
+          "lessons": [
+            {
+              "name": "Mendelian inheritance — laws and explanation",
+              "understanding": 0
+            },
+            {
+              "name": "Chromosomal theory of inheritance",
+              "understanding": 0
+            },
+            {
+              "name": "Exceptions to Mendel's laws — incomplete dominance and co-dominance",
+              "understanding": 0
+            },
+            {
+              "name": "Exceptions — lethal gene, complementary gene, epistasis and polygenic inheritance",
+              "understanding": 0
+            },
+            {
+              "name": "Sex determination — XX-XY, XX-XO principles",
+              "understanding": 0
+            },
+            {
+              "name": "Sex-linked disorders — color blindness, hemophilia and muscular dystrophy",
+              "understanding": 0
+            },
+            {
+              "name": "ABO blood group and Rh factor related problems — transfusion complications and erythroblastosis fetalis",
+              "understanding": 0
+            },
+            {
+              "name": "Evolution — concept of evolutionary theory",
+              "understanding": 0
+            },
+            {
+              "name": "Theories of evolution — Lamarckism",
+              "understanding": 0
+            },
+            {
+              "name": "Theories of evolution — Darwinism and Neo-Darwinism",
+              "understanding": 0
+            },
+            {
+              "name": "Evidences in favor of evolution",
+              "understanding": 0
+            },
+            {
+              "name": "Role of evolution in maintaining species continuity",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 12: Animal Behaviour",
+          "lessons": [
+            {
+              "name": "Nature of behavior — stimulus-induced changes and relation with heredity",
+              "understanding": 0
+            },
+            {
+              "name": "Innate (inborn) behavior — taxes, reflexes and instincts",
+              "understanding": 0
+            },
+            {
+              "name": "Testing innate behavior — migration of winter birds, spider web and parental care in fish, frog and birds",
+              "understanding": 0
+            },
+            {
+              "name": "Learning — habituation and imprinting",
+              "understanding": 0
+            },
+            {
+              "name": "Pavlov's work — salivary reflex in dog",
+              "understanding": 0
+            },
+            {
+              "name": "Social behavior — altruism in honeybee social organization",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

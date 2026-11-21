@@ -1,0 +1,983 @@
+{
+  "name": "Higher Mathematics",
+  "sections": [
+    {
+      "name": "Higher Mathematics First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Matrices and Determinants",
+          "lessons": [
+            {
+              "name": "Types of matrices with examples",
+              "understanding": 40
+            },
+            {
+              "name": "Matrix equality, addition, subtraction and multiplication (up to 3x3)",
+              "understanding": 0
+            },
+            {
+              "name": "Determinants explained",
+              "understanding": 0
+            },
+            {
+              "name": "Evaluating determinants of order 2x2 and 3x3",
+              "understanding": 0
+            },
+            {
+              "name": "Minors and cofactors of a determinant",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of determinants with proof and application",
+              "understanding": 0
+            },
+            {
+              "name": "Inverse of a square matrix (adjoint method)",
+              "understanding": 0
+            },
+            {
+              "name": "Solving systems of linear equations with determinants (Cramer's rule)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Vectors",
+          "lessons": [
+            {
+              "name": "Vectors as representations of directed quantities",
+              "understanding": 85
+            },
+            {
+              "name": "Geometric vectors: carriers, equality, opposite and null vectors",
+              "understanding": 85
+            },
+            {
+              "name": "Addition, subtraction and scalar multiplication of 2D vectors with laws",
+              "understanding": 0
+            },
+            {
+              "name": "Components of vectors in a plane",
+              "understanding": 0
+            },
+            {
+              "name": "Cartesian representation of vectors with unit vectors i, j",
+              "understanding": 0
+            },
+            {
+              "name": "Position vectors",
+              "understanding": 40
+            },
+            {
+              "name": "Applications of vectors in 2D geometry problems",
+              "understanding": 0
+            },
+            {
+              "name": "Components of vectors in three dimensions with i, j, k",
+              "understanding": 0
+            },
+            {
+              "name": "Addition and scalar multiplication of 3D vectors in i, j, k form",
+              "understanding": 0
+            },
+            {
+              "name": "Vector equation of a straight line",
+              "understanding": 0
+            },
+            {
+              "name": "Scalar (dot) product and its properties",
+              "understanding": 0
+            },
+            {
+              "name": "Scalar product expressed through components of two vectors",
+              "understanding": 0
+            },
+            {
+              "name": "Vector (cross) product and its properties",
+              "understanding": 0
+            },
+            {
+              "name": "Vector product expressed through components of two vectors",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Straight Lines",
+          "lessons": [
+            {
+              "name": "Cartesian and polar coordinates in a plane",
+              "understanding": 30
+            },
+            {
+              "name": "Relation between Cartesian and polar coordinates",
+              "understanding": 0
+            },
+            {
+              "name": "Distance between two points",
+              "understanding": 70
+            },
+            {
+              "name": "Coordinates of a point dividing a line segment in a given ratio",
+              "understanding": 0
+            },
+            {
+              "name": "Area of a triangle from vertex coordinates",
+              "understanding": 0
+            },
+            {
+              "name": "Locus and proof that a first-degree equation represents a straight line",
+              "understanding": 0
+            },
+            {
+              "name": "Slope of a straight line and slope of the line joining two points",
+              "understanding": 0
+            },
+            {
+              "name": "Equations of straight lines in standard forms (slope-intercept, point-slope, two-point, intercept, normal form)",
+              "understanding": 0
+            },
+            {
+              "name": "Graphical representation of straight lines and finding equations from graphs",
+              "understanding": 0
+            },
+            {
+              "name": "Point of intersection of two straight lines",
+              "understanding": 0
+            },
+            {
+              "name": "Angle between two non-parallel straight lines",
+              "understanding": 0
+            },
+            {
+              "name": "Conditions for two straight lines to be parallel or perpendicular",
+              "understanding": 0
+            },
+            {
+              "name": "Equations of straight lines under various conditions",
+              "understanding": 0
+            },
+            {
+              "name": "Perpendicular distance from a point to a straight line",
+              "understanding": 0
+            },
+            {
+              "name": "Reflection of points and line segments in axes and given lines",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine section-point coordinates",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine triangle area from vertex coordinates",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw graphs of straight-line equations",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Circles",
+          "lessons": [
+            {
+              "name": "Equation of a circle with centre at the origin",
+              "understanding": 0
+            },
+            {
+              "name": "Graph of a circle centred at the origin with axis intercepts",
+              "understanding": 0
+            },
+            {
+              "name": "Equation of a circle with given centre and radius",
+              "understanding": 0
+            },
+            {
+              "name": "Equation of a circle in polar coordinates",
+              "understanding": 0
+            },
+            {
+              "name": "Equations of tangents and normals to a circle",
+              "understanding": 0
+            },
+            {
+              "name": "Equation of the chord of contact from an exterior point",
+              "understanding": 0
+            },
+            {
+              "name": "Length of the tangent from an exterior point",
+              "understanding": 0
+            },
+            {
+              "name": "Equation of the common chord of two circles",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw a circle from its equation and determine centre and radius",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Permutations and Combinations",
+          "lessons": [
+            {
+              "name": "Fundamental principles of counting (addition and multiplication rules)",
+              "understanding": 50
+            },
+            {
+              "name": "Permutations explained",
+              "understanding": 60
+            },
+            {
+              "name": "Factorial notation (n!)",
+              "understanding": 80
+            },
+            {
+              "name": "Formulae for the number of permutations with proof and application",
+              "understanding": 0
+            },
+            {
+              "name": "Combinations explained",
+              "understanding": 70
+            },
+            {
+              "name": "Number of combinations",
+              "understanding": 80
+            },
+            {
+              "name": "Complementary combinations",
+              "understanding": 0
+            },
+            {
+              "name": "Identity nCr + nC(r-1) = n+1Cr with proof and application",
+              "understanding": 0
+            },
+            {
+              "name": "Conditional combinations with derivation and application",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Trigonometric Ratios",
+          "lessons": [
+            {
+              "name": "Trigonometric angles explained",
+              "understanding": 60
+            },
+            {
+              "name": "Degree and radian measures with mutual relation",
+              "understanding": 80
+            },
+            {
+              "name": "Arc length in radian measure",
+              "understanding": 0
+            },
+            {
+              "name": "Area of a circular sector in radian measure",
+              "understanding": 0
+            },
+            {
+              "name": "Trigonometric ratios of trigonometric angles",
+              "understanding": 40
+            },
+            {
+              "name": "Signs of trigonometric ratios by quadrant",
+              "understanding": 0
+            },
+            {
+              "name": "Relations among trigonometric ratios with applications",
+              "understanding": 0
+            },
+            {
+              "name": "Variation and graphs of trigonometric functions",
+              "understanding": 0
+            },
+            {
+              "name": "Graphs of trigonometric functions",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Trigonometric Ratios of Associated Angles",
+          "lessons": [
+            {
+              "name": "Trigonometric ratios of compound angles with applications",
+              "understanding": 0
+            },
+            {
+              "name": "Trigonometric ratios of multiple angles with applications",
+              "understanding": 0
+            },
+            {
+              "name": "Sine rule for triangles with proof and application",
+              "understanding": 0
+            },
+            {
+              "name": "Cosine rule for triangles with proof and application",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Find an unknown angle from given side lengths of a triangle",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Find side-length ratios from given angles of a triangle",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Find an unknown side from two angles and one side of a triangle",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Find an unknown angle from two sides and one angle of a triangle",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Functions and Graphs of Functions",
+          "lessons": [
+            {
+              "name": "Relations and functions with examples",
+              "understanding": 0
+            },
+            {
+              "name": "Domain and range of functions",
+              "understanding": 0
+            },
+            {
+              "name": "Types of functions (one-one, onto, composite)",
+              "understanding": 0
+            },
+            {
+              "name": "Special functions (odd, even, inverse)",
+              "understanding": 0
+            },
+            {
+              "name": "Sketches of quadratic, exponential and logarithmic functions",
+              "understanding": 0
+            },
+            {
+              "name": "Sketches of trigonometric and modulus functions",
+              "understanding": 0
+            },
+            {
+              "name": "Graphs of transformed functions with domain and range",
+              "understanding": 0
+            },
+            {
+              "name": "Graphs of a function and its inverse compared",
+              "understanding": 0
+            },
+            {
+              "name": "Period of trigonometric functions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Images of points and line segments in the axes",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Images of points and line segments in a given line",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Graphs of functions and transformed functions with domain and range",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Graphs of functions with inverses, and of elementary functions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw graphs of quadratic, exponential, logarithmic, trigonometric and modulus functions",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Differentiation",
+          "lessons": [
+            {
+              "name": "Limits of functions",
+              "understanding": 0
+            },
+            {
+              "name": "Slope, tangents and the derivative as rate of change",
+              "understanding": 0
+            },
+            {
+              "name": "Limits of functions with examples and graphs",
+              "understanding": 0
+            },
+            {
+              "name": "One-sided limits",
+              "understanding": 0
+            },
+            {
+              "name": "Infinite limits",
+              "understanding": 0
+            },
+            {
+              "name": "Special (standard) limits",
+              "understanding": 0
+            },
+            {
+              "name": "Continuity evaluated through limits",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives (differential coefficients)",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives of polynomial functions",
+              "understanding": 0
+            },
+            {
+              "name": "Differentiation of sine and cosine functions",
+              "understanding": 0
+            },
+            {
+              "name": "Successive differentiation with notations (dy/dx, d2y/dx2, f'(x), f''(x))",
+              "understanding": 0
+            },
+            {
+              "name": "Sum, product and quotient rules for derivatives",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives of composite functions (chain rule)",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives of exponential and logarithmic functions (e^x, a^x, ln x)",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives of trigonometric functions (tan x, cot x, sec x, cosec x)",
+              "understanding": 0
+            },
+            {
+              "name": "Derivatives with independent and dependent variables",
+              "understanding": 0
+            },
+            {
+              "name": "Increasing and decreasing functions",
+              "understanding": 0
+            },
+            {
+              "name": "Local maxima and minima (stationary points)",
+              "understanding": 0
+            },
+            {
+              "name": "Greatest and least values with applied optimization problems",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Verify local behaviour with tangent lines near a given point",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Approximate a curve with short straight segments",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Relate derivatives of independent and dependent variables",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Integration",
+          "lessons": [
+            {
+              "name": "Definite integrals described through area",
+              "understanding": 0
+            },
+            {
+              "name": "Antiderivatives (indefinite integrals as reverse of differentiation)",
+              "understanding": 0
+            },
+            {
+              "name": "Fundamental theorem relating definite integrals and antiderivatives",
+              "understanding": 0
+            },
+            {
+              "name": "Finding areas with definite integrals",
+              "understanding": 0
+            },
+            {
+              "name": "Indefinite integrals and techniques of integration",
+              "understanding": 0
+            },
+            {
+              "name": "Integration by substitution and partial fractions",
+              "understanding": 0
+            },
+            {
+              "name": "Integration by parts",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Approximate area bounded by a curve, the axes and given ordinates",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Higher Mathematics Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Real Numbers and Inequalities",
+          "lessons": [
+            {
+              "name": "Subsets of real numbers",
+              "understanding": 60
+            },
+            {
+              "name": "Axiomatic description of real numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Axioms related to inequalities with applications",
+              "understanding": 50
+            },
+            {
+              "name": "Absolute value with properties, proof and applications",
+              "understanding": 80
+            },
+            {
+              "name": "Linear inequalities in one variable",
+              "understanding": 70
+            },
+            {
+              "name": "Solutions of linear inequalities in one variable",
+              "understanding": 70
+            },
+            {
+              "name": "Inequalities involving absolute values",
+              "understanding": 40
+            },
+            {
+              "name": "Solving inequalities with the number line",
+              "understanding": 50
+            },
+            {
+              "name": "Linear inequalities in two variables",
+              "understanding": 0
+            },
+            {
+              "name": "Graphical solutions of two-variable inequalities",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Linear Programming",
+          "lessons": [
+            {
+              "name": "Linear programming explained",
+              "understanding": 0
+            },
+            {
+              "name": "Formulating linear programs from real-world problems",
+              "understanding": 0
+            },
+            {
+              "name": "Feasible regions and graphical solution concepts",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Solve two-dimensional linear programming problems graphically",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Complex Numbers",
+          "lessons": [
+            {
+              "name": "Complex numbers and geometric representation (Argand diagram)",
+              "understanding": 40
+            },
+            {
+              "name": "Modulus and argument of complex numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Conjugate complex numbers",
+              "understanding": 30
+            },
+            {
+              "name": "Properties of complex numbers with proof",
+              "understanding": 0
+            },
+            {
+              "name": "Geometric interpretation of addition, subtraction and multiplication",
+              "understanding": 0
+            },
+            {
+              "name": "Square roots of complex numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Cube roots of unity and their properties",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine modulus and argument from Argand diagrams of compound numbers",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Polynomials and Polynomial Equations",
+          "lessons": [
+            {
+              "name": "Solving quadratic equations by factorization",
+              "understanding": 80
+            },
+            {
+              "name": "General solution of quadratic equations",
+              "understanding": 70
+            },
+            {
+              "name": "Relation between roots and coefficients of quadratic equations",
+              "understanding": 75
+            },
+            {
+              "name": "Discriminant of quadratic equations",
+              "understanding": 40
+            },
+            {
+              "name": "Nature of roots of quadratic and cubic equations",
+              "understanding": 40
+            },
+            {
+              "name": "Forming quadratic equations from given roots",
+              "understanding": 60
+            },
+            {
+              "name": "Symmetric functions of roots of quadratic and cubic equations",
+              "understanding": 0
+            },
+            {
+              "name": "Polynomial equations and their degree",
+              "understanding": 60
+            },
+            {
+              "name": "Relation between roots and coefficients of cubic equations",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Approximate solutions of equations graphically",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Binomial Expansions",
+          "lessons": [
+            {
+              "name": "Mathematical induction and the induction method",
+              "understanding": 0
+            },
+            {
+              "name": "Binomial theorem for positive integral indices with proof",
+              "understanding": 50
+            },
+            {
+              "name": "Pascal's triangle for binomial coefficients",
+              "understanding": 50
+            },
+            {
+              "name": "General term of binomial expansions",
+              "understanding": 0
+            },
+            {
+              "name": "Middle and equidistant terms of binomial expansions",
+              "understanding": 0
+            },
+            {
+              "name": "Infinite series for fractional and negative indices",
+              "understanding": 0
+            },
+            {
+              "name": "Convergence of infinite binomial expansions with applications",
+              "understanding": 0
+            },
+            {
+              "name": "Binomial expansions via partial fractions",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Conics",
+          "lessons": [
+            {
+              "name": "Conics with focus, eccentricity and directrix",
+              "understanding": 0
+            },
+            {
+              "name": "Identifying circles, parabolas, ellipses and hyperbolas",
+              "understanding": 0
+            },
+            {
+              "name": "Sketching conics and conics as sections of a cone by a plane",
+              "understanding": 0
+            },
+            {
+              "name": "Standard equation of a parabola through the origin",
+              "understanding": 0
+            },
+            {
+              "name": "Equation and graph of the parabola (y-squared equals 4ax form)",
+              "understanding": 0
+            },
+            {
+              "name": "Parabola parameters: vertex, focus, latus rectum, axis and directrix",
+              "understanding": 0
+            },
+            {
+              "name": "Standard equation and graph of the ellipse",
+              "understanding": 0
+            },
+            {
+              "name": "Foci, directrices and their equations for the ellipse",
+              "understanding": 0
+            },
+            {
+              "name": "Lengths of major and minor axes of the ellipse",
+              "understanding": 0
+            },
+            {
+              "name": "Parametric coordinates of the ellipse (a cos theta, b sin theta)",
+              "understanding": 0
+            },
+            {
+              "name": "Eccentricity from the ellipse equation",
+              "understanding": 0
+            },
+            {
+              "name": "Standard equation and graph of the hyperbola",
+              "understanding": 0
+            },
+            {
+              "name": "Asymptotes of the hyperbola",
+              "understanding": 0
+            },
+            {
+              "name": "Transverse and conjugate axes of the hyperbola",
+              "understanding": 0
+            },
+            {
+              "name": "Parametric coordinates of the hyperbola (a sec theta, b tan theta)",
+              "understanding": 0
+            },
+            {
+              "name": "Hyperbola equations from focus-directrix data with eccentricity, foci and axes",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw parabolas",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw ellipses from given foci, axes and eccentricity",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw hyperbolas from given foci, axes and eccentricity",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Inverse Trigonometric Functions and Trigonometric Equations",
+          "lessons": [
+            {
+              "name": "Inverse trigonometric functions and principal values",
+              "understanding": 0
+            },
+            {
+              "name": "Graphs of inverse trigonometric functions",
+              "understanding": 0
+            },
+            {
+              "name": "General solutions of trigonometric equations",
+              "understanding": 0
+            },
+            {
+              "name": "Solutions of trigonometric equations in given intervals",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw graphs of inverse trigonometric functions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw trigonometric functions with their inverses in one graph",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Statics",
+          "lessons": [
+            {
+              "name": "Basic concepts of statics (systems of forces)",
+              "understanding": 0
+            },
+            {
+              "name": "Transmissibility of the point of application of a force",
+              "understanding": 0
+            },
+            {
+              "name": "Action and reaction of forces",
+              "understanding": 0
+            },
+            {
+              "name": "Resultant of two forces with applications",
+              "understanding": 0
+            },
+            {
+              "name": "Components of a force in given directions",
+              "understanding": 0
+            },
+            {
+              "name": "Resultant of coplanar systems of forces",
+              "understanding": 0
+            },
+            {
+              "name": "Equilibrium of force systems acting on a particle",
+              "understanding": 0
+            },
+            {
+              "name": "Triangle law of equilibrium with proof and applications",
+              "understanding": 0
+            },
+            {
+              "name": "Lami's theorem with proof and applications",
+              "understanding": 0
+            },
+            {
+              "name": "Conditions of equilibrium for coplanar force systems",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine resultants of multiple forces graphically",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Motion of Particles in a Plane",
+          "lessons": [
+            {
+              "name": "Displacement, velocity and acceleration",
+              "understanding": 60
+            },
+            {
+              "name": "Resultant of multiple velocities on a particle",
+              "understanding": 0
+            },
+            {
+              "name": "Relative velocity",
+              "understanding": 0
+            },
+            {
+              "name": "Equations of uniformly accelerated rectilinear motion",
+              "understanding": 70
+            },
+            {
+              "name": "Distance covered in a given second and mean velocity",
+              "understanding": 0
+            },
+            {
+              "name": "Motion graphs of moving particles",
+              "understanding": 0
+            },
+            {
+              "name": "Velocity and acceleration determined from motion graphs",
+              "understanding": 0
+            },
+            {
+              "name": "Applying motion equations to vertical motion under gravity",
+              "understanding": 40
+            },
+            {
+              "name": "Projectile motion: maximum height, time to apex, flight time and range",
+              "understanding": 0
+            },
+            {
+              "name": "Trajectory of an inclined projectile is a parabola (proof)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Display trajectories of moving particles graphically",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine velocity and acceleration of particles from graphs",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 10: Measures of Dispersion and Probability",
+          "lessons": [
+            {
+              "name": "Dispersion of data explained",
+              "understanding": 0
+            },
+            {
+              "name": "Measures of dispersion of data",
+              "understanding": 0
+            },
+            {
+              "name": "Mean deviation and standard deviation for grouped and ungrouped data",
+              "understanding": 0
+            },
+            {
+              "name": "Concept of probability",
+              "understanding": 70
+            },
+            {
+              "name": "Basic probability terms (certain, impossible and possible events)",
+              "understanding": 60
+            },
+            {
+              "name": "Possible outcomes of repeated single events",
+              "understanding": 40
+            },
+            {
+              "name": "Probability of repeated single events",
+              "understanding": 40
+            },
+            {
+              "name": "Addition theorem for mutually exclusive and non-exclusive events",
+              "understanding": 0
+            },
+            {
+              "name": "Multiplication theorem for dependent and independent events",
+              "understanding": 0
+            },
+            {
+              "name": "Solving real-life problems with probability concepts and formulas",
+              "understanding": 30
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

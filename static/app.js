@@ -175,28 +175,63 @@ document.getElementById('new-subject').addEventListener('click', async () => {
   }
 });
 
-/* Weak topics filter: show weak panel and highlight matches */
+/* Weak topics filter: one queue. The toolbar threshold highlights weak lessons
+   everywhere and filters the "Today to Land" review queue to the same
+   threshold, then scrolls to it. The legacy weak-panel is kept hidden. */
+function applyWeakHighlight() {
+  const thrEl = document.getElementById('weak-threshold');
+  if (!thrEl) return;
+  const thr = parseInt(thrEl.value, 10);
+  document.querySelectorAll('.lesson-item').forEach(li => {
+    const val = parseInt(li.dataset.understanding || '0', 10);
+    li.classList.toggle('weak-highlight', val < thr);
+  });
+  filterTodayByThreshold(thr);
+}
+
+function filterTodayByThreshold(thr) {
+  document.querySelectorAll('.today-item').forEach(row => {
+    const badge = row.querySelector('.weak-badge');
+    const val = badge ? parseInt(badge.textContent || '0', 10) : 0;
+    row.style.display = val < thr ? '' : 'none';
+  });
+  const list = document.querySelector('.today-list');
+  if (list) {
+    const visible = list.querySelectorAll('.today-item:not([style*="none"])').length;
+    const total = list.querySelectorAll('.today-item').length;
+    let note = document.getElementById('today-filter-note');
+    if (total > 0 && visible < total) {
+      if (!note) {
+        note = document.createElement('p');
+        note.id = 'today-filter-note';
+        note.className = 'muted small today-filter-note';
+        list.prepend(note);
+      }
+      note.textContent = `Showing ${visible} of ${total} queued topics under ${thr}%. Raise the slider to see more.`;
+    } else if (note) {
+      note.remove();
+    }
+  }
+}
+
 document.getElementById('weak-filter').addEventListener('click', () => {
   const thr = parseInt(document.getElementById('weak-threshold').value, 10);
-  logInfo('weak', 'Weak filter triggered', { threshold: thr });
-  renderWeakPanel(thr);
-  document.getElementById('weak-panel').classList.remove('hidden');
+  logInfo('weak', 'Weak filter triggered — highlighting + filtering Today queue', { threshold: thr });
+  applyWeakHighlight();
+  const panel = document.querySelector('.today-panel');
+  if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  showToast(`Highlighting topics under ${thr}% in the review queue`, 'info', 2500);
 });
 
 document.getElementById('weak-threshold').addEventListener('input', (e) => {
   const thr = parseInt(e.target.value, 10);
   const label = document.getElementById('weak-threshold-val');
   if (label) label.textContent = thr + '%';
-  document.querySelectorAll('.lesson-item').forEach(li => {
-    const val = parseInt(li.dataset.understanding || '0', 10);
-    li.classList.toggle('weak-highlight', val < thr);
-  });
-  if (!document.getElementById('weak-panel').classList.contains('hidden')) renderWeakPanel(thr);
+  applyWeakHighlight();
 });
 
-/* JSON import */
-document.getElementById('import-json').addEventListener('change', async (e) => {
-  const f = e.target.files && e.target.files[0];
+/* JSON import — shared by the toolbar picker and the import modal picker. */
+async function importJsonFile(f) {
   if (!f) return;
   logInfo('import', 'JSON file selected', { fileName: f.name, fileSize: f.size });
   try {
@@ -214,16 +249,26 @@ document.getElementById('import-json').addEventListener('change', async (e) => {
       }))
     }));
     const sub = await api('POST', '/api/import', { name: data.subject || 'Imported', sections });
-    subjectsCache.push({ id: sub.id, name: data.subject });
+    subjectsCache.push({ id: sub.id, name: data.subject || 'Imported' });
     renderSidebar();
     await loadApp(sub.id);
-    e.target.value = '';
     logInfo('import', 'JSON import successful', { subject: data.subject, lessons: sub.lessons });
-    showToast('Import successful', 'success');
+    showToast(`Imported "${data.subject || 'Imported'}" (${sub.lessons} lessons)`, 'success');
+    document.getElementById('import-modal').classList.add('hidden');
   } catch (err) {
     logError('import', 'JSON import failed', err.message);
     showToast('Import failed: ' + err.message, 'error');
   }
+}
+
+document.getElementById('import-json').addEventListener('change', async (e) => {
+  await importJsonFile(e.target.files && e.target.files[0]);
+  e.target.value = '';
+});
+
+document.getElementById('import-json-modal').addEventListener('change', async (e) => {
+  await importJsonFile(e.target.files && e.target.files[0]);
+  e.target.value = '';
 });
 
 /* ----- Render ----- */
@@ -249,7 +294,6 @@ function render() {
       <span class="subject-average" style="color:${uColor(d.overall_average)}">
         ${fmtPct(d.overall_average)}
       </span>
-      ${barHTML(d.overall_average)}
       <span class="lesson-count">${d.total_lessons} lesson${d.total_lessons === 1 ? '' : 's'}</span>
       <button class="history-btn" data-subject-history>Chart</button>
     </div>
@@ -258,6 +302,8 @@ function render() {
     </div>
     <div class="subject-actions">
       <button class="btn btn-sm" data-import-btn>＋ Import</button>
+      <button class="btn btn-sm" data-add-section>＋ Section</button>
+      <button class="btn btn-sm" data-rename-subject>Rename</button>
       <button class="btn btn-sm btn-danger" data-delete-subject>Delete subject</button>
     </div>
   `;
@@ -273,6 +319,31 @@ function render() {
     document.getElementById('import-modal').classList.remove('hidden');
   };
 
+  header.querySelector('[data-add-section]').onclick = async () => {
+    const name = ((await showPrompt('New Section', 'Section name')) || '').trim();
+    if (!name) return;
+    try {
+      const maxOrder = Math.max(0, ...((appState.sections || []).map(s => s.sort_order || 0)));
+      await api('POST', '/api/sections', { subject_id: d.id, name, sort_order: maxOrder + 1 });
+      await reloadPreservingScroll();
+      showToast('Section added', 'success');
+    } catch (err) {
+      showToast('Failed to add section: ' + err.message, 'error');
+    }
+  };
+
+  header.querySelector('[data-rename-subject]').onclick = async () => {
+    const name = ((await showPrompt('Rename Subject', 'Subject name', d.name)) || '').trim();
+    if (!name || name === d.name) return;
+    try {
+      await api('PUT', `/api/subjects/${d.id}`, { name });
+      await loadApp(d.id);
+      showToast('Subject renamed', 'success');
+    } catch (err) {
+      showToast('Rename failed: ' + err.message, 'error');
+    }
+  };
+
   header.querySelector('[data-delete-subject]').onclick = async () => {
     if (!confirm(`Delete subject "${d.name}" and all its data?`)) return;
     logInfo('render', 'Deleting subject', { subjectId: d.id, name: d.name });
@@ -283,22 +354,23 @@ function render() {
     else { appState = null; document.getElementById('subject-content').innerHTML = '<p class="empty-state">No subjects yet. Create one from the sidebar.</p>'; }
   };
 
-  // Today to Land panel (review queue driven by sessions evidence)
+  // Today to Land panel — the single review queue (weak + stale first).
+  // The toolbar "Show weak topics" slider filters this same list.
   const todayEl = ce('div', 'today-panel');
   todayEl.innerHTML = `
     <div class="today-header">
       <h3>Today to Land</h3>
-      <span class="muted small">weak + stale first, from study evidence</span>
+      <span class="muted small">weak + stale first · filtered by the slider above</span>
     </div>
     <div class="today-list"><p class="muted small">Loading queue…</p></div>
   `;
   // insert after header, before sections
   app.appendChild(todayEl);
-  loadReviewQueue(d.id, todayEl);
+  loadReviewQueue(d.id, todayEl).then(() => applyWeakHighlight());
 
   if (!d.sections || d.sections.length === 0) {
     const empty = ce('p', 'empty-state');
-    empty.textContent = 'No sections yet — import markdown or add lessons to get started.';
+    empty.textContent = 'No sections yet — use ＋ Section above or import markdown to get started.';
     app.appendChild(empty);
   } else {
     d.sections.forEach(s => {
@@ -323,6 +395,11 @@ function renderSection(s) {
     <span class="lesson-count">${s.lesson_count}</span>
     <span class="average" style="color:${uColor(avg)}">${fmtPct(avg)}</span>
     <button class="history-btn" data-section-history="${s.id}" aria-label="Show chart for ${esc(s.name)}">Chart</button>
+    <span class="row-actions">
+      <button class="mini-btn" data-add-chapter="${s.id}" title="Add chapter to ${esc(s.name)}">＋</button>
+      <button class="mini-btn" data-rename-section="${s.id}" title="Rename section">✎</button>
+      <button class="mini-btn mini-btn-danger" data-delete-section="${s.id}" title="Delete section">×</button>
+    </span>
   `;
   div.appendChild(header);
 
@@ -334,7 +411,7 @@ function renderSection(s) {
   div.appendChild(body);
 
   header.onclick = (e) => {
-    if (e.target.closest('.history-btn')) return;
+    if (e.target.closest('.history-btn') || e.target.closest('.row-actions')) return;
     div.classList.toggle('collapsed');
     const icon = header.querySelector('.toggle-icon');
     const nowCollapsed = div.classList.contains('collapsed');
@@ -345,6 +422,45 @@ function renderSection(s) {
   header.querySelector('[data-section-history]').onclick = () => {
     logInfo('render', 'Section history chart clicked', { sectionId: s.id, name: s.name });
     showAggHistory('section', s.id, s.name);
+  };
+
+  header.querySelector('[data-add-chapter]').onclick = async (e) => {
+    e.stopPropagation();
+    const name = ((await showPrompt('New Chapter', 'Chapter name')) || '').trim();
+    if (!name) return;
+    try {
+      const maxOrder = Math.max(0, ...((s.chapters || []).map(c => c.sort_order || 0)));
+      await api('POST', '/api/chapters', { section_id: s.id, name, sort_order: maxOrder + 1 });
+      await reloadPreservingScroll();
+      showToast('Chapter added', 'success');
+    } catch (err) {
+      showToast('Failed to add chapter: ' + err.message, 'error');
+    }
+  };
+
+  header.querySelector('[data-rename-section]').onclick = async (e) => {
+    e.stopPropagation();
+    const name = ((await showPrompt('Rename Section', 'Section name', s.name)) || '').trim();
+    if (!name || name === s.name) return;
+    try {
+      await api('PUT', `/api/sections/${s.id}`, { name });
+      await reloadPreservingScroll();
+      showToast('Section renamed', 'success');
+    } catch (err) {
+      showToast('Rename failed: ' + err.message, 'error');
+    }
+  };
+
+  header.querySelector('[data-delete-section]').onclick = async (e) => {
+    e.stopPropagation();
+    if (!confirm(`Delete section "${s.name}" and all its chapters and lessons?`)) return;
+    try {
+      await api('DELETE', `/api/sections/${s.id}`);
+      await reloadPreservingScroll();
+      showToast('Section deleted', 'success');
+    } catch (err) {
+      showToast('Delete failed: ' + err.message, 'error');
+    }
   };
 
   return div;
@@ -361,6 +477,11 @@ function renderChapter(ch, sectionId) {
     <span class="lesson-count">${ch.lesson_count}</span>
     <span class="average" style="color:${uColor(avg)}">${fmtPct(avg)}</span>
     <button class="history-btn" data-chapter-history="${ch.id}" aria-label="Show chart for ${esc(ch.name)}">Chart</button>
+    <span class="row-actions">
+      <button class="mini-btn" data-add-lesson="${ch.id}" title="Add lesson to ${esc(ch.name)}">＋</button>
+      <button class="mini-btn" data-rename-chapter="${ch.id}" title="Rename chapter">✎</button>
+      <button class="mini-btn mini-btn-danger" data-delete-chapter="${ch.id}" title="Delete chapter">×</button>
+    </span>
   `;
   div.appendChild(header);
 
@@ -374,7 +495,7 @@ function renderChapter(ch, sectionId) {
   div.appendChild(body);
 
   header.onclick = (e) => {
-    if (e.target.closest('.history-btn')) return;
+    if (e.target.closest('.history-btn') || e.target.closest('.row-actions')) return;
     div.classList.toggle('collapsed');
     const icon = header.querySelector('.toggle-icon');
     const nowCollapsed = div.classList.contains('collapsed');
@@ -387,6 +508,45 @@ function renderChapter(ch, sectionId) {
     showAggHistory('chapter', ch.id, ch.name);
   };
 
+  header.querySelector('[data-add-lesson]').onclick = async (e) => {
+    e.stopPropagation();
+    const name = ((await showPrompt('New Lesson', 'Lesson name')) || '').trim();
+    if (!name) return;
+    try {
+      const maxOrder = Math.max(0, ...((ch.lessons || []).map(l => l.sort_order || 0)));
+      await api('POST', '/api/lessons', { chapter_id: ch.id, name, understanding: 0, sort_order: maxOrder + 1 });
+      await reloadPreservingScroll();
+      showToast('Lesson added', 'success');
+    } catch (err) {
+      showToast('Failed to add lesson: ' + err.message, 'error');
+    }
+  };
+
+  header.querySelector('[data-rename-chapter]').onclick = async (e) => {
+    e.stopPropagation();
+    const name = ((await showPrompt('Rename Chapter', 'Chapter name', ch.name)) || '').trim();
+    if (!name || name === ch.name) return;
+    try {
+      await api('PUT', `/api/chapters/${ch.id}`, { name });
+      await reloadPreservingScroll();
+      showToast('Chapter renamed', 'success');
+    } catch (err) {
+      showToast('Rename failed: ' + err.message, 'error');
+    }
+  };
+
+  header.querySelector('[data-delete-chapter]').onclick = async (e) => {
+    e.stopPropagation();
+    if (!confirm(`Delete chapter "${ch.name}" and all its lessons?`)) return;
+    try {
+      await api('DELETE', `/api/chapters/${ch.id}`);
+      await reloadPreservingScroll();
+      showToast('Chapter deleted', 'success');
+    } catch (err) {
+      showToast('Delete failed: ' + err.message, 'error');
+    }
+  };
+
   return div;
 }
 
@@ -395,12 +555,16 @@ function renderLesson(l, chapterId) {
   li.dataset.lessonId = l.id;
   li.dataset.understanding = l.understanding;
   li.innerHTML = `
-    <span class="lesson-name" title="${esc(l.name)}">${esc(l.name)}</span>
+    <span class="lesson-name" title="${esc(l.name)} — click ✎ to rename">${esc(l.name)}</span>
     ${barHTML(l.understanding)}
     <span class="understanding-display" style="color:${uColor(l.understanding)}"
-          data-lesson-id="${l.id}" title="Click to edit" role="button" tabindex="0">${fmtPctShort(l.understanding)}</span>
+          data-lesson-id="${l.id}" title="Click to edit understanding" role="button" tabindex="0">${fmtPctShort(l.understanding)}</span>
     <button class="history-btn" data-lesson-history="${l.id}" aria-label="History for ${esc(l.name)}">Chart</button>
     <button class="history-btn" data-log-session="${l.id}" title="Log study session">+ Log</button>
+    <span class="row-actions">
+      <button class="mini-btn" data-rename-lesson="${l.id}" title="Rename lesson">✎</button>
+      <button class="mini-btn mini-btn-danger" data-delete-lesson="${l.id}" title="Delete lesson">×</button>
+    </span>
   `;
   const display = li.querySelector('.understanding-display');
   const openEdit = (e) => {
@@ -420,7 +584,53 @@ function renderLesson(l, chapterId) {
     e.stopPropagation();
     openSessionModal(l.id, l.name);
   };
+  li.querySelector('[data-rename-lesson]').onclick = async (e) => {
+    e.stopPropagation();
+    const name = ((await showPrompt('Rename Lesson', 'Lesson name', l.name)) || '').trim();
+    if (!name || name === l.name) return;
+    try {
+      await api('PUT', `/api/lessons/${l.id}`, { name });
+      await reloadPreservingScroll();
+      showToast('Lesson renamed', 'success');
+    } catch (err) {
+      showToast('Rename failed: ' + err.message, 'error');
+    }
+  };
+  li.querySelector('[data-delete-lesson]').onclick = async (e) => {
+    e.stopPropagation();
+    if (!confirm(`Delete lesson "${l.name}"? Sessions and history for it are removed too.`)) return;
+    try {
+      await api('DELETE', `/api/lessons/${l.id}`);
+      await reloadPreservingScroll();
+      showToast('Lesson deleted', 'success');
+    } catch (err) {
+      showToast('Delete failed: ' + err.message, 'error');
+    }
+  };
   return li;
+}
+
+/* Reload the current subject while keeping scroll + collapse state. */
+async function reloadPreservingScroll() {
+  const y = window.scrollY;
+  const collapsed = new Set();
+  document.querySelectorAll('.section.collapsed .section-header .section-name').forEach(el => {
+    collapsed.add('s:' + el.textContent);
+  });
+  document.querySelectorAll('.chapter.collapsed .chapter-header .chapter-name').forEach(el => {
+    collapsed.add('c:' + el.textContent);
+  });
+  if (appState) await loadApp(appState.id);
+  document.querySelectorAll('.section').forEach(sec => {
+    const n = sec.querySelector('.section-name');
+    if (n && collapsed.has('s:' + n.textContent)) sec.classList.add('collapsed');
+  });
+  document.querySelectorAll('.chapter').forEach(ch => {
+    const n = ch.querySelector('.chapter-name');
+    if (n && collapsed.has('c:' + n.textContent)) ch.classList.add('collapsed');
+  });
+  applyWeakHighlight();
+  window.scrollTo(0, y);
 }
 
 /* ----- Review queue + sessions ----- */
@@ -871,13 +1081,14 @@ wireModal('session-cancel', () => closeSessionModal());
       await api('PUT', `/api/lessons/${_sessionLessonId}/understanding`, { understanding: pct });
       status.textContent = `Logged ${minutes}m ${mode} + set to ${pct}%. Chart will move.`;
     } else {
-      status.textContent = `Logged ${minutes}m ${mode}.`;
+      status.textContent = `Logged ${minutes}m ${mode}. Note: only changing % moves the chart — set one above to record progress.`;
     }
     status.className = 'import-status success';
     status.classList.remove('hidden');
-    showToast('Session logged', 'success');
+    showToast(pct !== null && !isNaN(pct) ? 'Session logged + progress updated' : 'Session logged (chart unchanged — set a % to move it)', 'success');
+    const sid = appState && appState.id;
     closeSessionModal();
-    if (appState) await loadApp(appState.id);
+    if (sid) await reloadPreservingScroll();
   } catch (err) {
     status.textContent = `Failed: ${err.message}`;
     status.className = 'import-status error';
@@ -1046,9 +1257,9 @@ ensureMobilePanels();
 const mobileWeakBtn = document.getElementById('mobile-weak-btn');
 if (mobileWeakBtn) mobileWeakBtn.addEventListener('click', () => {
   logInfo('mobile', 'Mobile weak topics button clicked');
-  const thr = parseInt(document.getElementById('weak-threshold').value, 10);
-  renderWeakPanel(thr);
-  document.getElementById('weak-panel').classList.remove('hidden');
+  applyWeakHighlight();
+  const panel = document.querySelector('.today-panel');
+  if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   document.body.classList.remove('sidebar-open');
 });
 

@@ -121,3 +121,55 @@ def test_review_queue_orders_weak_first(client):
     q2 = client.get(f"/api/review-queue?subject_id={sub['id']}").json()
     assert q2[0]["id"] == l1["id"]
     assert q2[0]["session_count"] == 1
+
+
+def test_rename_subject_section_chapter_lesson(client):
+    sub, sec, ch, l1, _ = _seed_hierarchy(client)
+
+    r = client.put(f"/api/subjects/{sub['id']}", json={"name": "Renamed Sub"})
+    assert r.status_code == 200
+    assert r.json()["name"] == "Renamed Sub"
+
+    r = client.put(f"/api/sections/{sec['id']}", json={"name": "Renamed Sec"})
+    assert r.status_code == 200
+
+    r = client.put(f"/api/chapters/{ch['id']}", json={"name": "Renamed Ch"})
+    assert r.status_code == 200
+
+    r = client.put(f"/api/lessons/{l1['id']}", json={"name": "Renamed Lesson"})
+    assert r.status_code == 200
+
+    full = client.get(f"/api/subjects/{sub['id']}").json()
+    assert full["name"] == "Renamed Sub"
+    assert full["sections"][0]["name"] == "Renamed Sec"
+    assert full["sections"][0]["chapters"][0]["name"] == "Renamed Ch"
+    assert full["sections"][0]["chapters"][0]["lessons"][0]["name"] == "Renamed Lesson"
+
+
+def test_rename_validation(client):
+    sub, _, _, l1, _ = _seed_hierarchy(client)
+    assert client.put(f"/api/subjects/{sub['id']}", json={"name": ""}).status_code == 422
+    assert client.put("/api/subjects/999999", json={"name": "X"}).status_code == 404
+    assert client.put("/api/sections/999999", json={"name": "X"}).status_code == 404
+    assert client.put("/api/chapters/999999", json={"name": "X"}).status_code == 404
+    assert client.put(f"/api/lessons/{l1['id']}", json={"name": ""}).status_code == 422
+    assert client.put("/api/lessons/999999", json={"name": "X"}).status_code == 404
+
+    client.post("/api/subjects", json={"name": "Other"})
+    assert client.put(f"/api/subjects/{sub['id']}", json={"name": "Other"}).status_code == 409
+
+
+def test_delete_cascade(client):
+    sub, sec, ch, l1, _ = _seed_hierarchy(client)
+    assert client.delete(f"/api/lessons/{l1['id']}").status_code == 204
+    full = client.get(f"/api/subjects/{sub['id']}").json()
+    assert full["total_lessons"] == 1
+
+    assert client.delete(f"/api/chapters/{ch['id']}").status_code == 204
+    full = client.get(f"/api/subjects/{sub['id']}").json()
+    assert full["total_lessons"] == 0
+
+    assert client.delete(f"/api/sections/{sec['id']}").status_code == 204
+    assert client.delete(f"/api/sections/999999").status_code == 404
+    assert client.delete(f"/api/chapters/999999").status_code == 404
+    assert client.delete(f"/api/lessons/999999").status_code == 404

@@ -1,0 +1,877 @@
+{
+  "name": "Chemistry",
+  "sections": [
+    {
+      "name": "Chemistry First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Safe Use of Laboratory",
+          "lessons": [
+            {
+              "name": "Laboratory rules: gown, safety glasses, mask and hand gloves",
+              "understanding": 0
+            },
+            {
+              "name": "Safe handling of glassware according to regulations",
+              "understanding": 0
+            },
+            {
+              "name": "Cleaning techniques for laboratory, equipment and glassware",
+              "understanding": 0
+            },
+            {
+              "name": "Using Paul-Bunge and digital balances (2- and 4-digit), cylinder, burette, volumetric flask and pipette",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Handling conical flask, wash bottle, burette and pipette (including titration technique)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Heating safely with spirit lamp or Bunsen burner (test tube, beaker, flasks, porcelain bowl, water bath)",
+              "understanding": 0
+            },
+            {
+              "name": "Reagent bottle use: keeping reagents free of contamination",
+              "understanding": 0
+            },
+            {
+              "name": "Precautions in storing and using chemicals",
+              "understanding": 0
+            },
+            {
+              "name": "Safe storage and disposal of used chemicals",
+              "understanding": 0
+            },
+            {
+              "name": "Impact of laboratory chemicals on the environment and moderate use",
+              "understanding": 0
+            },
+            {
+              "name": "Awareness of moderate chemical use in the laboratory",
+              "understanding": 0
+            },
+            {
+              "name": "Semi-micro and micro analytical methods",
+              "understanding": 0
+            },
+            {
+              "name": "Storing and correct use of laboratory safety equipment",
+              "understanding": 0
+            },
+            {
+              "name": "First aid and first aid box use",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Qualitative Chemistry",
+          "lessons": [
+            {
+              "name": "Rutherford and Bohr atomic models compared",
+              "understanding": 0
+            },
+            {
+              "name": "Quantum numbers, sublevels and electron holding capacity",
+              "understanding": 0
+            },
+            {
+              "name": "Energy order and shapes of quantum sublevels",
+              "understanding": 0
+            },
+            {
+              "name": "Aufbau, Hund's and Pauli exclusion principles (electron configuration)",
+              "understanding": 0
+            },
+            {
+              "name": "Electromagnetic spectrum",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identifying elements using line spectra",
+              "understanding": 0
+            },
+            {
+              "name": "Bohr model and hydrogen atomic spectrum",
+              "understanding": 0
+            },
+            {
+              "name": "Using UV rays to detect fake passports and currency",
+              "understanding": 0
+            },
+            {
+              "name": "Using IR rays in medicine",
+              "understanding": 0
+            },
+            {
+              "name": "Principles of MRI in medical diagnosis",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identifying Na+, K+, Ca2+ and Cu2+ by flame test",
+              "understanding": 0
+            },
+            {
+              "name": "Solubility, solubility principle and solubility product",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Wet test of Cu2+, Al3+, Fe2+, Fe3+, Zn2+, Ca2+, Na+, NH4+, Cl-, SO42- and CO32- ions",
+              "understanding": 0
+            },
+            {
+              "name": "Crystallization method",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Making pure salt crystals from table salt",
+              "understanding": 0
+            },
+            {
+              "name": "Distillation, fractional distillation, steam distillation and sublimation",
+              "understanding": 0
+            },
+            {
+              "name": "Solvent extraction for separating compounds from mixtures",
+              "understanding": 0
+            },
+            {
+              "name": "Basic concepts of chromatography",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Separating compounds from mixtures by chromatography (chalk/filter paper)",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of qualitative analysis in practice",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Periodic Properties and Chemical Bonding",
+          "lessons": [
+            {
+              "name": "Classification of elements by electronic configuration (s, p, d and f blocks)",
+              "understanding": 0
+            },
+            {
+              "name": "General properties of different classes of elements",
+              "understanding": 0
+            },
+            {
+              "name": "Periodic properties: melting/boiling points, atomic size and valency",
+              "understanding": 0
+            },
+            {
+              "name": "Periodic properties: ionization energy, electron affinity, electronegativity and metallic character",
+              "understanding": 0
+            },
+            {
+              "name": "How atomic size, subshell and configuration affect ionization energy, electron affinity, electronegativity",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of element oxides (acid-base nature)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining acid-base nature of soluble oxides of elements",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Relating periodic properties of elements to chemical bonding",
+              "understanding": 0
+            },
+            {
+              "name": "Overlapping of orbitals and classification of covalent bonds",
+              "understanding": 0
+            },
+            {
+              "name": "Hybridization concept and types of hybrid orbitals",
+              "understanding": 0
+            },
+            {
+              "name": "Relationship between hybrid orbitals and shapes of covalent compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Effect of lone-pair electrons on molecular shape and bond angles",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Building molecular models of compounds with simple materials",
+              "understanding": 0
+            },
+            {
+              "name": "Coordinate covalent bond formation",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Comparing coordinate covalent and covalent bonds",
+              "understanding": 0
+            },
+            {
+              "name": "Polarity and polarization",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Proving the dipole in water by experiment",
+              "understanding": 0
+            },
+            {
+              "name": "Van der Waals forces",
+              "understanding": 0
+            },
+            {
+              "name": "Hydrogen bonding",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Comparing bonding in H2O and H2S (why H2O is liquid but H2S is gas)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Importance of hydrogen bonding for the living world",
+              "understanding": 0
+            },
+            {
+              "name": "Nomenclature of inorganic compounds",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Chemical Changes",
+          "lessons": [
+            {
+              "name": "Chemical reactions and green chemistry",
+              "understanding": 0
+            },
+            {
+              "name": "Direction of reaction: irreversible and reversible reactions",
+              "understanding": 0
+            },
+            {
+              "name": "Rate of reaction; effects of temperature, pressure and concentration",
+              "understanding": 0
+            },
+            {
+              "name": "Catalysts, their classification and effect on reaction rate",
+              "understanding": 0
+            },
+            {
+              "name": "Chemical equilibrium; dynamic nature of equilibrium",
+              "understanding": 0
+            },
+            {
+              "name": "Le Chatelier's principle; effects of temperature, pressure and concentration on equilibrium",
+              "understanding": 0
+            },
+            {
+              "name": "Applying Le Chatelier's principle in industrial production",
+              "understanding": 0
+            },
+            {
+              "name": "Law of mass action",
+              "understanding": 0
+            },
+            {
+              "name": "Equilibrium constants Kc and Kp: derivation, relationship and significance",
+              "understanding": 0
+            },
+            {
+              "name": "Ionic product of water (Kw), acid dissociation constant (Ka) and base dissociation constant (Kb)",
+              "understanding": 0
+            },
+            {
+              "name": "Dissociation constants and strength of acids and bases",
+              "understanding": 0
+            },
+            {
+              "name": "pH and pH scale",
+              "understanding": 0
+            },
+            {
+              "name": "Buffer solutions: preparation and mechanism of buffer action",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Preparing carbonate buffer solution and demonstrating its effectiveness",
+              "understanding": 0
+            },
+            {
+              "name": "pH of human blood",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of pH in agriculture, chemical industry, toiletries and medicine",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Selecting suitable cosmetics by measuring pH",
+              "understanding": 0
+            },
+            {
+              "name": "Law of conservation of mass and energy; heats of reaction, state change, atomization, solution and neutralization",
+              "understanding": 0
+            },
+            {
+              "name": "Heat of neutralization of strong acid and strong base",
+              "understanding": 0
+            },
+            {
+              "name": "Bond energy and heat of reaction",
+              "understanding": 0
+            },
+            {
+              "name": "Lavoisier-Laplace law and Hess's law; determining heat of reaction",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining heat of solution of oxalic acid by calorimetry",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Economic Chemistry (Food and Everyday Products)",
+          "lessons": [
+            {
+              "name": "Food safety and chemistry",
+              "understanding": 0
+            },
+            {
+              "name": "Food preservation mechanism of approved preservatives",
+              "understanding": 0
+            },
+            {
+              "name": "Principles of canning (local fruits, vegetables, fish, meat)",
+              "understanding": 0
+            },
+            {
+              "name": "Canning process",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Canning food items",
+              "understanding": 0
+            },
+            {
+              "name": "Suspension and coagulation",
+              "understanding": 0
+            },
+            {
+              "name": "Percentage composition of milk",
+              "understanding": 0
+            },
+            {
+              "name": "Separating butter from milk",
+              "understanding": 0
+            },
+            {
+              "name": "Dehydrating butter (making it water-free)",
+              "understanding": 0
+            },
+            {
+              "name": "Producing ghee from butter",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Producing ghee from butter",
+              "understanding": 0
+            },
+            {
+              "name": "Making toiletries and perfumes (rose water, hair oil, talcum powder, snow, cold cream, lipstick, aftershave, henna)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Producing any two toiletries",
+              "understanding": 0
+            },
+            {
+              "name": "Preparing glass cleaner",
+              "understanding": 0
+            },
+            {
+              "name": "Preparing toilet cleaner",
+              "understanding": 0
+            },
+            {
+              "name": "Cleaning mechanism of glass and toilet cleaners",
+              "understanding": 0
+            },
+            {
+              "name": "Why ammonia is used in glass cleaner but caustic soda in toilet cleaner",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Preparing vinegar from ethanoic acid",
+              "understanding": 0
+            },
+            {
+              "name": "Project: Preparing malt vinegar from sugarcane or date juice",
+              "understanding": 0
+            },
+            {
+              "name": "Food preservation mechanism of vinegar",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of vinegar in food preservation",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chemistry Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Environmental Chemistry",
+          "lessons": [
+            {
+              "name": "Components of the atmosphere",
+              "understanding": 0
+            },
+            {
+              "name": "Effects of air temperature, pressure, density and water vapor changes on cyclones and tidal surges",
+              "understanding": 0
+            },
+            {
+              "name": "Gas laws: Boyle's, Charles's, Avogadro's, Gay-Lussac's, Dalton's partial pressure and Graham's diffusion",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Experiments on Boyle's and Charles's laws",
+              "understanding": 0
+            },
+            {
+              "name": "Postulates of kinetic theory of gases",
+              "understanding": 0
+            },
+            {
+              "name": "Calculating kinetic energy from the kinetic theory equation",
+              "understanding": 0
+            },
+            {
+              "name": "Ideal gas and real gas",
+              "understanding": 0
+            },
+            {
+              "name": "Conditions for real gases to behave ideally",
+              "understanding": 0
+            },
+            {
+              "name": "Applying gas laws in gas cylinder packaging",
+              "understanding": 0
+            },
+            {
+              "name": "Atmospheric reactions during lightning and nitrogen fixation in soil",
+              "understanding": 0
+            },
+            {
+              "name": "Industrial gaseous waste and air pollution",
+              "understanding": 0
+            },
+            {
+              "name": "Sources of greenhouse gases and the greenhouse effect",
+              "understanding": 0
+            },
+            {
+              "name": "CFC use and ozone layer depletion",
+              "understanding": 0
+            },
+            {
+              "name": "Causes and remedies of acid rain",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Analyzing acid-rain probability in a specific area",
+              "understanding": 0
+            },
+            {
+              "name": "Arrhenius theory of acids and bases",
+              "understanding": 0
+            },
+            {
+              "name": "Bronsted-Lowry theory and conjugate acid-base pairs",
+              "understanding": 0
+            },
+            {
+              "name": "Lewis theory of acids and bases",
+              "understanding": 0
+            },
+            {
+              "name": "Sources and importance of freshwater",
+              "understanding": 0
+            },
+            {
+              "name": "Surface-water purity criteria (hardness, pH, DO, BOD, COD, TDS)",
+              "understanding": 0
+            },
+            {
+              "name": "Industrial waste and water pollution",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Investigating water pollution in an area and suggesting remedies",
+              "understanding": 0
+            },
+            {
+              "name": "Natural water pollution: arsenic pollution and its effects",
+              "understanding": 0
+            },
+            {
+              "name": "Heavy metals (As, Cr, Pb, Cd) entering the food chain: causes and effects",
+              "understanding": 0
+            },
+            {
+              "name": "How dissolved pollutants persist in air and water (solution types and mechanisms)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Organic Chemistry",
+          "lessons": [
+            {
+              "name": "Classification of organic compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Homologous series",
+              "understanding": 0
+            },
+            {
+              "name": "Functional groups",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identifying organic compound classes by functional groups",
+              "understanding": 0
+            },
+            {
+              "name": "Nomenclature of organic compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Isomerism of organic compounds and its types",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Finding structural isomers from the molecular formula of a compound",
+              "understanding": 0
+            },
+            {
+              "name": "Aromatic hydrocarbons and aromaticity",
+              "understanding": 0
+            },
+            {
+              "name": "Difference between aliphatic and aromatic compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Addition, substitution, elimination and rearrangement reactions; polysubstitution of benzene and orientation",
+              "understanding": 0
+            },
+            {
+              "name": "Preparation and reactions of hydrocarbons, halides, alcohols, ethers, aldehydes, ketones, acids, esters, amines, amides",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Tests for functional groups (-OH alcoholic, -X, -CHO, >C=O, -COOH)",
+              "understanding": 0
+            },
+            {
+              "name": "IR spectroscopy for identifying functional groups (-OH, >C=O)",
+              "understanding": 0
+            },
+            {
+              "name": "Preparation and identification reactions of glycerin and phenol",
+              "understanding": 0
+            },
+            {
+              "name": "Preparation and uses of nitroglycerin, TNT, dettol and paracetamol",
+              "understanding": 0
+            },
+            {
+              "name": "Role of melting and boiling points in purity and identification of organic compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining melting and boiling points of organic compounds (below 80C)",
+              "understanding": 0
+            },
+            {
+              "name": "Polymers and plasticity",
+              "understanding": 0
+            },
+            {
+              "name": "Addition and condensation polymerization",
+              "understanding": 0
+            },
+            {
+              "name": "Glycosidic and peptide bonds in polymer molecules",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Importance of organic compounds in daily life",
+              "understanding": 0
+            },
+            {
+              "name": "Role of organic compounds in environment and society",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Advantages and disadvantages of using polythene and formalin",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Quantitative Chemistry",
+          "lessons": [
+            {
+              "name": "Chemical calculations and molar volume of gases",
+              "understanding": 0
+            },
+            {
+              "name": "Determining product gas volume from chemical equations",
+              "understanding": 0
+            },
+            {
+              "name": "Determining mass and volume of gaseous products from reactants",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining product gas volume in a reaction",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Preparing solutions of molar concentration",
+              "understanding": 0
+            },
+            {
+              "name": "Converting molarity to percentage and ppm units",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Diluting solutions to change concentration",
+              "understanding": 0
+            },
+            {
+              "name": "Acid-base neutralization reaction and neutralization point",
+              "understanding": 0
+            },
+            {
+              "name": "Oxidation-reduction (redox) reactions",
+              "understanding": 0
+            },
+            {
+              "name": "Oxidation and reduction half-reactions",
+              "understanding": 0
+            },
+            {
+              "name": "Indicators and their role in endpoint detection",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Finding neutralization point using a colored plant indicator",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining acid or base in an unknown solution by titration",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining metal ions in solution by redox titration",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining FeSO4 with 0.01M KMnO4 solution",
+              "understanding": 0
+            },
+            {
+              "name": "Using Beer-Lambert law to determine solution concentration",
+              "understanding": 0
+            },
+            {
+              "name": "Principles of quantitative analysis: atomic absorption, UV-Visible spectroscopy, HPLC and GC",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Electrochemistry",
+          "lessons": [
+            {
+              "name": "Electrical conductors and their types",
+              "understanding": 0
+            },
+            {
+              "name": "Conductivity of electrolytes",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Testing conductivity differences of solutions",
+              "understanding": 0
+            },
+            {
+              "name": "Measuring electrolytic substance using Faraday's first law",
+              "understanding": 0
+            },
+            {
+              "name": "Activity series of metals",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Comparative activity test of metals",
+              "understanding": 0
+            },
+            {
+              "name": "Oxidation and reduction half-reactions",
+              "understanding": 0
+            },
+            {
+              "name": "Electrode potential",
+              "understanding": 0
+            },
+            {
+              "name": "Electrode potential and the activity series of metals",
+              "understanding": 0
+            },
+            {
+              "name": "Redox reactions, cell potential and standard cell potential",
+              "understanding": 0
+            },
+            {
+              "name": "Nernst equation for electrode and cell potentials",
+              "understanding": 0
+            },
+            {
+              "name": "Electrodes and their types",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Making a metal-metal ion electrode",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Building a cell to convert chemical energy to electrical energy",
+              "understanding": 0
+            },
+            {
+              "name": "Single and double-compartment cells (electrolytic and galvanic)",
+              "understanding": 0
+            },
+            {
+              "name": "Rechargeable batteries (lead storage and lithium): structure, working and recharging",
+              "understanding": 0
+            },
+            {
+              "name": "Advantages and disadvantages of lead storage vs lithium batteries",
+              "understanding": 0
+            },
+            {
+              "name": "Fuel cells and their types",
+              "understanding": 0
+            },
+            {
+              "name": "Anode, cathode and fuel of fuel cells",
+              "understanding": 0
+            },
+            {
+              "name": "Structure and reactions of the hydrogen fuel cell",
+              "understanding": 0
+            },
+            {
+              "name": "Advantages of hydrogen fuel cells",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determining pH of a solution using a pH meter",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Economic Chemistry (Industry, Environment and Nanotech)",
+          "lessons": [
+            {
+              "name": "Natural gas fields of Bangladesh: components and uses",
+              "understanding": 0
+            },
+            {
+              "name": "Coal fields of Bangladesh: quality and uses",
+              "understanding": 0
+            },
+            {
+              "name": "Industrialization potential in Bangladesh from fuel resources",
+              "understanding": 0
+            },
+            {
+              "name": "Notable chemical industries of Bangladesh",
+              "understanding": 0
+            },
+            {
+              "name": "Production principles of urea, glass, ceramics, pulp-paper and cement",
+              "understanding": 0
+            },
+            {
+              "name": "Principles of leather tanning",
+              "understanding": 0
+            },
+            {
+              "name": "Pollutants from cement, urea, leather, textile and dyeing industries",
+              "understanding": 0
+            },
+            {
+              "name": "Air pollution control strategies (catalytic conversion, scrubbing, fine filtration)",
+              "understanding": 0
+            },
+            {
+              "name": "ETP working principles (electrolysis, catalysis and biotechnology)",
+              "understanding": 0
+            },
+            {
+              "name": "Recycling processes for iron, aluminum, copper, glass, paper and plastic",
+              "understanding": 0
+            },
+            {
+              "name": "Social and environmental importance of recycling",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Observing brick-kiln air pollution and reporting",
+              "understanding": 0
+            },
+            {
+              "name": "Advantages and disadvantages of coal-based power plants",
+              "understanding": 0
+            },
+            {
+              "name": "Basic concepts of nanoparticles and nanotechnology",
+              "understanding": 0
+            },
+            {
+              "name": "Comparing atoms, molecules and nanoparticles",
+              "understanding": 0
+            },
+            {
+              "name": "Comparing bulk matter with nanoparticle properties",
+              "understanding": 0
+            },
+            {
+              "name": "Potential uses of nanoparticles in industry",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

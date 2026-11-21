@@ -1,0 +1,410 @@
+{
+  "name": "English",
+  "sections": [
+    {
+      "name": "English First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Reading Themes",
+          "lessons": [
+            {
+              "name": "Adolescence",
+              "understanding": 0
+            },
+            {
+              "name": "Travels and Tourism",
+              "understanding": 0
+            },
+            {
+              "name": "Human Achievements in Science and Technology",
+              "understanding": 0
+            },
+            {
+              "name": "Myths and Literature",
+              "understanding": 0
+            },
+            {
+              "name": "Traffic Education",
+              "understanding": 0
+            },
+            {
+              "name": "Human Rights",
+              "understanding": 0
+            },
+            {
+              "name": "Peace and Conflict",
+              "understanding": 0
+            },
+            {
+              "name": "People or Institutions That Made History",
+              "understanding": 0
+            },
+            {
+              "name": "Jobs and Careers",
+              "understanding": 0
+            },
+            {
+              "name": "Diaspora",
+              "understanding": 0
+            },
+            {
+              "name": "Manners and Etiquettes",
+              "understanding": 0
+            },
+            {
+              "name": "Human Relationships",
+              "understanding": 0
+            },
+            {
+              "name": "Environment",
+              "understanding": 0
+            },
+            {
+              "name": "Cultures Around",
+              "understanding": 0
+            },
+            {
+              "name": "Dreams",
+              "understanding": 0
+            },
+            {
+              "name": "Music and Painting",
+              "understanding": 0
+            },
+            {
+              "name": "Future Challenges",
+              "understanding": 0
+            },
+            {
+              "name": "Path to Higher Education",
+              "understanding": 0
+            },
+            {
+              "name": "Global English",
+              "understanding": 0
+            },
+            {
+              "name": "Natural Disasters",
+              "understanding": 0
+            },
+            {
+              "name": "Adulteration of Food",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Listening (10 marks)",
+          "lessons": [
+            {
+              "name": "MCQ listening items",
+              "understanding": 0
+            },
+            {
+              "name": "Gap filling on listening",
+              "understanding": 0
+            },
+            {
+              "name": "Matching on listening",
+              "understanding": 0
+            },
+            {
+              "name": "Listening for specific information (radio, TV, announcements)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Speaking (10 marks)",
+          "lessons": [
+            {
+              "name": "Describing and narrating topics (5-10 coherent sentences)",
+              "understanding": 0
+            },
+            {
+              "name": "Answering questions on everyday topics (5x1) - family, school, home city/village, books, games/sports, movie/TV, recent events",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Reading Skills (40 marks)",
+          "lessons": [
+            {
+              "name": "MCQ guessing meaning from context (05)",
+              "understanding": 0
+            },
+            {
+              "name": "Comprehension questions - analysis, synthesis, evaluation (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Cloze test with clues (05)",
+              "understanding": 0
+            },
+            {
+              "name": "Cloze test without clues (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Flow chart completion (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Rearranging sentences (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Summarizing text materials (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Supplementary reading - answering questions",
+              "understanding": 0
+            },
+            {
+              "name": "Supplementary reading - summarizing",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Writing Skills (40 marks)",
+          "lessons": [
+            {
+              "name": "Writing paragraph answering questions (07)",
+              "understanding": 0
+            },
+            {
+              "name": "Completing a story (07)",
+              "understanding": 0
+            },
+            {
+              "name": "Writing informal letters and emails (08)",
+              "understanding": 0
+            },
+            {
+              "name": "Analysing maps, graphs and charts (10)",
+              "understanding": 0
+            },
+            {
+              "name": "Appreciating short stories and poems - genre, theme, content (08)",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "English Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Grammar - The Sentence",
+          "lessons": [
+            {
+              "name": "Types of sentences (affirmative, negative, interrogative, imperative, exclamatory, simple, complex, compound)",
+              "understanding": 0
+            },
+            {
+              "name": "Components (subject, appositive, object, complements)",
+              "understanding": 0
+            },
+            {
+              "name": "Modifiers (pre-modifiers, post-modifiers)",
+              "understanding": 0
+            },
+            {
+              "name": "Questions with Wh words and action verbs; statement questions",
+              "understanding": 0
+            },
+            {
+              "name": "Tag questions",
+              "understanding": 0
+            },
+            {
+              "name": "Conditional sentences",
+              "understanding": 0
+            },
+            {
+              "name": "Use of introductory there and it",
+              "understanding": 0
+            },
+            {
+              "name": "Sentence connectors",
+              "understanding": 0
+            },
+            {
+              "name": "Punctuation",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Grammar - Word Formation, Phrase and Clause",
+          "lessons": [
+            {
+              "name": "Word formation: root/base, prefixes, suffixes, synonyms, antonyms, compounds",
+              "understanding": 0
+            },
+            {
+              "name": "Phrases: noun, prepositional, verb, adjective, adverbial, infinitive",
+              "understanding": 0
+            },
+            {
+              "name": "Clauses: main, subordinate, coordinate, noun, adjective, adverbial",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Grammar - Parts of Speech Basics",
+          "lessons": [
+            {
+              "name": "Use of nouns: countable, uncountable, abstract, common",
+              "understanding": 0
+            },
+            {
+              "name": "Use of pronouns",
+              "understanding": 0
+            },
+            {
+              "name": "Use of prepositions",
+              "understanding": 0
+            },
+            {
+              "name": "Subject-verb agreements",
+              "understanding": 0
+            },
+            {
+              "name": "Comparison of adjectives and adverbs",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Grammar - Verbs and Sentence Patterns",
+          "lessons": [
+            {
+              "name": "Study of verbs: regular/irregular, be verbs, finite/non-finite, transitive/intransitive, infinitives/gerund/participles, modals",
+              "understanding": 0
+            },
+            {
+              "name": "Use of tenses",
+              "understanding": 0
+            },
+            {
+              "name": "Voice",
+              "understanding": 0
+            },
+            {
+              "name": "Adverbs and adverbials",
+              "understanding": 0
+            },
+            {
+              "name": "Direct and indirect narration",
+              "understanding": 0
+            },
+            {
+              "name": "Special uses: was born, have to/has to, would rather, had better, let alone, what if, as if, as soon as, whats-like, what does-look like",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Grammar Test Items",
+          "lessons": [
+            {
+              "name": "Gap filling without clues (articles)",
+              "understanding": 0
+            },
+            {
+              "name": "Gap filling without clues (prepositions)",
+              "understanding": 0
+            },
+            {
+              "name": "Gap filling with clues (special uses)",
+              "understanding": 0
+            },
+            {
+              "name": "Completing sentences (conditionals, phrase, clause)",
+              "understanding": 0
+            },
+            {
+              "name": "Use of verbs (right forms and subject-verb agreement)",
+              "understanding": 0
+            },
+            {
+              "name": "Changing sentences (voice, sentence types, degrees)",
+              "understanding": 0
+            },
+            {
+              "name": "Narrative style (direct to indirect and vice versa)",
+              "understanding": 0
+            },
+            {
+              "name": "Completing contextual sentences (dialogue/interview/narration)",
+              "understanding": 0
+            },
+            {
+              "name": "Use of modifiers",
+              "understanding": 0
+            },
+            {
+              "name": "Use of sentence connectors",
+              "understanding": 0
+            },
+            {
+              "name": "Use of synonyms and antonyms",
+              "understanding": 0
+            },
+            {
+              "name": "Punctuation",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Composition",
+          "lessons": [
+            {
+              "name": "Mechanics of writing: topic selection, brainstorming, outlining, topic sentence, developing ideas, cohesion, coherence, conclusion",
+              "understanding": 0
+            },
+            {
+              "name": "Paragraph types: listing, narration, comparison and contrast, cause and effect",
+              "understanding": 0
+            },
+            {
+              "name": "Descriptive, narrative, persuasive/argumentative, imaginative and creative writing",
+              "understanding": 0
+            },
+            {
+              "name": "Formal and informal letters, CVs, cover letters, emails, online forms, social network posts",
+              "understanding": 0
+            },
+            {
+              "name": "Completing stories",
+              "understanding": 0
+            },
+            {
+              "name": "Writing from graphs and charts (descriptive, analysing, analytic)",
+              "understanding": 0
+            },
+            {
+              "name": "Writing newspaper reports",
+              "understanding": 0
+            },
+            {
+              "name": "Writing investigation reports: problem identification, planning, proposal, survey questionnaire, data analysis",
+              "understanding": 0
+            },
+            {
+              "name": "Academic writing: taking notes, analysing graphs and charts, summary writing, referencing and bibliography",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

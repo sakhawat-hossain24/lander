@@ -1,0 +1,904 @@
+{
+  "name": "Statistics",
+  "sections": [
+    {
+      "name": "Statistics First Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Statistics, Variables and Concepts of Symbols",
+          "lessons": [
+            {
+              "name": "Concept and definition of Statistics",
+              "understanding": 0
+            },
+            {
+              "name": "Origin and history of Statistics",
+              "understanding": 0
+            },
+            {
+              "name": "Importance, uses and functions of Statistics",
+              "understanding": 0
+            },
+            {
+              "name": "Population and sample",
+              "understanding": 0
+            },
+            {
+              "name": "Variable and constant",
+              "understanding": 0
+            },
+            {
+              "name": "Qualitative vs quantitative variables",
+              "understanding": 0
+            },
+            {
+              "name": "Discrete vs continuous variables",
+              "understanding": 0
+            },
+            {
+              "name": "Scales of measurement: nominal, ordinal, interval and ratio",
+              "understanding": 0
+            },
+            {
+              "name": "Identifying scale of measurement for different variables",
+              "understanding": 0
+            },
+            {
+              "name": "Mathematical symbols: Sigma, double Sigma, Pi (concept, use and real examples)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Data Collection, Condensation and Presentation",
+          "lessons": [
+            {
+              "name": "Data: concept, need for collection, types",
+              "understanding": 0
+            },
+            {
+              "name": "Primary data collection methods",
+              "understanding": 0
+            },
+            {
+              "name": "Advantages and disadvantages of primary data collection methods",
+              "understanding": 0
+            },
+            {
+              "name": "Sources of secondary data",
+              "understanding": 0
+            },
+            {
+              "name": "Limitations of secondary data",
+              "understanding": 0
+            },
+            {
+              "name": "Precautions in collecting secondary data",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of secondary data",
+              "understanding": 0
+            },
+            {
+              "name": "Organization and Presentation of Data: need and concept",
+              "understanding": 0
+            },
+            {
+              "name": "Classification of data: objectives and need",
+              "understanding": 0
+            },
+            {
+              "name": "Tabulation: principles of table construction",
+              "understanding": 0
+            },
+            {
+              "name": "Frequency, frequency distribution and its importance",
+              "understanding": 0
+            },
+            {
+              "name": "Preparing frequency distribution (inclusive vs exclusive methods)",
+              "understanding": 0
+            },
+            {
+              "name": "True class limits",
+              "understanding": 0
+            },
+            {
+              "name": "Unequal and open-ended class intervals",
+              "understanding": 0
+            },
+            {
+              "name": "Presenting condensed data using condensation methods",
+              "understanding": 0
+            },
+            {
+              "name": "Presenting qualitative (categorical) data with diagrams",
+              "understanding": 0
+            },
+            {
+              "name": "Bar diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Pie chart",
+              "understanding": 0
+            },
+            {
+              "name": "Presenting quantitative data with graphs",
+              "understanding": 0
+            },
+            {
+              "name": "Histogram and frequency polygon",
+              "understanding": 0
+            },
+            {
+              "name": "Frequency curve and ogive (cumulative frequency curve)",
+              "understanding": 0
+            },
+            {
+              "name": "Stem and leaf display",
+              "understanding": 0
+            },
+            {
+              "name": "Importance of diagrams and graphs in data presentation",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Construct frequency distribution from raw (ungrouped) data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw histogram, frequency polygon, frequency curve and ogive from frequency distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Present data with stem and leaf display",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Central Tendency",
+          "lessons": [
+            {
+              "name": "Central tendency and its measures",
+              "understanding": 0
+            },
+            {
+              "name": "Different measures of central tendency",
+              "understanding": 0
+            },
+            {
+              "name": "Arithmetic mean (ungrouped and grouped data)",
+              "understanding": 0
+            },
+            {
+              "name": "Geometric mean",
+              "understanding": 0
+            },
+            {
+              "name": "Harmonic mean",
+              "understanding": 0
+            },
+            {
+              "name": "Median and mode",
+              "understanding": 0
+            },
+            {
+              "name": "Weighted and combined arithmetic mean",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of different measures of central tendency",
+              "understanding": 0
+            },
+            {
+              "name": "Requisites of an ideal measure of central tendency",
+              "understanding": 0
+            },
+            {
+              "name": "Comparative analysis of measures of central tendency",
+              "understanding": 0
+            },
+            {
+              "name": "Choosing the appropriate measure for different data types",
+              "understanding": 0
+            },
+            {
+              "name": "Mathematical properties: deviations from AM sum to zero; squared deviations minimum",
+              "understanding": 0
+            },
+            {
+              "name": "Properties: AM depends on origin and scale; pooled and combined mean formulas",
+              "understanding": 0
+            },
+            {
+              "name": "Relationship AM, GM, HM; AM of first n natural numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Quartiles, deciles and percentiles: concept",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute AM, combined AM, GM, HM and mode for ungrouped and grouped data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw histogram and ogive",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine median, quartiles, deciles, percentiles and mode from ogive",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Solve various problems using histogram and ogive",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Measures of Dispersion",
+          "lessons": [
+            {
+              "name": "Dispersion and need for measuring it",
+              "understanding": 0
+            },
+            {
+              "name": "Absolute measures of dispersion: overview",
+              "understanding": 0
+            },
+            {
+              "name": "Range",
+              "understanding": 0
+            },
+            {
+              "name": "Mean deviation",
+              "understanding": 0
+            },
+            {
+              "name": "Variance and standard deviation",
+              "understanding": 0
+            },
+            {
+              "name": "Quartile deviation",
+              "understanding": 0
+            },
+            {
+              "name": "Relative measures of dispersion: coefficient of variation (CV)",
+              "understanding": 0
+            },
+            {
+              "name": "Computing dispersion using different measures",
+              "understanding": 0
+            },
+            {
+              "name": "Usefulness of variance and coefficient of variation",
+              "understanding": 0
+            },
+            {
+              "name": "Effect of change of origin and scale on variance and SD",
+              "understanding": 0
+            },
+            {
+              "name": "Comparative merits and demerits of dispersion measures",
+              "understanding": 0
+            },
+            {
+              "name": "Choosing the appropriate dispersion measure",
+              "understanding": 0
+            },
+            {
+              "name": "Mathematical properties and proofs of dispersion (variance of first n natural numbers)",
+              "understanding": 0
+            },
+            {
+              "name": "Combined standard deviation: pooled variance for two datasets",
+              "understanding": 0
+            },
+            {
+              "name": "Using measures of dispersion with real data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute range from given data and interpret",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute mean deviation and interpret",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute variance, SD and CV and analyze data characteristics",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Moments, Skewness and Kurtosis",
+          "lessons": [
+            {
+              "name": "Moments: concept and types",
+              "understanding": 0
+            },
+            {
+              "name": "Converting ungrouped moments to grouped moments",
+              "understanding": 0
+            },
+            {
+              "name": "Need and uses of moments",
+              "understanding": 0
+            },
+            {
+              "name": "Skewness and its types",
+              "understanding": 0
+            },
+            {
+              "name": "Measures of skewness",
+              "understanding": 0
+            },
+            {
+              "name": "Kurtosis and its types",
+              "understanding": 0
+            },
+            {
+              "name": "Measures of kurtosis",
+              "understanding": 0
+            },
+            {
+              "name": "Analyzing data characteristics from moments",
+              "understanding": 0
+            },
+            {
+              "name": "Five-number summary and its uses",
+              "understanding": 0
+            },
+            {
+              "name": "Box and Whisker plot: presenting and analyzing data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute first four moments from data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine skewness and kurtosis and identify distribution shape",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Construct Box and Whisker plot and five-number summary and interpret characteristics",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Correlation and Regression",
+          "lessons": [
+            {
+              "name": "Bivariate data and concept of correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Simple correlation and its nature (types)",
+              "understanding": 0
+            },
+            {
+              "name": "Measurement of simple correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Scatter diagram: drawing and interpreting nature of correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Covariance and correlation coefficient",
+              "understanding": 0
+            },
+            {
+              "name": "Properties, proofs and uses of correlation coefficient",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of r: independence of origin and scale; r from regression coefficients; minus 1 to 1; rank correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Simple rank correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Regression and regression lines",
+              "understanding": 0
+            },
+            {
+              "name": "Fitting regression lines using formulas and making predictions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute correlation coefficient from ungrouped data",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute simple rank correlation",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw scatter diagram",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Fit regression lines and predict (using formulas)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Draw curves of various functions (linear, hyperbolic, quadratic, exponential, logarithmic)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Time Series",
+          "lessons": [
+            {
+              "name": "Time series: concept and need",
+              "understanding": 0
+            },
+            {
+              "name": "Components of time series",
+              "understanding": 0
+            },
+            {
+              "name": "Determining general trend: freehand curve method",
+              "understanding": 0
+            },
+            {
+              "name": "Semi-mean method",
+              "understanding": 0
+            },
+            {
+              "name": "Moving mean method",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of time series (trend analysis and subject-wise forecasting)",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine general trend from time series and forecast",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Published Statistics of Bangladesh",
+          "lessons": [
+            {
+              "name": "Various sources of published statistics in Bangladesh",
+              "understanding": 0
+            },
+            {
+              "name": "Classification of published statistics in Bangladesh",
+              "understanding": 0
+            },
+            {
+              "name": "Limitations of published statistics and measures to improve quality",
+              "understanding": 0
+            },
+            {
+              "name": "Latest census-based published data (population-related)",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics Second Paper",
+      "chapters": [
+        {
+          "name": "Chapter 1: Probability",
+          "lessons": [
+            {
+              "name": "Probability terms: experiment, random experiment, trial",
+              "understanding": 0
+            },
+            {
+              "name": "Sample space, sample point and event",
+              "understanding": 0
+            },
+            {
+              "name": "Mutually exclusive and mutually non-exclusive events",
+              "understanding": 0
+            },
+            {
+              "name": "Certain and impossible events",
+              "understanding": 0
+            },
+            {
+              "name": "Dependent and independent events",
+              "understanding": 0
+            },
+            {
+              "name": "Complementary events",
+              "understanding": 0
+            },
+            {
+              "name": "Set, permutation and combination",
+              "understanding": 0
+            },
+            {
+              "name": "Definitions of probability: classical, empirical and axiomatic",
+              "understanding": 0
+            },
+            {
+              "name": "Conditional probability and independent probability (with examples)",
+              "understanding": 0
+            },
+            {
+              "name": "Addition theorem for mutually exclusive and exhaustive events (proof and application)",
+              "understanding": 0
+            },
+            {
+              "name": "Multiplication theorem for dependent and independent events",
+              "understanding": 0
+            },
+            {
+              "name": "Applied mathematical problems (balls, coins, cards and real-life examples)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 2: Random Variable and Probability Distribution",
+          "lessons": [
+            {
+              "name": "Random variable: discrete and continuous",
+              "understanding": 0
+            },
+            {
+              "name": "Function and summation: elementary concepts",
+              "understanding": 0
+            },
+            {
+              "name": "Summation and integration formulas (without derivation) for distributions",
+              "understanding": 0
+            },
+            {
+              "name": "Probability function and probability density function: concept",
+              "understanding": 0
+            },
+            {
+              "name": "Determining probability and density functions",
+              "understanding": 0
+            },
+            {
+              "name": "Distribution function and joint probability function",
+              "understanding": 0
+            },
+            {
+              "name": "Solving probability function-related problems",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 3: Mathematical Expectation",
+          "lessons": [
+            {
+              "name": "Mathematical expectation: definition; variance, covariance and moments of random variables",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of mathematical expectation and variance",
+              "understanding": 0
+            },
+            {
+              "name": "Addition and multiplication rules of expectation for two variables",
+              "understanding": 0
+            },
+            {
+              "name": "Applying addition and multiplication rules for two variables",
+              "understanding": 0
+            },
+            {
+              "name": "Expectation and variance of functions",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine mathematical expectation and variance using real-life problems",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 4: Binomial Distribution",
+          "lessons": [
+            {
+              "name": "Bernoulli trial and its characteristics",
+              "understanding": 0
+            },
+            {
+              "name": "Binomial distribution: formula and probability function with examples",
+              "understanding": 0
+            },
+            {
+              "name": "Determining the probability function of binomial distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Situations where binomial distribution applies (with examples)",
+              "understanding": 0
+            },
+            {
+              "name": "Mean and variance of binomial distribution and their comparison",
+              "understanding": 0
+            },
+            {
+              "name": "Properties and uses of binomial distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Solving various binomial problems with real examples",
+              "understanding": 0
+            },
+            {
+              "name": "Comparing observed and expected frequencies",
+              "understanding": 0
+            },
+            {
+              "name": "Fitting binomial distribution in real cases",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Fit binomial distribution using frequency distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compare observed and expected frequencies with graphs",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 5: Poisson Distribution",
+          "lessons": [
+            {
+              "name": "Poisson variable and Poisson distribution: concept",
+              "understanding": 0
+            },
+            {
+              "name": "Real-life examples of Poisson variable",
+              "understanding": 0
+            },
+            {
+              "name": "Deriving Poisson probability function from binomial distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Mean and variance of Poisson distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of Poisson distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of Poisson distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Solving various Poisson problems",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Fit Poisson distribution using frequency distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compare observed and expected frequencies with graphs",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 6: Normal Distribution",
+          "lessons": [
+            {
+              "name": "Normal variable and normal distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Graphs of normal distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Standard normal variable: mean and variance",
+              "understanding": 0
+            },
+            {
+              "name": "Properties of normal distribution and normal curve",
+              "understanding": 0
+            },
+            {
+              "name": "Analyzing data characteristics from normal curve graphs",
+              "understanding": 0
+            },
+            {
+              "name": "Using the normal probability table",
+              "understanding": 0
+            },
+            {
+              "name": "Relationship of normal with binomial and Poisson distributions (without proof)",
+              "understanding": 0
+            },
+            {
+              "name": "Solving various normal distribution problems",
+              "understanding": 0
+            },
+            {
+              "name": "Determining suitability of normal distribution in different cases",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Fit normal distribution using frequency distribution",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compare observed and expected frequencies with graphs",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 7: Index Numbers",
+          "lessons": [
+            {
+              "name": "Index numbers: concept and need",
+              "understanding": 0
+            },
+            {
+              "name": "Different types of index numbers (price, quantity and others)",
+              "understanding": 0
+            },
+            {
+              "name": "Simple and weighted index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Difference between simple and weighted indices",
+              "understanding": 0
+            },
+            {
+              "name": "Methods of constructing index numbers using formulas",
+              "understanding": 0
+            },
+            {
+              "name": "Various tests of index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Identifying ideal index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Method of constructing cost-of-living index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Uses of index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute price and quantity indices using various formulas",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute cost-of-living index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Apply various tests of index numbers",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Identify ideal index numbers",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 8: Sampling",
+          "lessons": [
+            {
+              "name": "Sampling terms: sample and population",
+              "understanding": 0
+            },
+            {
+              "name": "Finite and infinite populations; sampling unit and sample size",
+              "understanding": 0
+            },
+            {
+              "name": "Parameters, biased and unbiased samples",
+              "understanding": 0
+            },
+            {
+              "name": "Census vs sample survey: advantages and disadvantages",
+              "understanding": 0
+            },
+            {
+              "name": "Sampling and non-sampling errors and measures to reduce them",
+              "understanding": 0
+            },
+            {
+              "name": "Probability sampling vs purposive (non-probability) sampling",
+              "understanding": 0
+            },
+            {
+              "name": "Simple random sampling (SRS)",
+              "understanding": 0
+            },
+            {
+              "name": "Mean and variance formulas for SRS and their application",
+              "understanding": 0
+            },
+            {
+              "name": "General guidelines for preparing questionnaires for sample surveys",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Determine mean and variance for simple random sampling",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Prepare a simple questionnaire, collect data and analyze (with teacher's help)",
+              "understanding": 0
+            }
+          ]
+        },
+        {
+          "name": "Chapter 9: Vital Statistics",
+          "lessons": [
+            {
+              "name": "Vital statistics: concept and various sources",
+              "understanding": 0
+            },
+            {
+              "name": "Dependency ratio and sex ratio",
+              "understanding": 0
+            },
+            {
+              "name": "Population density and crude birth rate",
+              "understanding": 0
+            },
+            {
+              "name": "General fertility rate and age-specific fertility rates",
+              "understanding": 0
+            },
+            {
+              "name": "Total fertility rate; gross and net reproduction rates",
+              "understanding": 0
+            },
+            {
+              "name": "Crude death rate",
+              "understanding": 0
+            },
+            {
+              "name": "Population growth rate",
+              "understanding": 0
+            },
+            {
+              "name": "Population growth in Bangladesh: computing demographic rates and commenting",
+              "understanding": 0
+            },
+            {
+              "name": "Practical: Compute various demographic rates for Bangladesh population",
+              "understanding": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
